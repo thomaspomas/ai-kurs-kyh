@@ -49,7 +49,7 @@ export default async function DiplomPage() {
       <Header userName={userName} showNav />
 
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 py-8">
-        <div className="text-center mb-8">
+        <div className="no-print text-center mb-8">
           <h1 className="text-2xl sm:text-3xl font-bold text-content mb-2">
             Ditt diplom
           </h1>
@@ -64,7 +64,7 @@ export default async function DiplomPage() {
           verificationCode={diploma.verification_code}
         />
 
-        <div className="mt-8 text-center">
+        <div className="no-print mt-8 text-center">
           <Link
             href="/dashboard"
             className="text-sm text-content-muted hover:text-primary transition-colors"

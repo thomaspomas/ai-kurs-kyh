@@ -43,9 +43,9 @@ export function DiplomaView({ userName, issuedAt, verificationCode }: DiplomaVie
         <div style={{ height: '8px', background: 'linear-gradient(90deg, #C75000 0%, #FA6400 50%, #2D807C 100%)' }} />
 
         {/* Content */}
-        <div className="p-12 text-center">
+        <div className="p-8 text-center">
           {/* Logo area */}
-          <div className="mb-8">
+          <div className="mb-6">
             <div className="inline-flex items-center gap-1 mb-2">
               <span className="font-bold text-3xl" style={{ color: '#303030', letterSpacing: '-0.02em' }}>
                 kyh<span style={{ color: '#FA6400' }}>&gt;</span>
@@ -57,13 +57,13 @@ export function DiplomaView({ userName, issuedAt, verificationCode }: DiplomaVie
           </div>
 
           {/* Divider */}
-          <div style={{ height: '1px', backgroundColor: '#F7F1ED', margin: '0 auto 32px', maxWidth: '300px' }} />
+          <div style={{ height: '1px', backgroundColor: '#E8E0DB', margin: '0 auto 24px', maxWidth: '300px' }} />
 
-          <p className="text-sm font-medium uppercase tracking-widest mb-6" style={{ color: '#755E60' }}>
+          <p className="text-sm font-medium uppercase tracking-widest mb-4" style={{ color: '#755E60' }}>
             Intygar att
           </p>
 
-          <h1 className="text-4xl font-bold mb-6" style={{ color: '#28221B', lineHeight: 1.2 }}>
+          <h1 className="text-4xl font-bold mb-4" style={{ color: '#28221B', lineHeight: 1.2 }}>
             {userName}
           </h1>
 
@@ -71,13 +71,13 @@ export function DiplomaView({ userName, issuedAt, verificationCode }: DiplomaVie
             har genomfört och godkänts i kursen
           </p>
 
-          <h2 className="text-xl font-bold mb-8" style={{ color: '#C75000' }}>
+          <h2 className="text-xl font-bold mb-6" style={{ color: '#C75000' }}>
             AI för utbildningsledare – mellannivå
           </h2>
 
           <div
-            className="rounded-xl p-6 mb-8 text-left"
-            style={{ backgroundColor: '#F7F1ED', maxWidth: '480px', margin: '0 auto 32px' }}
+            className="rounded-xl p-5 mb-6 text-left"
+            style={{ border: '1px solid #E8E0DB', maxWidth: '480px', margin: '0 auto 24px' }}
           >
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
@@ -107,14 +107,8 @@ export function DiplomaView({ userName, issuedAt, verificationCode }: DiplomaVie
             </div>
           </div>
 
-          {/* Description */}
-          <p className="text-sm mb-8 mx-auto" style={{ color: '#755E60', maxWidth: '480px', lineHeight: 1.7 }}>
-            Kursen omfattar professionell förståelse av AI-teknologi, strategisk tillämpning i
-            utbildningsledarens vardag samt ansvar, risker och beslutsförmåga inom AI-användning.
-          </p>
-
           {/* Verification */}
-          <div style={{ height: '1px', backgroundColor: '#F7F1ED', margin: '0 auto 24px', maxWidth: '300px' }} />
+          <div style={{ height: '1px', backgroundColor: '#E8E0DB', margin: '0 auto 24px', maxWidth: '300px' }} />
           <p className="text-xs" style={{ color: '#9e8a84', fontFamily: 'Courier New, monospace' }}>
             Verifieringskod: {verificationCode}
           </p>

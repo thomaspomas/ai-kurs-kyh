@@ -61,6 +61,10 @@ body {
 }
 
 /* Diploma print styles */
+@page {
+  size: A4;
+  margin: 1cm;
+}
 @media print {
   .no-print {
     display: none !important;
@@ -68,5 +72,8 @@ body {
   body {
     background: white !important;
     color: #303030 !important;
+  }
+  header, footer {
+    display: none !important;
   }
 }

@@ -73,7 +73,7 @@ export const modules: CourseModule[] = [
       {
         id: '2-intro',
         type: 'intro',
-        title: 'Problemet som overraskar alla',
+        title: 'Problemet som överraskar alla',
         content:
           'De flesta som börjar använda AI i längre arbetsuppgifter stöter på samma problem: AI:n verkar glömma vad man diskuterade tidigare. Det är inte ett tekniskt fel eller en bugg. Det är en fundamental egenskap hos hur dessa system fungerar – och att förstå den är avgörande för att använda AI effektivt i komplexa arbetsmoment.',
       },
@@ -98,7 +98,7 @@ export const modules: CourseModule[] = [
           'Du arbetar med att revidera kursplaner för tre utbildningar. Du startar en lång konversation med AI:n om den första utbildningen och specificerar tidigt vilka formatkrav som gäller. Sedan hoppar du till den tredje utbildningen – och märker att AI:n nu ignorerar formatkraven du angav i början.\n\nDetta är ett strukturproblem, inte ett AI-problem. Lösningen är att börja nya uppgifter i nya sessioner, att sammanfatta och återintroducera viktiga krav, och att organisera arbetet i kortare, väldefinierade block snarare än en enda lång konversation.',
       },
       {
-        id: '2-concept',
+        id: '2-concept2',
         type: 'concept',
         title: 'Strategier för att hantera kontextbegränsningar',
         content:
@@ -174,7 +174,7 @@ export const modules: CourseModule[] = [
           'Jämför dessa två promptar för samma uppgift:\n\n❌ Svag prompt:\n"Hjälp mig skriva en kursplan."\n\n✅ Välstrukturerad prompt:\n"Du är en erfaren utbildningsutvecklare med god kännedom om YH-förordningen 2009:128. Jag ska skriva en kursplan för kursen Hållbar logistik på en KY-utbildning inom Supply Chain. Utbildningens målgrupp är yrkesverksamma vuxna med erfarenhet från lager och transport. Skriv ett förslag på kursens syfte (ca 150 ord), fem lärandemål och tre examinationsformer. Utgå från krav i YH-förordningen. Inkludera inte generisk introduktionstext om hållbarhet – fokusera direkt på kursinnehållet."\n\nResultaten är inte marginellt olika – de är fundamentalt olika i relevans och användbarhet.',
       },
       {
-        id: '3-concept',
+        id: '3-concept2',
         type: 'concept',
         title: 'Negativa instruktioner och iterativ design',
         content:
@@ -250,7 +250,7 @@ export const modules: CourseModule[] = [
           'Inför ett ledningsgruppsmöte om ny AI-policy vill du förbereda dig på motargument och kritiska frågor. I stället för att försöka föreställa dig alla möjliga invändningar ber du AI:n:\n\n"Anta rollen som en kritisk extern granskare från Myndigheten för yrkeshögskolan med erfarenhet av tillsyn. Granska följande förslag till AI-policy för vår utbildningsorganisation och identifiera de tre svagaste punkterna ur ett tillsynsperspektiv. Motivera varje punkt med hänvisning till vad som typiskt granskas vid tillsyn."\n\nResultatet ger dig specifika, relevanta invändningar att förbereda svar på – mycket mer användbart än ett generellt "identifiera svagheter".',
       },
       {
-        id: '4-concept',
+        id: '4-concept2',
         type: 'concept',
         title: 'Pedagogiska personas',
         content:
@@ -324,7 +324,7 @@ export const modules: CourseModule[] = [
           'Tänk dig ett agentbaserat stöd för kvalitetsgranskning av kursplaner:\n\nSteg 1 → Tar emot kursplan som dokument\nSteg 2 → Kontrollerar att alla obligatoriska fält är ifyllda\nSteg 3 → Jämför lärandemålen mot förordningskrav i databasen\nSteg 4 → Genererar checklista med avvikelser\nSteg 5 → Skapar utkast till återkoppling till ansvarig lärare\n\nFrågan är inte "kan detta fungera?" (svaret är ja). Frågan är: Var i detta flöde MÅSTE en människa granska? Vad händer om agenten feltolkar ett förordningskrav? Vem har ansvar för den återkoppling som skickas till läraren?',
       },
       {
-        id: '5-concept',
+        id: '5-concept2',
         type: 'concept',
         title: 'Kontrollpunkter i agentflöden',
         content:
@@ -399,7 +399,7 @@ export const modules: CourseModule[] = [
           'En YH-utbildning implementerar en AI-driven chatbot för studerande under LIA-perioden. Systemet är snabbt och tillgängligt dygnet runt. En studerande ställer frågan: "Vad händer om jag är sjuk under LIA?"\n\nChatbotten ger ett svar baserat på äldre rutiner som inte längre stämmer med det uppdaterade LIA-avtalet. Studeranden handlar utifrån felaktigt information. Situationen eskalerar och leder till en formell tvist.\n\nVem har ansvar? Utbildningsorganisationen som implementerade systemet utan tillräckliga säkerhetsmekanismer. Hur hade detta kunnat undvikas? Tydlig kommunikation om begränsningar, begränsad scope (bara FAQ, inte avtalstolkning), och rutinmässig uppdatering av kunskapsbasen.',
       },
       {
-        id: '6-concept',
+        id: '6-concept2',
         type: 'concept',
         title: 'Rätt scope för realtids-AI',
         content:
@@ -428,7 +428,7 @@ export const modules: CourseModule[] = [
         type: 'warning',
         title: 'Transparens som grundkrav',
         content:
-          'Det är inte acceptabelt att implementera ett AI-drivet stödsystem utan att tydligt kommunicera till användarna att de interagerar med ett automatiserat system. Studierande och lärare har rätt att veta att svaret de får kommer från ett AI-system – och att eskalera till en människa om de vill det.',
+          'Det är inte acceptabelt att implementera ett AI-drivet stödsystem utan att tydligt kommunicera till användarna att de interagerar med ett automatiserat system. Studerande och lärare har rätt att veta att svaret de får kommer från ett AI-system – och att de kan eskalera till en människa om de vill det.',
       },
       {
         id: '6-reflection',
@@ -475,7 +475,7 @@ export const modules: CourseModule[] = [
           'Scenario 1 – Hallucination med konsekvens:\nEn utbildningsledare ber AI:n formulera vilka krav MYH ställer på pedagogisk kompetens hos LIA-handledare. AI:n anger en specifik paragraf och procentsats med övertygande precision. Paragrafen existerar inte. Dokumentet skickas till arbetsgivare.\n\nScenario 2 – Personuppgifter:\nStudieadministratörer uppmuntras att klistra in studerandeuppgifter i ett kommersiellt AI-verktyg för att få hjälp med schemaläggning. Uppgifterna lämnar organisationens kontrollerade miljö och behandlas på en extern server. GDPR tillämpas på varje bearbetning av personuppgifter – inte bara lagring.\n\nScenario 3 – Ansvarskedjan:\nEn kursplan är till 80% skriven av AI och 20% redigerad av utbildningsledaren. MYH anmärker vid tillsyn på bristande förankring i förordningen. Vem bär ansvar? Utbildningsledaren. Alltid.',
       },
       {
-        id: '7-concept',
+        id: '7-concept2',
         type: 'concept',
         title: 'Juridiska ramar du behöver känna till',
         content:
@@ -550,7 +550,7 @@ export const modules: CourseModule[] = [
           'Styrelsen frågar utbildningsledaren: "Borde vi använda AI mer systematiskt?"\n\nEtt välgrundat svar är varken "Ja, absolut – alla gör det" eller "Nej, det är för riskabelt". Det är ett analytiskt svar som identifierar var i er specifika verksamhet AI skapar reellt värde, var riskerna är hanterbara, och vad som behöver vara på plats organisatoriskt och juridiskt för att använda det ansvarsfullt.\n\nDet svaret kan bara en utbildningsledare med förståelse för verksamheten, ansvaret och teknologins begränsningar ge. Det är inte ett teknikexpertsvar. Det är ett ledarskapssvar.',
       },
       {
-        id: '8-concept',
+        id: '8-concept2',
         type: 'concept',
         title: 'Att vara informerad beställare',
         content:
@@ -564,7 +564,7 @@ export const modules: CourseModule[] = [
         ],
       },
       {
-        id: '8-concept',
+        id: '8-concept3',
         type: 'concept',
         title: 'Principiella riktlinjer för organisationen',
         content:
