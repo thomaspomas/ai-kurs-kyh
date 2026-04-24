@@ -1,26 +1,72 @@
 @import "tailwindcss";
 
+/* Class-based dark mode for next-themes */
+@variant dark (&:is(.dark *));
+
+@theme {
+  /* KYH brand colors */
+  --color-primary: #C75000;
+  --color-primary-hover: #a84000;
+  --color-secondary: #2D807C;
+  --color-secondary-hover: #236560;
+  --color-comp1: #F7F1ED;
+  --color-comp2: #755E60;
+  --color-comp3: #28221B;
+  --color-logo: #FA6400;
+  --color-text-print: #303030;
+
+  /* Semantic surface tokens (resolved via CSS vars below) */
+  --color-surface: var(--surface);
+  --color-surface-card: var(--surface-card);
+  --color-surface-raised: var(--surface-raised);
+  --color-content: var(--content);
+  --color-content-muted: var(--content-muted);
+  --color-border: var(--border);
+
+  /* Typography */
+  --font-sans: 'Roboto', system-ui, sans-serif;
+  --font-mono: 'Courier New', Courier, monospace;
+
+  /* Line heights */
+  --line-height-body: 1.6;
+}
+
+/* Light mode (default) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --surface: #F7F1ED;
+  --surface-card: #FFFFFF;
+  --surface-raised: #EDE5DF;
+  --content: #28221B;
+  --content-muted: #755E60;
+  --border: #D8CEC7;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Dark mode */
+.dark {
+  --surface: #1C1710;
+  --surface-card: #28221B;
+  --surface-raised: #332B22;
+  --content: #F7F1ED;
+  --content-muted: #9e8a84;
+  --border: #3d3028;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base styles */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--surface);
+  color: var(--content);
+  font-family: var(--font-sans);
+  line-height: var(--line-height-body);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Diploma print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: #303030 !important;
+  }
 }

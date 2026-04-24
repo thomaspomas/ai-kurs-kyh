@@ -1,0 +1,163 @@
+import type { ModuleSection } from '@/types'
+
+interface SectionContentProps {
+  section: ModuleSection
+  isCompleted: boolean
+  onComplete: () => void
+  reflectionValue?: string
+  onReflectionChange?: (val: string) => void
+}
+
+const typeConfig: Record<
+  ModuleSection['type'],
+  { label: string; accent: string; bg: string; icon: string }
+> = {
+  intro: {
+    label: 'Introduktion',
+    accent: '#C75000',
+    bg: 'bg-primary/5 border-primary/20',
+    icon: '📖',
+  },
+  concept: {
+    label: 'Centralt begrepp',
+    accent: '#2D807C',
+    bg: 'bg-secondary/5 border-secondary/20',
+    icon: '💡',
+  },
+  example: {
+    label: 'Exempel från arbetslivet',
+    accent: '#755E60',
+    bg: 'bg-comp2/5 border-comp2/20',
+    icon: '📋',
+  },
+  misconceptions: {
+    label: 'Vanliga missförstånd',
+    accent: '#C75000',
+    bg: 'bg-primary/5 border-primary/20',
+    icon: '⚠️',
+  },
+  warning: {
+    label: 'När bör du INTE använda AI?',
+    accent: '#C75000',
+    bg: 'bg-primary/8 border-primary/30',
+    icon: '🚫',
+  },
+  reflection: {
+    label: 'Reflektionsfråga',
+    accent: '#2D807C',
+    bg: 'bg-secondary/5 border-secondary/20',
+    icon: '🤔',
+  },
+}
+
+export function SectionContent({
+  section,
+  isCompleted,
+  onComplete,
+  reflectionValue = '',
+  onReflectionChange,
+}: SectionContentProps) {
+  const config = typeConfig[section.type]
+  const isReflection = section.type === 'reflection'
+  const canComplete = isReflection ? reflectionValue.trim().length >= 50 : true
+
+  return (
+    <div
+      className={`rounded-xl border-2 p-6 transition-all duration-200 ${config.bg} ${
+        isCompleted ? 'opacity-80' : ''
+      }`}
+    >
+      {/* Section header */}
+      <div className="flex items-center gap-2 mb-4">
+        <span className="text-lg" role="img" aria-label="">
+          {config.icon}
+        </span>
+        <span
+          className="text-xs font-mono font-medium uppercase tracking-wider"
+          style={{ color: config.accent }}
+        >
+          {config.label}
+        </span>
+        {isCompleted && (
+          <span className="ml-auto text-xs text-secondary font-medium flex items-center gap-1">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <circle cx="7" cy="7" r="6" fill="#2D807C" />
+              <path d="M4 7l2.5 2.5L10 4.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            Genomfört
+          </span>
+        )}
+      </div>
+
+      {/* Title */}
+      <h3 className="text-lg font-bold text-content mb-3">{section.title}</h3>
+
+      {/* Content paragraphs */}
+      {section.content.split('\n\n').map((para, i) => (
+        <p key={i} className="text-content leading-relaxed mb-3 last:mb-0" style={{ whiteSpace: 'pre-wrap' }}>
+          {para}
+        </p>
+      ))}
+
+      {/* List items */}
+      {section.items && section.items.length > 0 && (
+        <ul className="mt-4 space-y-2">
+          {section.items.map((item, i) => (
+            <li key={i} className="flex items-start gap-2 text-content">
+              <span className="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: config.accent }} />
+              <span className="leading-relaxed">{item}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {/* Reflection textarea */}
+      {isReflection && onReflectionChange && (
+        <div className="mt-4">
+          <label className="block text-sm font-medium text-content mb-2">
+            Din reflektion (minst 50 tecken för att gå vidare)
+          </label>
+          <textarea
+            value={reflectionValue}
+            onChange={(e) => onReflectionChange(e.target.value)}
+            disabled={isCompleted}
+            placeholder="Skriv din reflektion här..."
+            rows={5}
+            className="w-full rounded-lg border border-border bg-surface-card text-content p-3 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 placeholder:text-content-muted disabled:opacity-60"
+          />
+          <p className="text-xs text-content-muted mt-1">
+            {reflectionValue.trim().length} tecken
+          </p>
+        </div>
+      )}
+
+      {/* Static placeholder for AI feedback */}
+      {isReflection && isCompleted && (
+        <div className="mt-4 rounded-lg border border-secondary/30 bg-secondary/5 p-4">
+          <p className="text-xs font-mono text-secondary font-medium mb-1">
+            AI-stöd (platshållare)
+          </p>
+          <p className="text-sm text-content-muted italic">
+            I en aktiv installation kan du här få fördjupande följdfrågor och
+            perspektiv från kursassistenten baserat på din reflektion.
+          </p>
+        </div>
+      )}
+
+      {/* Complete button */}
+      {!isCompleted && (
+        <button
+          onClick={onComplete}
+          disabled={!canComplete}
+          className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm text-white transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+          style={{ backgroundColor: canComplete ? '#C75000' : '#9ca3af' }}
+        >
+          {isReflection ? 'Spara reflektion och fortsätt' : 'Markera som genomfört'}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+      )}
+    </div>
+  )
+}
