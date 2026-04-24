@@ -39,7 +39,7 @@ export default function IntegritetspolicyPage() {
                 href="mailto:thomascarlberghemma@proton.me"
                 className="text-primary hover:underline"
               >
-                thomascarlberghemma@proton.me
+                Thomas Carlberg.
               </a>
             </p>
           </section>
@@ -141,8 +141,7 @@ export default function IntegritetspolicyPage() {
             <p className="mt-3">
               För att utöva dina rättigheter, kontakta:{' '}
               <a href="mailto:thomascarlberghemma@proton.me" className="text-primary hover:underline">
-                thomascarlberghemma@proton.me
-              </a>
+                Thomas Carlberg              </a>
             </p>
           </section>
 
