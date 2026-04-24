@@ -98,7 +98,7 @@ export default function LandingPage() {
               {
                 icon: '📍',
                 title: 'Återuppta var du slutade',
-                desc: 'Din progress sparas automatiskt. Fortsätt kursen när det passar dig.',
+                desc: 'Dina framsteg sparas automatiskt. Fortsätt kursen när det passar dig.',
               },
               {
                 icon: '🔒',
