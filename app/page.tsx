@@ -8,12 +8,11 @@ export default function LandingPage() {
       {/* Minimal header */}
       <header className="bg-surface-card border-b border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-1">
-            <span className="font-bold text-xl text-content" style={{ letterSpacing: '-0.02em' }}>
-              kyh<span style={{ color: '#FA6400' }}>&gt;</span>
-            </span>
+          <div />
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <span className="text-xs text-content-muted select-none">Darkmode On/Off</span>
           </div>
-          <ThemeToggle />
         </div>
       </header>
 

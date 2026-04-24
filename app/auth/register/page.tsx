@@ -76,10 +76,11 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen bg-surface flex flex-col">
       <div className="flex justify-between items-center p-4 sm:p-6">
-        <Link href="/" className="text-xl font-bold text-content" style={{ letterSpacing: '-0.02em' }}>
-          kyh<span style={{ color: '#FA6400' }}>&gt;</span>
-        </Link>
-        <ThemeToggle />
+        <div />
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <span className="text-xs text-content-muted select-none">Darkmode On/Off</span>
+        </div>
       </div>
 
       <div className="flex-1 flex items-center justify-center px-4 py-12">
