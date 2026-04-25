@@ -47,7 +47,7 @@ export function DiplomaView({ userName, issuedAt, verificationCode }: DiplomaVie
           {/* Logo area */}
           <div className="mb-6">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/kyh-logo.png" alt="KYH" style={{ height: '48px', margin: '0 auto 8px' }} />
+            <img src="/thomas.png" alt="Thomas Carlberg" style={{ height: '48px', margin: '0 auto 8px' }} />
             <p className="text-sm font-medium" style={{ color: '#755E60', fontFamily: 'Courier New, monospace' }}>
               KYH – Yrkeshögskolan
             </p>

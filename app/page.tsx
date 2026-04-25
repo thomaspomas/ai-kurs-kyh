@@ -8,7 +8,7 @@ export default function LandingPage() {
       {/* Minimal header */}
       <header className="bg-surface-card border-b border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <img src="/kyh-logo.png" alt="KYH" className="h-8" />
+          <img src="/thomas.png" alt="Thomas Carlberg" className="h-8" />
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <span className="text-xs text-content-muted select-none">Darkmode On/Off</span>
