@@ -61,10 +61,8 @@ body {
 }
 
 /* Logo dark mode inversion – preserves red hues via hue-rotate */
-@variant dark (&:is(.dark *)) {
-  .logo-adaptive {
-    filter: invert(1) hue-rotate(180deg);
-  }
+.dark .logo-adaptive {
+  filter: invert(1) hue-rotate(180deg);
 }
 
 /* Diploma print styles */
