@@ -8,7 +8,12 @@ export async function POST(req: Request) {
       return new Response('För kort reflektion', { status: 400 })
     }
 
-    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+    const apiKey = process.env.ANTHROPIC_API_KEY
+    if (!apiKey) {
+      return new Response('API-nyckel saknas', { status: 500 })
+    }
+
+    const client = new Anthropic({ apiKey })
 
     const message = await client.messages.create({
       model: 'claude-3-5-haiku-20241022',
@@ -35,8 +40,9 @@ Håll svaret kort (3–5 meningar). Skriv på svenska. Var konkret och professio
     return new Response(text, {
       headers: { 'Content-Type': 'text/plain; charset=utf-8' },
     })
-  } catch (err) {
-    console.error('Feedback API error:', err)
-    return new Response('Internt fel', { status: 500 })
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err)
+    console.error('Feedback API error:', msg)
+    return new Response(`Fel: ${msg}`, { status: 500 })
   }
 }
