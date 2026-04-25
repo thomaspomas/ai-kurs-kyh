@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import type { ModuleSection } from '@/types'
 
 interface SectionContentProps {
@@ -6,6 +9,7 @@ interface SectionContentProps {
   onComplete: () => void
   reflectionValue?: string
   onReflectionChange?: (val: string) => void
+  moduleTitle?: string
 }
 
 const typeConfig: Record<
@@ -56,10 +60,46 @@ export function SectionContent({
   onComplete,
   reflectionValue = '',
   onReflectionChange,
+  moduleTitle = '',
 }: SectionContentProps) {
   const config = typeConfig[section.type]
   const isReflection = section.type === 'reflection'
   const canComplete = isReflection ? reflectionValue.trim().length >= 50 : true
+
+  const [feedback, setFeedback] = useState('')
+  const [loadingFeedback, setLoadingFeedback] = useState(false)
+  const [feedbackError, setFeedbackError] = useState('')
+
+  async function handleGetFeedback() {
+    setFeedback('')
+    setFeedbackError('')
+    setLoadingFeedback(true)
+    try {
+      const res = await fetch('/api/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          reflection: reflectionValue,
+          questionTitle: section.title,
+          moduleTitle,
+        }),
+      })
+      if (!res.ok) throw new Error('Något gick fel')
+      const reader = res.body!.getReader()
+      const decoder = new TextDecoder()
+      let text = ''
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+        text += decoder.decode(value, { stream: true })
+        setFeedback(text)
+      }
+    } catch {
+      setFeedbackError('Kunde inte hämta återkoppling. Försök igen.')
+    } finally {
+      setLoadingFeedback(false)
+    }
+  }
 
   return (
     <div
@@ -125,22 +165,49 @@ export function SectionContent({
             rows={5}
             className="w-full rounded-lg border border-border bg-surface-card text-content p-3 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 placeholder:text-content-muted disabled:opacity-60"
           />
-          <p className="text-xs text-content-muted mt-1">
-            {reflectionValue.trim().length} tecken
-          </p>
+          <div className="flex items-center justify-between mt-1">
+            <p className="text-xs text-content-muted">
+              {reflectionValue.trim().length} tecken
+            </p>
+            {reflectionValue.trim().length >= 50 && (
+              <button
+                onClick={handleGetFeedback}
+                disabled={loadingFeedback}
+                className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border transition-colors disabled:opacity-50 cursor-pointer"
+                style={{ color: '#2D807C', borderColor: '#2D807C' }}
+              >
+                {loadingFeedback ? (
+                  <>
+                    <svg className="animate-spin" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="2" strokeDasharray="8 8" />
+                    </svg>
+                    Hämtar återkoppling…
+                  </>
+                ) : (
+                  <>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path d="M6 1v10M1 6h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                    </svg>
+                    Få återkoppling från AI
+                  </>
+                )}
+              </button>
+            )}
+          </div>
         </div>
       )}
 
-      {/* Static placeholder for AI feedback */}
-      {isReflection && isCompleted && (
+      {/* AI feedback */}
+      {isReflection && (feedback || feedbackError) && (
         <div className="mt-4 rounded-lg border border-secondary/30 bg-secondary/5 p-4">
-          <p className="text-xs font-mono text-secondary font-medium mb-1">
-            AI-stöd (platshållare)
+          <p className="text-xs font-mono font-medium mb-2" style={{ color: '#2D807C' }}>
+            Återkoppling från kursassistenten
           </p>
-          <p className="text-sm text-content-muted italic">
-            I en aktiv installation kan du här få fördjupande följdfrågor och
-            perspektiv från kursassistenten baserat på din reflektion.
-          </p>
+          {feedbackError ? (
+            <p className="text-sm text-primary">{feedbackError}</p>
+          ) : (
+            <p className="text-sm text-content leading-relaxed whitespace-pre-wrap">{feedback}</p>
+          )}
         </div>
       )}
 

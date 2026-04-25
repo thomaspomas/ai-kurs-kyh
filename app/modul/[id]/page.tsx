@@ -148,6 +148,7 @@ export default function ModulePage({ params }: PageProps) {
                 onReflectionChange={(val) =>
                   setReflections((prev) => ({ ...prev, [section.id]: val }))
                 }
+                moduleTitle={module.title}
               />
             ))}
           </div>
