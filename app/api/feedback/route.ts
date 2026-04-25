@@ -41,8 +41,7 @@ Håll svaret kort (3–5 meningar). Skriv på svenska. Var konkret och professio
       headers: { 'Content-Type': 'text/plain; charset=utf-8' },
     })
   } catch (err: unknown) {
-    const msg = err instanceof Error ? err.message : String(err)
-    console.error('Feedback API error:', msg)
-    return new Response(`Fel: ${msg}`, { status: 500 })
+    console.error('Feedback API error:', err)
+    return new Response('Internt fel', { status: 500 })
   }
 }
