@@ -23,8 +23,7 @@ export function Header({ userName, showNav = true }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 bg-surface-card border-b border-border shadow-sm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-        {/* Logo placeholder – keeps layout balanced */}
-        <div className="shrink-0 w-4" />
+        <img src="/kyh-logo.png" alt="KYH" className="shrink-0 h-8" />
 
         {showNav && (
           <nav className="hidden sm:flex items-center gap-6 text-sm font-medium">
