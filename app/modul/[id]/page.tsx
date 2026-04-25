@@ -101,7 +101,7 @@ export default function ModulePage({ params }: PageProps) {
             <span className="text-3xl">{module.icon}</span>
             <div>
               <p className="text-xs font-mono text-content-muted">
-                Modul {module.id} · {module.duration}
+                Modul {module.id}
               </p>
               <h1 className="text-2xl sm:text-3xl font-bold text-content leading-tight">
                 {module.title}

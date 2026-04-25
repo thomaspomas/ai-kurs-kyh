@@ -26,7 +26,7 @@ export function ModuleCard({ module, completedSections }: ModuleCardProps) {
           </span>
           <div>
             <p className="text-xs font-mono text-content-muted mb-0.5">
-              Modul {module.id} · {module.duration}
+              Modul {module.id}
             </p>
             <h3 className="font-bold text-base text-content group-hover:text-primary transition-colors leading-tight">
               {module.title}

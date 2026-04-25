@@ -21,7 +21,7 @@ export default function LandingPage() {
         <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
           <div className="max-w-2xl">
             <p className="text-sm font-mono text-primary mb-4 uppercase tracking-wider">
-              Mellannivå · Självstudier · 8–10 timmar
+              Mellannivå · Självstudier
             </p>
             <h1 className="text-4xl sm:text-5xl font-bold text-content mb-6 leading-tight">
               AI för
