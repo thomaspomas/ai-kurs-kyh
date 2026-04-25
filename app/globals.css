@@ -60,9 +60,9 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Logo dark mode inversion – preserves red hues via hue-rotate */
+/* Logo dark mode: black pixels blend into dark background, colors remain */
 .dark .logo-adaptive {
-  filter: invert(1) hue-rotate(180deg);
+  mix-blend-mode: screen;
 }
 
 /* Diploma print styles */
