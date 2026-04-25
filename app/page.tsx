@@ -88,6 +88,9 @@ export default function LandingPage() {
 
         {/* Features */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+          <h2 className="text-sm font-mono text-content-muted uppercase tracking-wider mb-6">
+            Om denna kurs
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
               {
