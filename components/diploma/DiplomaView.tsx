@@ -46,12 +46,7 @@ export function DiplomaView({ userName, issuedAt, verificationCode }: DiplomaVie
         <div className="p-8 text-center">
           {/* Logo area */}
           <div className="mb-6">
-            <div className="inline-flex items-center gap-1 mb-2">
-              <span className="font-bold text-3xl" style={{ color: '#303030', letterSpacing: '-0.02em' }}>
-                kyh<span style={{ color: '#FA6400' }}>&gt;</span>
-              </span>
-            </div>
-            <p className="text-sm" style={{ color: '#755E60', fontFamily: 'Courier New, monospace' }}>
+            <p className="text-sm font-medium" style={{ color: '#755E60', fontFamily: 'Courier New, monospace' }}>
               KYH – Yrkeshögskolan
             </p>
           </div>
