@@ -13,19 +13,19 @@ export const modules: CourseModule[] = [
         type: 'intro',
         title: 'Varför det här spelar roll',
         content:
-          'De flesta som börjar använda AI-verktyg bär på en felaktig grundbild – att AI förstår, resonerar och vet. Den bilden leder till felaktiga beslut. Den här modulen handlar om att ersätta den bilden med en korrekt och hanterbar modell av vad AI faktiskt gör. Det är utgångspunkten för allt annat i kursen.',
+          'De flesta som börjar använda AI-verktyg bär på en felaktig grundbild – att AI förstår, resonerar och vet. Den bilden är begriplig. Språket AI producerar är flytande, välstrukturerat och låter precis som en människa som kan sin sak. Men det är just därför bilden är farlig.\n\nDen felaktiga grundbilden leder till konkreta misstag: att man förlitar sig på AI-svar utan att verifiera dem, att man tolkar ett välformulerat svar som ett korrekt svar, och att man delegerar omdöme till ett system som saknar omdöme. I en yrkeshögskolans vardag – med tillsynskrav, förordningsstyrda processer och rättssäkerhetskrav – kan den typen av misstag få reella konsekvenser.\n\nDen här modulen handlar om att byta ut den felaktiga bilden mot en korrekt och hanterbar modell av vad AI faktiskt gör. Inte för att göra dig mer skeptisk – utan för att göra dig mer effektiv och ansvarsfull i din användning.',
       },
       {
         id: '1-concept',
         type: 'concept',
         title: 'Sannolikhetsbaserad textgenerering',
         content:
-          'En stor språkmodell (LLM – Large Language Model) gör i grunden en sak: den förutsäger vilket ord som mest sannolikt ska komma härnäst, givet allt som föregår det. Det är inte resonemang. Det är inte förståelse. Det är avancerad mönsterigenkänning baserad på en enorm mängd träningsdata – text från internet, böcker, artiklar och dokument.\n\nModellen har sett miljontals exempel på hur text om utbildning, juridik, kvalitetsarbete och yrkeshögskola ser ut. Den kan producera text som låter precis som en expert – för att den lärt sig hur experter formulerar sig. Men den vet inte om det hon säger är sant.',
+          'En stor språkmodell (LLM – Large Language Model) gör i grunden en sak: den förutsäger vilket ord – mer exakt: vilken token – som statistiskt sett bäst passar in i det som föregår det. Inte vilket ord som är korrekt. Inte vilket ord som är sant. Utan vilket ord som är sannolikt, givet mönstren i en astronomisk mängd träningsdata.\n\nUnder träningen har modellen konsumerat text från internet, böcker, akademiska artiklar och myndighetsdokument. Den har sett hur texter om utbildning, juridik och myndighetsprocesser ser ut. Den har lärt sig att "MYH:s tillsyn" följs av fraser som "säkerställer kvalitet" och "kontrollerar att utbildningen uppfyller kraven". Den kan producera textstycken som låter precis som en senior utbildningsutvecklare formulerar sig – för att den har sett hur erfarna utbildningsutvecklare skriver.\n\nMen modellen vet inte om det den skriver är sant. Den har inget sätt att kontrollera ett angett paragrafnummer mot förordningstexten. Den kan inte avgöra om en uppgift är aktuell eller föråldrad. Den producerar text som mönstermässigt passar – och det är inte detsamma som att producera text som är korrekt.',
         items: [
-          'AI förutsäger text – den resonerar inte',
-          'Träningsdata avgör vad modellen kan och inte kan',
-          'Välformulerat = inte nödvändigtvis korrekt',
-          'Modellen har en kunskapsavstängningsdatum – ny information saknas',
+          'AI förutsäger text utifrån statistiska mönster – den resonerar eller förstår inte',
+          'Träningsdata avgör vad modellen kan: aktuell information som tillkommit efter träningen saknas',
+          'Välformulerat och övertygande = inte nödvändigtvis korrekt',
+          'Modellen har ett kunskapsdatumsstopp – ny information från myndigheter och lagar kan saknas',
         ],
       },
       {
@@ -33,7 +33,7 @@ export const modules: CourseModule[] = [
         type: 'example',
         title: 'Från utbildningsledarens vardag',
         content:
-          'En utbildningsledare ber AI:n sammanfatta MYH:s senaste riktlinjer för LIA-handledning. AI:n producerar ett trovärdigt, välformulerat svar med korrekta termer och en logisk struktur. Men svaret är delvis fel – modellen har inte tillgång till det senaste dokumentet och genererar i stället något som låter korrekt baserat på äldre mönster.\n\nDetta kallas hallucination – och det är inte ett fel som kan fixas. Det är en inneboende egenskap hos hur språkmodeller fungerar. Frekvensen varierar, men risken är alltid närvarande, särskilt för specifik faktainformation.',
+          'En utbildningsledare behöver snabbt ta fram underlag inför ett möte med en arbetsgivare om LIA-handledarkompetens. Hon ber AI:n sammanfatta gällande krav från Myndigheten för yrkeshögskolan. AI:n svarar direkt med ett välstrukturerat svar som nämner specifika kompetensområden, hänvisar till vad som låter som ett officiellt dokument och anger en rimlig formulering av kraven.\n\nSvaret ser trovärdigt ut. Det är välformulerat. Det innehåller termer och fraser som stämmer väl med hur MYH faktiskt kommunicerar. Utbildningsledaren skickar det vidare som underlag.\n\nDet visar sig att den hänvisade publikationen inte existerar i den form AI:n beskrev. Kraven som anges stämmer delvis men är delvis föråldrade och delvis konstruerade av modellen. Det kallas hallucination – och det särskilt förledande är att hallucinationer sällan ser ut som gissningar. De ser ut som trovärdiga, precisa svar.\n\nDet viktigaste att ta med sig: verifiera alltid specifika faktapåståenden – paragrafnummer, krav, datum, dokumentnamn – mot primärkällan. Inte för att AI alltid har fel, utan för att du inte kan avgöra när den har fel baserat på hur svaret ser ut.',
       },
       {
         id: '1-misconceptions',
@@ -75,19 +75,19 @@ export const modules: CourseModule[] = [
         type: 'intro',
         title: 'Problemet som överraskar alla',
         content:
-          'De flesta som börjar använda AI i längre arbetsuppgifter stöter på samma problem: AI:n verkar glömma vad man diskuterade tidigare. Det är inte ett tekniskt fel eller en bugg. Det är en fundamental egenskap hos hur dessa system fungerar – och att förstå den är avgörande för att använda AI effektivt i komplexa arbetsmoment.',
+          'Många utbildningsledare som börjar använda AI mer regelbundet möter förr eller senare samma förvirrande upplevelse: AI:n verkar ha glömt vad ni diskuterade för tjugo minuter sedan. En instruktion man angav i början av en lång session verkar inte längre gälla. Krav man specificerat upprepade gånger ignoreras plötsligt.\n\nReaktionen är ofta att tro att man formulerat sig otydligt, att sessionen på något sätt krånglade, eller att AI:n är opålitlig. Ingen av dessa förklaringar är rätt – och den felaktiga diagnosen leder till fel lösning.\n\nDet som händer är att man stöter mot en fundamental teknisk gräns i hur dessa system fungerar. Att förstå den gränsen är inte ett tekniskt fördjupningsmoment. Det är en praktisk nödvändighet för att organisera sitt arbete med AI på ett sätt som faktiskt håller.',
       },
       {
         id: '2-concept',
         type: 'concept',
         title: 'Tokens och kontextfönstret',
         content:
-          'En token är ungefär 3–4 tecken – inte ett ord, inte en mening, utan ett fragment av text. Varje gång du interagerar med en AI-modell hanteras all text som tokens: din fråga, AI:ns svar, hela konversationshistoriken.\n\nModellen har ett kontextfönster – ett "arbetsminne" som kan hålla ett visst antal tokens åt gången. I moderna modeller kan detta vara relativt stort, men det är alltid begränsat. När konversationen blir tillräckligt lång börjar den äldsta informationen trängas ut ur kontextfönstret. Det är då AI:n "glömmer" vad ni pratat om i början.',
+          'För att förstå varför AI:n "glömmer" behöver du förstå ett begrepp: kontextfönstret.\n\nAll text som flödar mellan dig och AI-systemet delas upp i enheter som kallas tokens. En token är inte ett ord – det är ett fragment av text, ungefär 3–4 tecken långt. Varje gång du skickar en fråga, och varje gång systemet svarar, räknas tokens. Hela konversationshistoriken tar plats i form av tokens.\n\nModellen kan bara "se" en begränsad mängd tokens åt gången – det är kontextfönstret. Tänk på det som ett rullande whiteboard med begränsad yta: ny text skrivs hela tiden in från ena sidan, och när tavlan är full börjar den äldsta texten trängas ut från andra sidan. När en instruktion du angav tidigt i konversationen har trängts ut ur kontextfönstret existerar den bokstavligt talat inte längre för modellen.\n\nModerna modeller har relativt stora kontextfönster, men alla har gränser. I längre arbetsuppgifter – att revidera en hel utbildningsplan, att arbeta igenom ett förändringsunderlag – kan den gränsen nås snabbare än du förväntar dig.',
         items: [
-          'Token ≈ 3–4 tecken (inte ord)',
-          'Kontextfönstret = modellens aktiva arbetsminne',
-          'Äldre information kan trängas ut ur kontexten',
-          'AI har inget minne mellan separata sessioner (som standard)',
+          'Token ≈ 3–4 tecken (inte ord) – all text tar plats i kontextfönstret',
+          'Kontextfönstret = modellens aktiva arbetsminne; det är alltid begränsat',
+          'Äldre instruktioner och krav kan trängas ut och upphöra att gälla',
+          'AI har inget minne mellan separata sessioner utan explicit minnesfunktion',
         ],
       },
       {
@@ -95,7 +95,7 @@ export const modules: CourseModule[] = [
         type: 'example',
         title: 'Kursplaner och försvinnande krav',
         content:
-          'Du arbetar med att revidera kursplaner för tre utbildningar. Du startar en lång konversation med AI:n om den första utbildningen och specificerar tidigt vilka formatkrav som gäller. Sedan hoppar du till den tredje utbildningen – och märker att AI:n nu ignorerar formatkraven du angav i början.\n\nDetta är ett strukturproblem, inte ett AI-problem. Lösningen är att börja nya uppgifter i nya sessioner, att sammanfatta och återintroducera viktiga krav, och att organisera arbetet i kortare, väldefinierade block snarare än en enda lång konversation.',
+          'Du arbetar med att revidera kursplaner för tre av din organisations utbildningar. Alla tre har specifika formatkrav som du angav i inledningen av konversationen: rubriker i en viss ordning, en specifik formulering av lärandemål, och krav på att alla avsnitt ska hänvisa till relevanta paragrafnummer i YH-förordningen.\n\nUnder arbetet med den andra kursplanen märker du att AI:n plötsligt slutar inkludera paragrafnummer. Du upprepar instruktionen – det fungerar för ett par svar, sedan glöms det igen. När du går tillbaka och kontrollerar den första kursplanen märker du att hela den tredje sektionen saknar rubrikformatering.\n\nDet är inte AI:ns fel i vanlig mening. Det är kontextfönstrets mekanik. De tidiga instruktionerna har trängts ut av det växande innehållet i konversationen.\n\nLösningen är organisatorisk, inte teknisk: dela upp arbetet i separata sessioner, en per kursplan. Inled varje session med en komprimerad instruktionstext som specificerar alla formatkrav. Verifiera att kraven följs löpande under arbetet, inte bara i slutet. Spara instruktionsmallen i ett eget dokument så att du snabbt kan klistra in den på nytt.',
       },
       {
         id: '2-concept2',
@@ -104,10 +104,10 @@ export const modules: CourseModule[] = [
         content:
           'Det finns etablerade strategier för att arbeta effektivt trots dessa begränsningar:',
         items: [
-          'Börja varje ny deluppgift med en kort sammanfattning av relevanta krav och kontext',
-          'Dela upp komplexa uppdrag i separata, avgränsade sessioner',
-          'Spara viktiga instruktioner och krav i ett separat dokument som du kan klistra in',
-          'Verifiera att AI:n "minns" kritiska krav genom att be den bekräfta vad den ska utgå från',
+          'Börja varje ny deluppgift med en kort sammanfattning av relevanta krav och förutsättningar',
+          'Dela upp komplexa uppdrag i separata, väl avgränsade sessioner',
+          'Spara viktiga instruktioner och krav i ett eget dokument som du enkelt kan klistra in',
+          'Bekräfta att AI:n "minns" kritiska krav genom att be den upprepa vad den ska utgå från',
           'Använd strukturerade mallar som minskar behovet av lång kontext',
         ],
       },
@@ -119,7 +119,7 @@ export const modules: CourseModule[] = [
         items: [
           '"AI minns vad vi pratade om förra veckan" → Varje session är fristående utan explicit minnesfunktion',
           '"En lång konversation ger bättre svar" → Kontext kan spädas ut; kortare och strukturerade sessioner är ofta bättre',
-          '"Jag kan lita på att AI håller reda på alla krav jag nämnt" → Tidiga krav kan trängas ut och ignoreras',
+          '"Jag kan lita på att AI håller reda på alla krav jag nämnt" → Tidiga krav kan trängas ut ur kontexten och ignoreras',
         ],
       },
       {
@@ -127,7 +127,7 @@ export const modules: CourseModule[] = [
         type: 'warning',
         title: 'När bör du INTE förlita dig på AI:ns minne?',
         content:
-          'I alla uppgifter där korrekt tillämpning av specifika krav är kritisk – t.ex. förordningskrav, juridiska villkor eller specifika formatkrav – ska du aldrig förutsätta att AI:n "minns" dessa krav från tidigare i konversationen. Återintroducera alltid kritiska begränsningar i varje nytt block av arbetet.',
+          'I alla uppgifter där korrekt tillämpning av specifika krav är kritisk – t.ex. förordningskrav, juridiska villkor eller specifika formatkrav – ska du aldrig förutsätta att AI:n "minns" dessa krav från tidigare i konversationen. Återintroducera alltid kritiska begränsningar i varje nytt arbetsblock.',
       },
       {
         id: '2-reflection',
@@ -151,14 +151,14 @@ export const modules: CourseModule[] = [
         type: 'intro',
         title: 'Varför formuleringen avgör resultatet',
         content:
-          'En prompt är din instruktion till AI-systemet. Kvaliteten på prompten avgör i hög grad kvaliteten på svaret – inte för att AI:n är kräsen, utan för att vaga instruktioner leder till vaga svar och att AI:n fyller tomrummen med sina egna antaganden. Att lära sig skriva välstrukturerade promptar är en praktisk kompetens, inte en teknisk.',
+          'Det är en vanlig upplevelse: man ber AI om hjälp med en uppgift, får ett svar som är ungefär rätt men inte riktigt användbart, justerar lite och får ett marginellt bättre svar – och till slut skriver man om texten själv och undrar vad poängen var.\n\nProblemet är sällan AI:n. Problemet är prompten.\n\nEn prompt är din instruktion till systemet. Men till skillnad från en sökning i ett sökfält tolkar AI:n en prompt som en text med implicita antaganden. Om du inte specificerar vad du vill fyller systemet i luckorna baserat på det mest sannolika – inte det mest relevanta för din specifika situation.\n\nAtt lära sig skriva välstrukturerade promptar är inte en teknisk kompetens. Det är en kommunikativ kompetens – och det är en av de mest direkta vägarna till att göra AI genuint användbart i vardagen. Utbildningsledare som behärskar promptdesign sparar tid, får bättre underlag och gör färre misstag som beror på att AI missuppfattat uppgiften.',
       },
       {
         id: '3-concept',
         type: 'concept',
         title: 'Promptens fyra beståndsdelar',
         content:
-          'En välstrukturerad prompt innehåller fyra element. Du behöver inte alltid använda alla fyra – men att veta om dem hjälper dig att identifiera vad som saknas när resultatet inte blir bra.',
+          'Forskning och praktik kring hur AI-verktyg används professionellt pekar på fyra element som, när de är väldefinierade, dramatiskt förbättrar relevansen hos svaret. Du behöver inte alltid använda alla fyra – men att känna till dem hjälper dig att diagnostisera varför ett svar inte träffade rätt.\n\nRoll anger vem AI:n ska vara i relation till uppgiften. Inte en generisk "assistent", utan ett specifikt perspektiv med relevant kompetens. "En erfaren utbildningsutvecklare med god kännedom om YH-förordningen" ger ett annat svar än "en AI-assistent".\n\nKontext anger vad som är situationen, vem materialet riktar sig till och vad det ska användas till. Utan kontext måste AI:n gissa – och gissningarna är sällan rätt för din specifika situation.\n\nUppgift anger exakt vad som ska produceras – format, längd, struktur, tonalitet. Inte "hjälp mig med en text" utan "skriv tre konkreta punkter på sammanlagt max 150 ord".\n\nBegränsning anger vad som ska undvikas. Det kan gälla innehåll, format, perspektiv eller ton – och är ett av de mest underanvända elementen i praktiken.',
         items: [
           'Roll: Vem ska AI:n vara? Vilken kompetens och vilket perspektiv ska den anta?',
           'Kontext: Vad är bakgrunden? Vad ska materialet användas till? Vilken målgrupp?',
@@ -171,19 +171,19 @@ export const modules: CourseModule[] = [
         type: 'example',
         title: 'Svag prompt vs. välstrukturerad prompt',
         content:
-          'Jämför dessa två promptar för samma uppgift:\n\n❌ Svag prompt:\n"Hjälp mig skriva en kursplan."\n\n✅ Välstrukturerad prompt:\n"Du är en erfaren utbildningsutvecklare med god kännedom om YH-förordningen 2009:128. Jag ska skriva en kursplan för kursen Hållbar logistik på en KY-utbildning inom Supply Chain. Utbildningens målgrupp är yrkesverksamma vuxna med erfarenhet från lager och transport. Skriv ett förslag på kursens syfte (ca 150 ord), fem lärandemål och tre examinationsformer. Utgå från krav i YH-förordningen. Inkludera inte generisk introduktionstext om hållbarhet – fokusera direkt på kursinnehållet."\n\nResultaten är inte marginellt olika – de är fundamentalt olika i relevans och användbarhet.',
+          'Låt oss jämföra två promptar för exakt samma uppgift – att få hjälp med att formulera syftet med en ny kurs.\n\n❌ Svag prompt:\n"Hjälp mig skriva ett kurssyfte."\n\nResultat: En generisk text om kursens mål och målgrupp, inte förankrad i YH-kontexten och som kräver nästan fullständig omskrivning för att vara användbar.\n\n✅ Välstrukturerad prompt:\n"Du är en erfaren utbildningsutvecklare med god kännedom om YH-förordningen (2009:128) och hur MYH formulerar krav på kursers syfte vid tillsyn. Jag ska skriva kursplan för kursen Hållbar logistik på en KY-utbildning inom Supply Chain Management. Målgruppen är yrkesverksamma vuxna med 2–5 års erfarenhet från lager och transport. Skriv ett kurssyfte på ca 120 ord anpassat för YH-kontexten, tydligt kopplat till hållbarhetsbegreppet inom logistik, skrivet i linje med hur officiella kursplaner formuleras – inte i marknadsföringsspråk. Inkludera inga generiska formuleringar om framtidens kompetens."\n\nResultat: Ett kurssyfte som kan användas som arbetsversion med minimala justeringar.\n\nSkillnaden är inte marginal. Det är skillnaden mellan ett verktyg som hjälper och ett som skapar merarbete.',
       },
       {
         id: '3-concept2',
         type: 'concept',
         title: 'Negativa instruktioner och iterativ design',
         content:
-          'Negativa instruktioner – att säga vad AI:n INTE ska göra – är kraftfulla och underanvända. "Undvik marknadsföringsspråk", "inkludera inte teknisk systemdokumentation", "skriv inte en inledning om AI:s historia" kan dramatiskt förbättra relevansen.\n\nPromptdesign är iterativt. Börja med ett utkast, granska vad som saknades eller var fel, och förfina prompten. Tre iterationer ger ofta ett markant bättre resultat än det första försöket.',
+          'Negativa instruktioner – att säga vad AI:n INTE ska göra – är kraftfulla och underanvända. "Undvik marknadsföringsspråk", "inkludera inte teknisk systemdokumentation", "skriv inte en inledning om AI:s historia" kan drastiskt förbättra relevansen i svaret.\n\nPromptdesign är ett iterativt arbete. Börja med ett utkast, granska vad som saknades eller var fel, och förfina prompten. Tre bearbetningar ger ofta ett markant bättre resultat än det första försöket – och den investerade tiden är fortfarande väsentligt kortare än att skriva från grunden.',
         items: [
-          'Precision > längd – en kort precis prompt slår en lång vag',
-          'Testa negativa instruktioner för att eliminera oönskat innehåll',
+          'Precision > längd – en kort, precis prompt slår en lång, vag',
+          'Testa negativa instruktioner för att ta bort oönskat innehåll',
           'Iterera – bra promptar skrivs sällan rätt på första försöket',
-          'Spara dina bästa promptar som mallar för återbruk',
+          'Spara dina bästa promptar som mallar för återbruk i liknande uppgifter',
         ],
       },
       {
@@ -193,8 +193,8 @@ export const modules: CourseModule[] = [
         content: '',
         items: [
           '"En bra prompt är en lång prompt" → Precision är viktigare än längd; för lång prompt kan späda ut instruktionerna',
-          '"AI förstår vad jag menar om jag är ungefär tydlig" → Tvetydighet i input ger tvetydighet i output',
-          '"Jag behöver bara skriva prompten en gång" → Promptdesign är iterativt arbete',
+          '"AI förstår vad jag menar om jag är ungefär tydlig" → Tvetydighet i indata ger tvetydighet i utdata',
+          '"Jag behöver bara skriva prompten en gång" → Promptdesign är ett iterativt arbete',
         ],
       },
       {
@@ -202,14 +202,14 @@ export const modules: CourseModule[] = [
         type: 'warning',
         title: 'När precisering är särskilt kritisk',
         content:
-          'I arbetsmoment där AI-output ska användas direkt utan omfattande granskning – t.ex. kommunikation till studerande, formella dokument, dagordningar till ledningsgrupper – är välstrukturerade promptar inte valfritt utan nödvändigt. En vag prompt i ett högrisk-sammanhang är en professionell risk.',
+          'I arbetsmoment där AI:ns svar ska användas direkt utan omfattande granskning – t.ex. kommunikation till studerande, formella dokument, dagordningar till ledningsgrupper – är välstrukturerade promptar inte valfritt utan nödvändigt. En vag prompt i ett sammanhang med höga krav är en professionell risk.',
       },
       {
         id: '3-reflection',
         type: 'reflection',
         title: 'Övning och reflektionsfråga',
         content:
-          'Välj en av dessa tre verkliga arbetsuppgifter och skriv en välstrukturerad prompt med alla fyra elementen (roll, kontext, uppgift, begränsning):\n\n1. Sammanfatta en tillsynsrapport från MYH inför ett ledningsgruppsmöte\n2. Skriv en dagordning för ett kursplanerevideringmöte\n3. Utforma en kommunikation till LIA-handledare om uppdaterade krav\n\nEfter att du skrivit prompten: Vilken del var svårast att formulera? Vad säger det om vad som verkligen är komplext i den uppgiften?',
+          'Välj en av dessa tre verkliga arbetsuppgifter och skriv en välstrukturerad prompt med alla fyra elementen (roll, kontext, uppgift, begränsning):\n\n1. Sammanfatta en tillsynsrapport från MYH inför ett ledningsgruppsmöte\n2. Skriv en dagordning för ett kursplanerevideringsmöte\n3. Utforma en kommunikation till LIA-handledare om uppdaterade krav\n\nEfter att du skrivit prompten: Vilken del var svårast att formulera? Vad säger det om vad som verkligen är komplext i den uppgiften?',
       },
     ],
   },
@@ -226,14 +226,14 @@ export const modules: CourseModule[] = [
         type: 'intro',
         title: 'Mer än ett trick',
         content:
-          'Att tilldela AI:n en roll – en persona – är inte ett marknadsföringtrick eller en rolig funktion. Det är en systematisk metod för att styra svarets perspektiv, prioriteringar och tonalitet. För utbildningsledare öppnar det möjligheten att använda AI som ett genuint stöd för professionell förberedelse.',
+          'I diskussioner om AI-verktyg nämns personas ofta i förbigående – som ett lite roligt experiment man kan prova. Att be AI:n "vara" en professor, en journalist eller en skeptisk granskare framstår som en lekfull funktion snarare än ett professionellt verktyg.\n\nDen beskrivningen underskattar kraftigt vad personas faktiskt gör.\n\nFör en utbildningsledare är förmågan att se en fråga från flera professionella perspektiv central. Du behöver ibland förstå hur en MYH-handläggare ser på ett dokument, hur en studerande med bristande förkunskaper upplever en kursplan, hur en teknikskeptisk styrelseledamot tolkar ett förslag. Personas är ett sätt att använda AI för att simulera just dessa perspektivskiften på ett strukturerat och reproducerbart sätt – utan att alltid behöva boka in separata möten.',
       },
       {
         id: '4-concept',
         type: 'concept',
         title: 'Vad en persona faktiskt gör',
         content:
-          'När du ger AI:n en roll – "Du är en extern granskare från MYH" – ändras svarets karaktär på ett förutsägbart sätt. Modellen anpassar ordval, betoning och vad den väljer att lyfta fram baserat på hur texter skrivna av den rollen typiskt ser ut i träningsdatan.\n\nPersonan ändrar perspektiv och ton. Den ändrar inte kunskapsbasen. En AI som spelar rollen av en juridisk expert vet inte mer juridik än en utan persona – men den formulerar sig mer som en jurist och lyfter fram juridiska aspekter.',
+          'När du ger AI:n en roll förändras inte den underliggande kunskapsbasen – modellen kan inte mer juridik för att du bett den spela rollen av en jurist. Vad som förändras är vilken del av kunskapsbasen som aktiveras och hur svaret prioriterar och formulerar sig.\n\nAI:n har under träning sett enorma mängder text skriven av eller om olika yrkesroller. Den har lärt sig hur MYH-handläggare formulerar återkoppling i tillsynsrapporter, hur pedagogiska experter diskuterar lärandemål, hur externa examinatorer motiverar sina bedömningar. När du anger en persona väljer du vilket av dessa mönster som ska styra svaret.\n\nDet praktiska resultatet: en persona fokuserar svaret. "Granska det här dokumentet" ger ett brett, ganska allmänt svar. "Du är en MYH-handläggare vid tillsyn. Granska det här dokumentet och identifiera de tre punkter du troligast hade anmärkt på" ger ett fokuserat, perspektivspecifikt svar som är direkt användbart i förberedelsen.',
         items: [
           '"Utbildningsutvecklare med YH-erfarenhet" → fokus på förordningskrav och pedagogik',
           '"Studerandeföreträdare" → fokus på tillgänglighet och tydlighet',
@@ -247,7 +247,7 @@ export const modules: CourseModule[] = [
         type: 'example',
         title: 'Förberedelse inför ledningsgruppsmöte',
         content:
-          'Inför ett ledningsgruppsmöte om ny AI-policy vill du förbereda dig på motargument och kritiska frågor. I stället för att försöka föreställa dig alla möjliga invändningar ber du AI:n:\n\n"Anta rollen som en kritisk extern granskare från Myndigheten för yrkeshögskolan med erfarenhet av tillsyn. Granska följande förslag till AI-policy för vår utbildningsorganisation och identifiera de tre svagaste punkterna ur ett tillsynsperspektiv. Motivera varje punkt med hänvisning till vad som typiskt granskas vid tillsyn."\n\nResultatet ger dig specifika, relevanta invändningar att förbereda svar på – mycket mer användbart än ett generellt "identifiera svagheter".',
+          'Du ska presentera ett förslag om ett nytt digitalt stödsystem för LIA-koordinering vid nästa ledningsgruppsmöte. Tre av fem ledamöter är teknikskeptiska, en är entusiastisk och en har inte haft tid att sätta sig in i underlaget.\n\nI stället för att gissa vilka invändningar som kan komma ber du AI:n:\n\n"Du är en teknikskeptisk ledamot i styrelsen för en yrkeshögskoleutbildning med erfarenhet från tillsyn och personalfrågor. Du är skeptisk till nya digitala system på grund av tidigare erfarenheter av system som krävde mer administration än de sparade. Läs följande förslag och ställ de fem kritiska frågor du med störst sannolikhet hade ställt under ett möte. Motivera varje fråga med vad som driver din skepsis."\n\nResultatet ger dig konkreta invändningar att förbereda svar på – inklusive frågor du kanske inte hade tänkt på – och det ger dig en känsla för hur du behöver anpassa ditt sätt att presentera förslaget för att möta de betänkligheter som finns i rummet.\n\nDet ersätter inte det verkliga samtalet med ledamöterna. Men det är ett strukturerat sätt att förbereda sig utan att behöva boka fem separata möten.',
       },
       {
         id: '4-concept2',
@@ -268,7 +268,7 @@ export const modules: CourseModule[] = [
         content: '',
         items: [
           '"Om AI antar en expertroll har den expertens kunskap" → Persona ändrar ton och fokus, inte kunskapsbasen',
-          '"Rollspel med AI är oseriöst" → Strukturerad användning av personas är ett etablerat pedagogiskt verktyg',
+          '"Rollspel med AI är oseriöst" → Strukturerad användning av personas är ett etablerat pedagogiskt och professionellt verktyg',
           '"AI:ns persona-svar är objektivt" → Det är fortfarande ett sannolikhetsbaserat svar, nu styrt av rollinstruktionen',
         ],
       },
@@ -277,7 +277,7 @@ export const modules: CourseModule[] = [
         type: 'warning',
         title: 'Risken med bekräftande personas',
         content:
-          'En persona kan förstärka din egen bild av en situation snarare än utmana den – om du ber AI:n spela en roll som du redan håller med, riskerar du att få ett välformulerat instämmande i stället för en genuin utmaning. Sök aktivt perspektiv som utmanar, inte bekräftar.',
+          'En persona kan förstärka din egen bild av en situation snarare än utmana den – om du ber AI:n spela en roll som du redan håller med, riskerar du att få ett välformulerat medhållande i stället för en genuin utmaning. Sök aktivt perspektiv som utmanar, inte bekräftar.',
       },
       {
         id: '4-reflection',
@@ -301,19 +301,19 @@ export const modules: CourseModule[] = [
         type: 'intro',
         title: 'Från enstaka prompt till flöde',
         content:
-          'Hittills har vi pratat om AI som ett verktyg du frågar och som svarar. Agentic AI är något annat – ett system som sätter upp ett mål, delar upp det i deluppgifter, utför dem i sekvens och itererar tills målet är uppnått. Det är kraftfullt. Det är också potentiellt riskabelt utan rätt kontrollpunkter.',
+          'De föregående modulerna har handlat om AI som ett verktyg du frågar och som svarar – ett tur och retur. Det är fortfarande det vanligaste sättet att använda AI, och för de flesta arbetsuppgifter i en utbildningsorganisations vardag är det tillräckligt.\n\nMen en annan kategori av AI-system börjar bli alltmer tillgänglig: agentbaserade system. Här anger du inte bara en fråga – du anger ett mål. Systemet analyserar vad som behöver göras för att uppnå det målet, delar upp det i deluppgifter, utför dem i sekvens, utvärderar resultaten och justerar sin plan. Det sker utan att du involveras i varje steg.\n\nDet är ett kvalitativt skifte i hur AI kan användas – och det medför ett kvalitativt skifte i vilka risker du behöver hantera som ledare.',
       },
       {
         id: '5-concept',
         type: 'concept',
         title: 'Vad skiljer en agent från en prompt',
         content:
-          'En vanlig AI-interaktion: Du skriver en prompt, AI:n svarar, du läser svaret. Klart.\n\nEn agent: Du anger ett mål. Agenten analyserar vad som behöver göras, anropar verktyg (sökning, dokumentläsning, formulärfyllning), utvärderar resultaten, justerar planen och fortsätter – tills målet är uppnått eller den fastnar.\n\nDetta gör agenter väl lämpade för repetitiva, flerstegiga uppgifter. Det gör dem också mer benägna att göra sammansatta fel – ett fel tidigt i flödet kan fortplantas och förstoras.',
+          'I en vanlig AI-interaktion är kedjan enkel: du skriver, AI:n svarar, du läser. Kontrollen är hela tiden hos dig – varje steg kräver din inblandning.\n\nEn agent bryter den kedjan. Du anger ett mål – exempelvis "granska alla inkomna ansökningar mot behörighetskraven och markera de som saknar obligatoriska bilagor" – och agenten tar över. Den läser dokumenten, jämför mot kraven, kategoriserar ansökningarna och genererar en rapport med avvikelser. Det sker i sekvens, steg för steg, utan att du aktivt deltar i varje moment.\n\nDet gör agenter kraftfulla för uppgifter som är repetitiva, regelbaserade och tidskrävande. Men det medför en avgörande sårbarhet: fel som uppstår tidigt i kedjan fortplantar sig. Om agenten tolkade ett behörighetskrav fel i steg 2, baseras allt som följer på den feltolkningen – och du kanske inte märker det förrän du ser slutrapporten.',
         items: [
-          'Agenter sätter upp delmål och utför dem i sekvens',
-          'De kan anropa externa verktyg och system',
-          'Fel i tidiga steg fortplantas till senare steg',
-          'Mänsklig kontroll vid kritiska beslutspunkter är inte valfritt',
+          'Agenter sätter upp delmål och utför dem i sekvens utan att avvakta godkännande',
+          'De kan anropa externa verktyg, söka i databaser och bearbeta dokument',
+          'Fel i tidiga steg fortplantas och förstoras i senare steg',
+          'Mänsklig granskning vid kritiska beslutspunkter är inte valfritt – det är ett krav',
         ],
       },
       {
@@ -321,19 +321,19 @@ export const modules: CourseModule[] = [
         type: 'example',
         title: 'Agentflöde: Kursplanegranskning',
         content:
-          'Tänk dig ett agentbaserat stöd för kvalitetsgranskning av kursplaner:\n\nSteg 1 → Tar emot kursplan som dokument\nSteg 2 → Kontrollerar att alla obligatoriska fält är ifyllda\nSteg 3 → Jämför lärandemålen mot förordningskrav i databasen\nSteg 4 → Genererar checklista med avvikelser\nSteg 5 → Skapar utkast till återkoppling till ansvarig lärare\n\nFrågan är inte "kan detta fungera?" (svaret är ja). Frågan är: Var i detta flöde MÅSTE en människa granska? Vad händer om agenten feltolkar ett förordningskrav? Vem har ansvar för den återkoppling som skickas till läraren?',
+          'Tänk dig ett agentbaserat granskningsstöd för kursplanerevideringsprocessen i din organisation. Systemet är tänkt att minska den manuella granskningstid som i dag tar en heltidsresurs en till två veckor per termin.\n\nFlödet ser ut så här:\nSteg 1 → Agenten tar emot kursplanen som uppladdad fil\nSteg 2 → Kontrollerar att alla obligatoriska fält är ifyllda enligt checklista\nSteg 3 → Jämför lärandemålen mot en kunskapsbas med relevanta förordningskrav\nSteg 4 → Genererar en avvikelserapport med specifika kommentarer per lärandemål\nSteg 5 → Skapar ett utkast till återkoppling adresserat till ansvarig lärare\nSteg 6 → Markerar kursplanen som "granskad" i utbildningsplattformen\n\nSystemet kan hantera 40 kursplaner på den tid en handläggare annars hanterar 8. Det låter som en tydlig vinst.\n\nMen frågan är: Om agenten i steg 3 feltolkar ett förordningskrav – och kunskapsbasen inte uppdaterats sedan en förordningsändring för tre månader sedan – skickas felaktig återkoppling till samtliga 40 lärare. Steg 6 markerar dem dessutom som "granskade", vilket kan dölja felet ytterligare.\n\nDetta är inte ett argument mot agentbaserade system. Det är ett argument för att designa dem med explicita mänskliga kontrollpunkter och för att förstå exakt var i flödet ansvar och granskning måste ligga hos en person.',
       },
       {
         id: '5-concept2',
         type: 'concept',
         title: 'Kontrollpunkter i agentflöden',
         content:
-          'En väldesignad agentprocess har explicita mänskliga kontrollpunkter – ställen där flödet pausar och en människa granskar och godkänner innan det fortsätter. Kontrollpunkter är inte ett tecken på att systemet inte litar på AI. De är ett tecken på att organisationen tar ansvar.',
+          'En väldesignad agentprocess har explicita mänskliga kontrollpunkter – ställen där flödet pausar och en person granskar och godkänner innan det fortsätter. Kontrollpunkter är inte ett tecken på att organisationen inte litar på AI. De är ett tecken på att organisationen tar ansvar.',
         items: [
-          'Definiera i förväg: Vilka beslut får agenten fatta autonomt?',
+          'Definiera i förväg: Vilka beslut får agenten fatta utan mänsklig inblandning?',
           'Definiera i förväg: Vilka beslut kräver alltid mänskligt godkännande?',
-          'Bygg in stoppunkter vid beslut med hög konsekvens',
-          'Logga vad agenten gör – spårbarhet är en förutsättning för ansvar',
+          'Bygg in stoppunkter vid beslut med höga konsekvenser',
+          'Dokumentera vad agenten gör – spårbarhet är en förutsättning för ansvar',
         ],
       },
       {
@@ -342,9 +342,9 @@ export const modules: CourseModule[] = [
         title: 'Vanliga missförstånd om agenter',
         content: '',
         items: [
-          '"Agenten gör det automatiskt, så det är klart" → Automation garanterar inte korrekthet',
-          '"Om systemet är konfigurerat rätt behöver jag inte granska" → Konfigurationen kan ha fel; data är komplex',
-          '"Agentic AI är framtiden – vi bör implementera det omedelbart" → Mognadsnivå, risknivå och juridik måste utvärderas per verksamhet',
+          '"Agenten gör det automatiskt, så det är klart" → Automatisering garanterar inte korrekthet',
+          '"Om systemet är konfigurerat rätt behöver jag inte granska" → Konfigurationen kan ha fel; data är alltid komplex',
+          '"Agentbaserad AI är framtiden – vi bör implementera det omgående" → Mognadsnivå, risknivå och juridik måste utvärderas per verksamhet',
         ],
       },
       {
@@ -352,14 +352,14 @@ export const modules: CourseModule[] = [
         type: 'warning',
         title: 'Var agentbaserad AI INTE är lämpligt',
         content:
-          'I arbetsmoment som direkt påverkar studeranderättigheter – antagning, betygssättning, LIA-godkännande, disciplinärenden – ska det alltid finnas en definierad och faktisk mänsklig beslutspunkt. Att "godkänna" en agents output utan verklig granskning är inte en kontrollpunkt. Det är en formell procedur utan reellt innehåll.',
+          'I arbetsmoment som direkt påverkar studeranderättigheter – antagning, betygssättning, LIA-godkännande, disciplinärenden – ska det alltid finnas en definierad och faktisk mänsklig beslutspunkt. Att formellt godkänna en agents slutresultat utan verklig granskning är inte en kontrollpunkt. Det är en procedur utan reellt innehåll.',
       },
       {
         id: '5-reflection',
         type: 'reflection',
         title: 'Designövning',
         content:
-          'Välj ett administrativt arbetsmoment i din verksamhet som är repetitivt och tidskrävande. Skissa ett enkelt flöde:\n\n1. Vad skulle ett agentbaserat stöd göra i steg 1, 2, 3?\n2. Var i flödet MÅSTE du som utbildningsledare vara med och fatta ett aktivt beslut?\n3. Vad händer i värsta fall om agenten gör fel – och vem bär ansvar?\n\nFundera sedan: Är fördelarna med automation tillräckliga för att motivera det arbete som krävs för att bygga och underhålla rätt kontrollpunkter?',
+          'Välj ett administrativt arbetsmoment i din verksamhet som är repetitivt och tidskrävande. Skissa ett enkelt flöde:\n\n1. Vad skulle ett agentbaserat stöd göra i steg 1, 2, 3?\n2. Var i flödet MÅSTE du som utbildningsledare vara med och fatta ett aktivt beslut?\n3. Vad händer i värsta fall om agenten gör fel – och vem bär ansvar?\n\nFundera sedan: Är fördelarna med automatisering tillräckliga för att motivera det arbete som krävs för att bygga och underhålla rätt kontrollpunkter?',
       },
     ],
   },
@@ -376,19 +376,19 @@ export const modules: CourseModule[] = [
         type: 'intro',
         title: 'När AI möter användare direkt',
         content:
-          'Realtids-AI – chatbottar, live-assistenter, adaptivt stöd – ger intrycket av omedelbarhet och tillgänglighet. För utbildningsorganisationer är det frestande: tillgänglig support dygnet runt, snabba svar på vanliga frågor, skalbar vägledning. Men frestelserna i denna kategori är lika stora som möjligheterna.',
+          'Chatbottar och interaktiva AI-stödsystem för studerande och personal är ett av de snabbast växande användningsområdena för AI i utbildningssektorn. Lockelsen är påtaglig: tillgänglig support dygnet runt, enhetliga svar på återkommande frågor, avlastning för personal som annars svarar på identiska e-postmeddelanden om och om igen.\n\nMen det finns en systematisk underskattning av vad det faktiskt kräver att implementera dessa system på ett ansvarsfullt sätt – och en systematisk överskattning av vad de levererar utan aktiv förvaltning.\n\nRealtids-AI är inte ett verktyg du sätter upp en gång och sedan kan lämna. Det är en informationskanal med en aktiv användarbas som bygger förväntningar och agerar på de svar de får. Det ställer krav på kontinuerlig förvaltning, tydlig kommunikation om begränsningar och genomtänkta eskalationsvägar – krav som organisationer ofta underskattar i entusiasmen kring möjligheterna.',
       },
       {
         id: '6-concept',
         type: 'concept',
         title: 'Vad realtids-AI egentligen innebär',
         content:
-          'En realtids-AI-lösning kräver mer än en chatbot. Det kräver kontinuerligt underhåll av den informationsbas systemet hämtar svar från, tydlig kommunikation till användarna om systemets begränsningar, rutiner för vad som händer när systemet ger fel svar, och en eskalationsväg till en människa.\n\nUtan dessa delar är en chatbot inte ett stöd – det är en felkälla med ett gränssnitt.',
+          'Att implementera ett AI-drivet stödsystem för studerande eller personal är i praktiken att lansera en ny informationskanal. Och en informationskanal kräver för att fungera:\n\nEn kunskapsbas att hämta svar från – och en tydlig rutin för att hålla den aktuell. Information om LIA-regler, examinationsformer, kontaktuppgifter och tidsgränser förändras. En chatbot som svarar baserat på information från förra terminen är inte ett stöd – det är en organiserad felkälla.\n\nTydlig kommunikation till användarna om vad systemet kan och inte kan svara på. Studerande som tror att de fått ett auktoritativt svar om sin sjukfrånvaro under LIA och agerar på det – och sedan visar sig att svaret var felaktigt – befinner sig i en situation som organisationen juridiskt bär ansvar för.\n\nEn tydlig eskalationsväg till en människa. Det måste alltid vara möjligt att nå en person – inte efter tre nivåer av automatiserade omdirigeringar, utan lättillgängligt och synligt.',
         items: [
-          'Realtid kräver aktiv underhåll av kunskapsbasen – information blir inaktuell',
-          'Svarstid och tillgänglighet skapar förväntningar som måste hanteras',
-          'Användare förutsätter ofta att systemet är uppdaterat och korrekt',
-          'Eskalationsväg till människa är nödvändig, inte valfri',
+          'Kunskapsbasen kräver löpande underhåll – inaktuell information ger felaktiga svar',
+          'Tillgänglighet dygnet runt skapar förväntningar som måste hanteras proaktivt',
+          'Användare förutsätter att systemet är uppdaterat och korrekt – det kan det inte garanteras vara',
+          'En synlig och lättanvänd väg till mänsklig kontakt är nödvändig, inte valfri',
         ],
       },
       {
@@ -396,20 +396,20 @@ export const modules: CourseModule[] = [
         type: 'example',
         title: 'LIA-chatbotten som gav fel svar',
         content:
-          'En YH-utbildning implementerar en AI-driven chatbot för studerande under LIA-perioden. Systemet är snabbt och tillgängligt dygnet runt. En studerande ställer frågan: "Vad händer om jag är sjuk under LIA?"\n\nChatbotten ger ett svar baserat på äldre rutiner som inte längre stämmer med det uppdaterade LIA-avtalet. Studeranden handlar utifrån felaktigt information. Situationen eskalerar och leder till en formell tvist.\n\nVem har ansvar? Utbildningsorganisationen som implementerade systemet utan tillräckliga säkerhetsmekanismer. Hur hade detta kunnat undvikas? Tydlig kommunikation om begränsningar, begränsad scope (bara FAQ, inte avtalstolkning), och rutinmässig uppdatering av kunskapsbasen.',
+          'En yrkeshögskoleutbildning med tre program och knappt 200 studerande implementerar en AI-driven chatbot för LIA-perioden. Systemet är byggt ovanpå ett välkänt verktyg och tränat på utbildningens egna dokument och FAQ. Implementeringen tar tre veckor och mottas positivt – studerande ställer frågor nattetid och på helger och får snabba svar.\n\nSex veckor in under LIA-perioden ställer en studerande frågan: "Vad händer om jag är sjuk mer än fem dagar under LIA?"\n\nChatbotten svarar med en tydlig instruktion baserad på äldre rutindokument – instruktioner som inte stämmer med det uppdaterade LIA-avtalet som reviderades tre månader tidigare. Den studerande följer chatbottens instruktion, och det uppstår en allvarlig konflikt med LIA-handledaren.\n\nUtredningen tar tre veckor. Det visar sig att det reviderade LIA-avtalet aldrig lagts in i chatbottens kunskapsbas. Organisationen ställs inför en formell anmälan.\n\nVad hade behövts: En dokumenterad rutin för att uppdatera kunskapsbasen vid varje revidering av avtal eller regelverk. En tydlig begränsning av chatbottens ansvarsområde – navigeringsstöd och faktafrågor, inte avtalstolkning. En synlig och lättillgänglig hänvisning till en handläggare för specifika situationer.',
       },
       {
         id: '6-concept2',
         type: 'concept',
-        title: 'Rätt scope för realtids-AI',
+        title: 'Rätt ansvarsområde för realtids-AI',
         content:
-          'Det finns uppgifter där realtids-AI fungerar väl och uppgifter där det är direkt olämpligt. Nyckeln är att definiera scope tydligt och kommunicera det till användarna.',
+          'Det finns uppgifter där realtids-AI fungerar väl och uppgifter där det är direkt olämpligt. Nyckeln är att definiera ansvarsområdet tydligt och kommunicera det klart till användarna.',
         items: [
           'Lämpligt: Vägledning om var information finns, öppettider, kontaktuppgifter',
-          'Lämpligt: Generella FAQ om utbildningens upplägg',
+          'Lämpligt: Allmänna frågor om utbildningens upplägg och tidplan',
           'Lämpligt: Navigeringsstöd i system och plattformar',
           'Olämpligt: Tolkning av avtal, LIA-krav eller regelverk',
-          'Olämpligt: Individuella bedömningar eller undantag',
+          'Olämpligt: Individuella bedömningar, undantag eller rättighetsfrågor',
         ],
       },
       {
@@ -418,9 +418,9 @@ export const modules: CourseModule[] = [
         title: 'Vanliga missförstånd om realtids-AI',
         content: '',
         items: [
-          '"En chatbot är alltid tillgänglig, alltså är det bättre än mänskligt stöd" → Tillgänglighet kompenserar inte felaktighet',
+          '"En chatbot är alltid tillgänglig, alltså är den bättre än mänskligt stöd" → Tillgänglighet kompenserar inte felaktighet',
           '"Vi kan använda AI-vägledning utan att kommunicera begränsningarna" → Transparens är ett etiskt och juridiskt krav',
-          '"Realtids-AI är en kostnadsbesparing" → Implementering, underhåll och felhantering medför egna kostnader',
+          '"Realtids-AI är en kostnadsbesparing" → Implementering, förvaltning och felhantering medför egna kostnader',
         ],
       },
       {
@@ -428,14 +428,14 @@ export const modules: CourseModule[] = [
         type: 'warning',
         title: 'Transparens som grundkrav',
         content:
-          'Det är inte acceptabelt att implementera ett AI-drivet stödsystem utan att tydligt kommunicera till användarna att de interagerar med ett automatiserat system. Studerande och lärare har rätt att veta att svaret de får kommer från ett AI-system – och att de kan eskalera till en människa om de vill det.',
+          'Det är inte godtagbart att implementera ett AI-drivet stödsystem utan att tydligt kommunicera till användarna att de interagerar med ett automatiserat system. Studerande och personal har rätt att veta att svaret de får kommer från ett AI-system – och att de kan vända sig till en människa om de vill det.',
       },
       {
         id: '6-reflection',
         type: 'reflection',
         title: 'Reflektionsfråga',
         content:
-          'Identifiera tre typer av frågor du eller dina kollegor får regelbundet från studerande eller lärare. Kategorisera dem:\n\n1. Standardiserade faktafrågor med enkla, entydiga svar\n2. Frågor som kräver tolkning av specifik situation\n3. Frågor med rättsliga eller avtalsrättsliga dimensioner\n\nVilken kategori är lämplig för AI-stöd? Var går gränsen – och hur kommunicerar du den gränsen till dina användare?',
+          'Identifiera tre typer av frågor du eller dina kollegor får regelbundet från studerande eller lärare. Kategorisera dem:\n\n1. Standardiserade faktafrågor med enkla, entydiga svar\n2. Frågor som kräver tolkning av en specifik situation\n3. Frågor med rättsliga eller avtalsrättsliga dimensioner\n\nVilken kategori är lämplig för AI-stöd? Var går gränsen – och hur kommunicerar du den gränsen till dina användare?',
       },
     ],
   },
@@ -452,18 +452,18 @@ export const modules: CourseModule[] = [
         type: 'intro',
         title: 'Det du inte vet kan skada dig',
         content:
-          'Den här modulen är kursens viktigaste. Alla positiva möjligheter med AI är villkorade av en grundläggande sanning: ansvar kan inte delegeras till ett system. Det gäller oavsett hur imponerande systemet är, hur väl det fungerar i normala fall, eller hur lite tid du hade att granska det.',
+          'De föregående modulerna har fokuserat på hur du använder AI mer effektivt. Den här modulen handlar om vad som händer när du eller din organisation använder det utan tillräcklig förståelse för riskerna.\n\nDet är kursens viktigaste modul – inte för att du ska bli rädd för AI, utan för att välgrundad användning kräver att du förstår vad du faktiskt tar på dig när du väljer att integrera AI-verktyg i professionella processer. De missuppfattningar som finns i organisationer kring ansvar, juridik och vad AI faktiskt gör i praktiken är kostbara när de kolliderar med verkligheten.\n\nGrundregeln är enkel att formulera men viktig att ta på allvar: ansvar kan aldrig delegeras till ett system. Det gäller oavsett hur övertygande systemet presterar, hur utbredd användningen är i branschen, eller hur lite tid du hade att granska det material du godkände.',
       },
       {
         id: '7-concept',
         type: 'concept',
         title: 'Hallucination – definition och konsekvenser',
         content:
-          'Hallucination är termen för när en AI-modell producerar information som är felaktig men presenteras med samma eller till och med högre konfidens än korrekt information. Det är inte ett undantagsfall. Det händer för alla modeller, i alla sammanhang, med varierande frekvens.\n\nDet som gör hallucinationer farliga i utbildningssammanhang är inte att de förekommer – det är att de ofta är välformulerade och specifika. En hallucination är inte "jag vet inte". Det är ett skenbart säkert svar med fel innehåll.',
+          'Hallucination är termen för när en AI-modell producerar information som är felaktig men framförs utan tvekan och med hög säkerhet. Det är inte ett sällsynt undantagsfall – det är en inneboende egenskap hos hur statistiska språkmodeller fungerar.\n\nModellen har inget sant/falskt-filter. Den producerar det som statistiskt passar bäst in i textflödet. Och i sammanhang där korrekt faktainformation ser ut på ett visst sätt – paragrafnummer, myndighetsnamn, specifika krav – producerar modellen text som ser ut som korrekt faktainformation. Inte för att den vet att det är rätt, utan för att det mönstret stämmer med träningsdatan.\n\nDet som gör hallucinationer särskilt farliga i en utbildningsorganisations kontext är tre saker: De är svåra att identifiera utan att du faktiskt kontrollerar svaret mot primärkällan – de ser ofta ut som precisa, faktabaserade påståenden. Frekvensen är högre för just den typ av information du ofta behöver: paragrafnummer, specifika krav i förordningar, dokumenttitlar. Och konsekvenserna i en förordningsstyrd miljö av att agera på felaktig information är reella – tillsynsanmärkningar, felaktig kommunikation till studerande, felaktiga underlag till styrelse eller arbetsgivare.',
         items: [
-          'Hallucinationer är vanligare för specifik faktainformation (paragrafnummer, datum, namn)',
+          'Hallucinationer är vanligare för specifik faktainformation: paragrafnummer, datum, dokumentnamn',
           'Välformulerat svar = inte nödvändigtvis korrekt svar',
-          'Modeller saknar förmåga att signalera sin egen osäkerhet tillförlitligt',
+          'Modeller saknar förmåga att tillförlitligt signalera sin egen osäkerhet',
           'Verifiera alltid mot primärkällan vid faktapåståenden med konsekvenser',
         ],
       },
@@ -472,7 +472,7 @@ export const modules: CourseModule[] = [
         type: 'example',
         title: 'Tre scenarier från utbildningsverkligheten',
         content:
-          'Scenario 1 – Hallucination med konsekvens:\nEn utbildningsledare ber AI:n formulera vilka krav MYH ställer på pedagogisk kompetens hos LIA-handledare. AI:n anger en specifik paragraf och procentsats med övertygande precision. Paragrafen existerar inte. Dokumentet skickas till arbetsgivare.\n\nScenario 2 – Personuppgifter:\nStudieadministratörer uppmuntras att klistra in studerandeuppgifter i ett kommersiellt AI-verktyg för att få hjälp med schemaläggning. Uppgifterna lämnar organisationens kontrollerade miljö och behandlas på en extern server. GDPR tillämpas på varje bearbetning av personuppgifter – inte bara lagring.\n\nScenario 3 – Ansvarskedjan:\nEn kursplan är till 80% skriven av AI och 20% redigerad av utbildningsledaren. MYH anmärker vid tillsyn på bristande förankring i förordningen. Vem bär ansvar? Utbildningsledaren. Alltid.',
+          'Scenario 1 – Hallucination i formellt underlag:\nEn utbildningsledare behöver snabbt ta fram ett underlag om kompetenskrav på LIA-handledare inför ett möte med branschföreträdare. Hon ber AI:n formulera vad MYH kräver. Svaret är välstrukturerat och anger en specifik paragraf med ett tydligt procentvärde för handledartid. Paragrafen existerar inte i den form AI:n anger. Underlaget distribueras, mötet hålls och beslutet grundas delvis på felaktig information.\n\nScenario 2 – Personuppgifter och extern behandling:\nEn studie- och karriärvägledare på en YH-utbildning börjar använda ett populärt AI-verktyg för att effektivisera sin administration. Hon klistrar in utdrag ur studerandejournaler för att få hjälp med att formulera ett remissunderlag. Uppgifterna – namn, studiesituation, hälsoinformation – lämnar organisationens kontrollerade miljö och behandlas på en server utanför EU. GDPR:s regler om behandling av känsliga personuppgifter tillämpas på varje behandlingssteg, inte enbart på lagring. Organisationen har ingen vetskap om att detta skett.\n\nScenario 3 – Ansvarskedjan vid MYH-tillsyn:\nEn utbildningsledare låter AI:n producera ett komplett första utkast till en reviderad utbildningsplan. Hon redigerar ca 30% av texten och godkänner dokumentet. Vid efterföljande tillsyn anmärker MYH på att flera lärandemål inte uppfyller YH-förordningens krav. Utbildningsledaren uppger att AI var involverat i utformningen. MYH:s tillsynsbeslut riktas mot utbildningsorganisationen. Ansvaret är oförändrat – det ligger hos den som undertecknat och publicerat dokumentet.',
       },
       {
         id: '7-concept2',
@@ -481,7 +481,7 @@ export const modules: CourseModule[] = [
         content:
           'Tre regelverk är centrala för utbildningsorganisationers AI-användning:',
         items: [
-          'GDPR: Varje bearbetning av personuppgifter är reglerad. Att klistra in studerandedata i ett externt AI-verktyg är behandling av personuppgifter och kräver rättslig grund.',
+          'GDPR: Varje behandling av personuppgifter är reglerad. Att klistra in studerandedata i ett externt AI-verktyg är behandling av personuppgifter och kräver rättslig grund.',
           'EU AI Act: Klassificerar AI-system efter risknivå. System som påverkar utbildning och antagning klassas som hög risk och lyder under strikta krav på transparens och mänsklig kontroll.',
           'YH-förordningen och skollagen: Kvalitetskrav och tillsynsskyldigheter gäller oavsett om produktionen av dokument stöddes av AI eller inte.',
         ],
@@ -493,9 +493,9 @@ export const modules: CourseModule[] = [
         content: '',
         items: [
           '"Om AI:n skriver det är det AI:ns ansvar" → Ansvar kan aldrig delegeras till ett system',
-          '"GDPR gäller bara om vi lagrar data" → Varje bearbetning av personuppgifter är reglerad',
-          '"AI Act berör inte oss – vi är en utbildningsorganisation" → AI Act påverkar alla som använder AI-system i EU',
-          '"Om vi inte officiellt implementerat AI är vi inte berörda" → Informell användning av kommersiella AI-verktyg räknas',
+          '"GDPR gäller bara om vi lagrar data" → Varje behandling av personuppgifter är reglerad',
+          '"EU AI Act berör inte oss – vi är en utbildningsorganisation" → AI Act påverkar alla som använder AI-system i EU, inklusive utbildningsverksamheter',
+          '"Om vi inte officiellt infört AI är vi inte berörda" → Informell användning av kommersiella AI-verktyg räknas',
         ],
       },
       {
@@ -527,19 +527,19 @@ export const modules: CourseModule[] = [
         type: 'intro',
         title: 'Din roll har inte förändrats – kontexten har',
         content:
-          'Kursen avslutas där den är mest relevant: vid ditt skrivbord, i dina möten, inför dina beslut. Du är inte teknisk specialist och ska inte vara det. Men du leder en organisation där AI redan används – formellt eller informellt – och där fler beslut om AI-användning väntar. Den här modulen handlar om hur du tar det ansvaret.',
+          'Du är utbildningsledare. Det innebär att du är ansvarig för att en verksamhet fungerar i enlighet med förordningskrav, levererar kvalitet mot studerandenas och arbetslivets förväntningar, och fattar välgrundade beslut i en komplex miljö – ofta med begränsade resurser och under tidspress.\n\nInget av det har förändrats. Vad som har förändrats är att ett av de verktyg som nu finns tillgängliga i din och din personals vardag – och som de förmodligen redan använder, formellt eller informellt – bär med sig en ny kategori av risker och möjligheter som kräver din förståelse och ditt ledarskap.\n\nDen här modulen handlar inte om att ge dig teknisk expertis. Den handlar om att ge dig det analytiska ramverk du behöver för att fatta välgrundade beslut om AI i din organisation – och om hur du artikulerar det ledarskapet inåt mot personal och utåt mot styrelse, samarbetspartners och tillsynsmyndighet.',
       },
       {
         id: '8-concept',
         type: 'concept',
         title: 'Ramverk för AI-beslut',
         content:
-          'Varje beslut om att introducera eller utöka AI i en verksamhet bör bedömas längs fyra dimensioner. De behöver inte vara formella – men de bör vara genomtänkta.',
+          'Varje gång en fråga om att introducera, utöka eller begränsa AI-användning i din verksamhet uppstår – oavsett om den kommer från en entusiastisk lärare, ett erbjudande från en leverantör eller ett krav från styrelsen – kan du använda ett enkelt analytiskt ramverk med fyra dimensioner:\n\nNytta frågar vad AI faktiskt löser i det här arbetsflödet. Inte vad det teoretiskt sett kan göra, utan vilket verkligt problem i din verksamhet det löser. Om ingen kan formulera ett konkret svar på den frågan är det en signal om att förslaget är teknikdrivet snarare än behovsdrivet.\n\nRisk frågar vad som kan gå fel, vilka konsekvenserna är och vem som drabbas. En lågrisktillämpning – AI-stöd för att formulera administrativa e-postutkast – kräver en annan riskbedömning än ett system som hanterar information nära studeranderättigheter.\n\nGenomförbarhet frågar om organisationen har kapacitet att implementera, förvalta och utbilda kring systemet. Många implementationer misslyckas inte för att teknologin är fel, utan för att organisationen underskattat förvaltningsbördan.\n\nAnsvar frågar vem som äger systemet operativt, vem som granskar att det fungerar korrekt och vem som är ansvarig när det uppstår fel.',
         items: [
-          'Nytta: Vad löser AI faktiskt i det här arbetsflödet? Är det ett reellt problem eller ett upplevt problem?',
-          'Risk: Vad kan gå fel? Vilka är konsekvenserna av ett fel? Vem drabbas?',
-          'Genomförbarhet: Har vi kapacitet att implementera, underhålla och utbilda kring det här systemet?',
-          'Ansvar: Vem äger systemet? Vem granskar output? Vem är ansvarig när det går fel?',
+          'Nytta: Vad löser AI faktiskt i det här arbetsflödet? Är det ett reellt problem?',
+          'Risk: Vad kan gå fel? Vilka är konsekvenserna? Vem drabbas?',
+          'Genomförbarhet: Har vi kapacitet att implementera, förvalta och utbilda kring det?',
+          'Ansvar: Vem äger systemet? Vem granskar? Vem är ansvarig när det går fel?',
         ],
       },
       {
@@ -547,12 +547,12 @@ export const modules: CourseModule[] = [
         type: 'example',
         title: 'Styrelsens fråga',
         content:
-          'Styrelsen frågar utbildningsledaren: "Borde vi använda AI mer systematiskt?"\n\nEtt välgrundat svar är varken "Ja, absolut – alla gör det" eller "Nej, det är för riskabelt". Det är ett analytiskt svar som identifierar var i er specifika verksamhet AI skapar reellt värde, var riskerna är hanterbara, och vad som behöver vara på plats organisatoriskt och juridiskt för att använda det ansvarsfullt.\n\nDet svaret kan bara en utbildningsledare med förståelse för verksamheten, ansvaret och teknologins begränsningar ge. Det är inte ett teknikexpertsvar. Det är ett ledarskapssvar.',
+          'Styrelseordföranden ber dig inför årets strategimöte att ta fram ett ställningstagande om hur organisationen ska förhålla sig till AI i utbildnings- och administrationsverksamheten. Hon formulerar det som: "Borde vi använda AI mer systematiskt?"\n\nDet är en bra fråga – och den kräver ett välgrundat svar. Ett välgrundat svar är varken "Ja, absolut – alla gör det nu" eller "Nej, det är för riskabelt för oss".\n\nEtt analytiskt svar identifierar konkret var i er specifika verksamhet AI-stöd kan skapa reellt värde med hanterbara risker. Det pekar ut de verksamhetsmoment där AI är direkt olämpligt givet de juridiska och etiska ramar ni verkar inom. Det beskriver vad som behöver vara på plats organisatoriskt och juridiskt för att ni ska kunna använda AI ansvarsfullt – styrande riktlinjer, förvaltningsrutiner, kompetensutveckling, uppföljning. Och det presenterar en konkret plan för de närmaste tolv månaderna: vad som prövas, på vilka villkor och hur ni utvärderar.\n\nDet svaret kräver inte teknisk expertis. Det kräver verksamhetskunskap, förståelse för det ansvar ni bär – och den typ av analytisk förståelse för AI som du nu har grunderna för.',
       },
       {
         id: '8-concept2',
         type: 'concept',
-        title: 'Att vara informerad beställare',
+        title: 'Att vara en informerad beställare',
         content:
           'En av de viktigaste kompetenserna för en utbildningsledare i AI-frågor är att vara en informerad beställare – att kunna ställa rätt frågor till leverantörer, IT-avdelning och externa konsulter.',
         items: [
@@ -560,7 +560,7 @@ export const modules: CourseModule[] = [
           '"Var lagras den data vi matar in, och under vilka villkor?"',
           '"Hur uppdateras kunskapsbasen, och hur ofta?"',
           '"Vad är er garantinivå för korrekthet, och vad händer när den bryts?"',
-          '"Hur kan vi audita systemets beslut i efterhand?"',
+          '"Hur kan vi följa upp och granska systemets beslut i efterhand?"',
         ],
       },
       {
@@ -573,8 +573,8 @@ export const modules: CourseModule[] = [
           'Transparens: Vi kommunicerar alltid till studerande och personal när AI är involverat',
           'Ansvar: AI frigör inte mänskligt ansvar – det kvarstår hos den människa som fattar beslutet',
           'Kvalitet: AI-stödd produktion håller samma kvalitetskrav som mänsklig produktion',
-          'Integritet: Personuppgifter hanteras med samma skärpa oavsett om AI är involverat',
-          'Kontinuerlig granskning: Vår AI-användning utvärderas regelbundet',
+          'Integritet: Personuppgifter hanteras med samma noggrannhet oavsett om AI är involverat',
+          'Kontinuerlig uppföljning: Vår AI-användning utvärderas och revideras regelbundet',
         ],
       },
       {
@@ -585,7 +585,7 @@ export const modules: CourseModule[] = [
         items: [
           '"Om personalen använder AI privat är det inte vår sak" → Yrkesmässig användning av AI är organisationens ansvar',
           '"Vi behöver en IT-expert för att fatta AI-beslut" → Strategiska AI-beslut kräver verksamhetskunskap, inte primärt teknisk expertis',
-          '"En AI-policy kan vänta tills vi vet mer" → Fördröjning är ett beslut – det innebär oreglerad användning',
+          '"En AI-policy kan vänta tills vi vet mer" → Att avvakta är ett beslut – det innebär oreglerad användning under väntetiden',
         ],
       },
       {
