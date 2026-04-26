@@ -87,8 +87,8 @@ export function SectionContent({
       if (!res.ok) throw new Error('Något gick fel')
       const text = await res.text()
       setFeedback(text)
-    } catch {
-      setFeedbackError('Kunde inte hämta återkoppling. Försök igen.')
+    } catch (err) {
+      setFeedbackError('Kunde inte hämta återkoppling. Försök igen. Fel: ' + (err instanceof Error ? err.message : String(err)))
     } finally {
       setLoadingFeedback(false)
     }
