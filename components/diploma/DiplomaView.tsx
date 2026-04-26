@@ -4,9 +4,10 @@ interface DiplomaViewProps {
   userName: string
   issuedAt: string
   verificationCode: string
+  courseTitle: string
 }
 
-export function DiplomaView({ userName, issuedAt, verificationCode }: DiplomaViewProps) {
+export function DiplomaView({ userName, issuedAt, verificationCode, courseTitle }: DiplomaViewProps) {
   const formattedDate = new Date(issuedAt).toLocaleDateString('sv-SE', {
     year: 'numeric',
     month: 'long',
@@ -69,7 +70,7 @@ export function DiplomaView({ userName, issuedAt, verificationCode }: DiplomaVie
           </p>
 
           <h2 className="text-xl font-bold mb-6" style={{ color: '#C75000' }}>
-            AI för utbildningsledare – mellannivå
+            {courseTitle}
           </h2>
 
           <div

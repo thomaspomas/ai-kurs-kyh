@@ -4,6 +4,14 @@ import { DiplomaView } from '@/components/diploma/DiplomaView'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import Link from 'next/link'
+import type { Track } from '@/types'
+
+const trackTitles: Record<Track, string> = {
+  utbildningsledare: 'AI för utbildningsledare – mellannivå',
+  'yh-ledning': 'AI för YH-ledning – mellannivå',
+  'yh-larare': 'AI för YH-lärare – mellannivå',
+  'yh-studerande': 'AI för YH-studerande – mellannivå',
+}
 
 export default async function DiplomPage() {
   const supabase = await createClient()
@@ -12,6 +20,8 @@ export default async function DiplomPage() {
   if (!user) redirect('/auth/login')
 
   const userName: string = user.user_metadata?.full_name ?? user.email ?? 'Deltagare'
+  const track: Track = (user.user_metadata?.track as Track) ?? 'utbildningsledare'
+  const courseTitle = trackTitles[track]
 
   const { data: diploma } = await supabase
     .from('diplomas')
@@ -54,7 +64,7 @@ export default async function DiplomPage() {
             Ditt diplom
           </h1>
           <p className="text-content-muted">
-            Grattis till att ha genomfört AI för utbildningsledare – mellannivå.
+            Grattis till att ha genomfört {courseTitle}.
           </p>
         </div>
 
@@ -62,6 +72,7 @@ export default async function DiplomPage() {
           userName={diploma.user_name}
           issuedAt={diploma.issued_at}
           verificationCode={diploma.verification_code}
+          courseTitle={courseTitle}
         />
 
         <div className="no-print mt-8 text-center">

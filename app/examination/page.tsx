@@ -6,9 +6,10 @@ import { useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
-import { modules } from '@/data/modules'
+import { getModulesForTrack } from '@/data/modules'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import type { Track } from '@/types'
 
 const PARTS = [
   {
@@ -16,7 +17,7 @@ const PARTS = [
     number: 1,
     title: 'Verksamhetsanalys',
     description:
-      'Beskriv ett konkret arbetsmoment i din roll som utbildningsledare som du antingen hanterar med AI-stöd eller bedömer skulle kunna dra nytta av det. Beskriv vad arbetsuppgiften innebär, vilka krav på korrekthet som gäller och hur den hanteras i dag.',
+      'Beskriv ett konkret arbetsmoment i din yrkesroll som du antingen hanterar med AI-stöd eller bedömer skulle kunna dra nytta av det. Beskriv vad arbetsuppgiften innebär, vilka krav på korrekthet som gäller och hur den hanteras i dag.',
     minLength: 200,
     placeholder: 'Beskriv arbetsuppgiften, dess kontext och nuvarande hantering...',
   },
@@ -25,9 +26,9 @@ const PARTS = [
     number: 2,
     title: 'AI-stött arbetssätt',
     description:
-      'Designa ett konkret AI-stött tillvägagångssätt. Inkludera minst en välstrukturerad prompt (med roll, kontext, uppgift och begränsning), hur du hanterar kontextbegränsningar och hur du kvalitetssäkrar AI:ns output. Om agentbaserat stöd är relevant, beskriv flödet och kontrollpunkterna.',
+      'Designa ett konkret AI-stött tillvägagångssätt. Inkludera minst en välstrukturerad instruktion (med roll, kontext, uppgift och begränsning), hur du hanterar kontextbegränsningar och hur du kvalitetssäkrar AI:ns output. Om automatiserade flöden är relevanta, beskriv kontrollpunkterna.',
     minLength: 300,
-    placeholder: 'Inkludera din formulerade prompt och beskriv hela arbetssättet...',
+    placeholder: 'Inkludera din formulerade instruktion och beskriv hela arbetssättet...',
   },
   {
     id: 'part3',
@@ -43,7 +44,7 @@ const PARTS = [
     number: 4,
     title: 'Reflektion över ansvar och kvalitet',
     description:
-      'Hur förändrar ditt föreslagna arbetssätt ditt eget ansvar som utbildningsledare? Vad behöver du kunna – i termer av kompetens och omdöme – för att använda AI ansvarsfullt? Vad skulle du rekommendera din organisation som riktlinje?',
+      'Hur förändrar ditt föreslagna arbetssätt ditt eget ansvar i din yrkesroll? Vad behöver du kunna – i termer av kompetens och omdöme – för att använda AI ansvarsfullt? Vad skulle du rekommendera din organisation som riktlinje?',
     minLength: 200,
     placeholder: 'Reflektera över ansvar, kompetens och organisatoriska riktlinjer...',
   },
@@ -72,6 +73,9 @@ export default function ExaminationPage() {
     if (!user) { router.push('/auth/login'); return }
 
     setUserName(user.user_metadata?.full_name ?? user.email ?? '')
+
+    const track: Track = (user.user_metadata?.track as Track) ?? 'utbildningsledare'
+    const modules = getModulesForTrack(track)
 
     const { data: progress } = await supabase
       .from('module_progress')
