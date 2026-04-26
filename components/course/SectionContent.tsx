@@ -84,8 +84,8 @@ export function SectionContent({
           moduleTitle,
         }),
       })
-      if (!res.ok) throw new Error('Något gick fel')
       const text = await res.text()
+      if (!res.ok) throw new Error(`HTTP ${res.status}: ${text}`)
       setFeedback(text)
     } catch (err) {
       setFeedbackError('Kunde inte hämta återkoppling. Försök igen. Fel: ' + (err instanceof Error ? err.message : String(err)))
