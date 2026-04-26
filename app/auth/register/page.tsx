@@ -2,14 +2,35 @@
 
 export const dynamic = 'force-dynamic'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { ThemeToggle } from '@/components/layout/ThemeToggle'
+import type { Track } from '@/types'
 
-export default function RegisterPage() {
+const trackOptions: { id: Track; label: string; desc: string; icon: string }[] = [
+  {
+    id: 'utbildningsledare',
+    label: 'Utbildningsledare',
+    desc: 'Operativt ansvarig för en YH- eller KY-utbildning',
+    icon: '📋',
+  },
+  {
+    id: 'yh-ledning',
+    label: 'YH-ledning',
+    desc: 'Rektor, VD eller styrelsefunktion i en YH-organisation',
+    icon: '🏛️',
+  },
+]
+
+function RegisterForm() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const preselected = searchParams.get('track') as Track | null
+
+  const [step, setStep] = useState<'track' | 'form'>(preselected ? 'form' : 'track')
+  const [track, setTrack] = useState<Track>(preselected ?? 'utbildningsledare')
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -32,7 +53,7 @@ export default function RegisterPage() {
     const { data, error: signUpError } = await supabase.auth.signUp({
       email,
       password,
-      options: { data: { full_name: fullName } },
+      options: { data: { full_name: fullName, track } },
     })
 
     if (signUpError) {
@@ -85,87 +106,147 @@ export default function RegisterPage() {
 
       <div className="flex-1 flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-sm">
-          <div className="bg-surface-card border border-border rounded-2xl p-8 shadow-sm">
-            <h1 className="text-2xl font-bold text-content mb-1">Skapa konto</h1>
-            <p className="text-content-muted text-sm mb-6">
-              Starta kursen AI för utbildningsledare
-            </p>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-content mb-1.5" htmlFor="name">
-                  Ditt namn
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  required
-                  autoComplete="name"
-                  className="w-full px-3 py-2.5 rounded-lg border border-border bg-surface text-content text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 placeholder:text-content-muted"
-                  placeholder="Förnamn Efternamn"
-                />
+          {step === 'track' ? (
+            <div className="bg-surface-card border border-border rounded-2xl p-8 shadow-sm">
+              <h1 className="text-2xl font-bold text-content mb-1">Välj din ingång</h1>
+              <p className="text-content-muted text-sm mb-6">
+                Kursen är anpassad efter din roll
+              </p>
+              <div className="space-y-3">
+                {trackOptions.map((t) => (
+                  <button
+                    key={t.id}
+                    onClick={() => { setTrack(t.id); setStep('form') }}
+                    className={`w-full text-left flex items-start gap-3 p-4 rounded-xl border-2 transition-all cursor-pointer ${
+                      track === t.id
+                        ? 'border-primary bg-primary/5'
+                        : 'border-border hover:border-primary/40'
+                    }`}
+                  >
+                    <span className="text-2xl shrink-0 mt-0.5">{t.icon}</span>
+                    <div>
+                      <p className="font-semibold text-content text-sm">{t.label}</p>
+                      <p className="text-xs text-content-muted mt-0.5">{t.desc}</p>
+                    </div>
+                  </button>
+                ))}
               </div>
-
-              <div>
-                <label className="block text-sm font-medium text-content mb-1.5" htmlFor="email">
-                  E-postadress
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  autoComplete="email"
-                  className="w-full px-3 py-2.5 rounded-lg border border-border bg-surface text-content text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 placeholder:text-content-muted"
-                  placeholder="din@epost.se"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-content mb-1.5" htmlFor="password">
-                  Lösenord
-                </label>
-                <input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  autoComplete="new-password"
-                  minLength={8}
-                  className="w-full px-3 py-2.5 rounded-lg border border-border bg-surface text-content text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 placeholder:text-content-muted"
-                  placeholder="Minst 8 tecken"
-                />
-              </div>
-
-              {error && (
-                <p className="text-sm text-primary bg-primary/5 border border-primary/20 rounded-lg px-3 py-2">
-                  {error}
-                </p>
-              )}
-
+              <p className="mt-6 text-sm text-center text-content-muted">
+                Har du redan ett konto?{' '}
+                <Link href="/auth/login" className="text-primary font-medium hover:underline">
+                  Logga in
+                </Link>
+              </p>
+            </div>
+          ) : (
+            <div className="bg-surface-card border border-border rounded-2xl p-8 shadow-sm">
               <button
-                type="submit"
-                disabled={loading}
-                className="w-full py-2.5 rounded-lg font-medium text-white transition-opacity disabled:opacity-60 cursor-pointer"
-                style={{ backgroundColor: '#C75000' }}
+                onClick={() => setStep('track')}
+                className="flex items-center gap-1.5 text-xs text-content-muted hover:text-primary mb-4 cursor-pointer"
               >
-                {loading ? 'Skapar konto...' : 'Skapa konto och starta'}
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M11 7H3M6 4L3 7l3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Byt ingång
               </button>
-            </form>
 
-            <p className="mt-6 text-sm text-center text-content-muted">
-              Har du redan ett konto?{' '}
-              <Link href="/auth/login" className="text-primary font-medium hover:underline">
-                Logga in
-              </Link>
-            </p>
-          </div>
+              <div className="flex items-center gap-2 mb-4 p-2.5 rounded-lg bg-primary/5 border border-primary/20">
+                <span className="text-lg">{trackOptions.find(t => t.id === track)?.icon}</span>
+                <div>
+                  <p className="text-xs text-primary font-medium">{trackOptions.find(t => t.id === track)?.label}</p>
+                  <p className="text-xs text-content-muted">{trackOptions.find(t => t.id === track)?.desc}</p>
+                </div>
+              </div>
+
+              <h1 className="text-2xl font-bold text-content mb-1">Skapa konto</h1>
+              <p className="text-content-muted text-sm mb-6">
+                Starta kursen AI för {trackOptions.find(t => t.id === track)?.label.toLowerCase()}
+              </p>
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-content mb-1.5" htmlFor="name">
+                    Ditt namn
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    required
+                    autoComplete="name"
+                    className="w-full px-3 py-2.5 rounded-lg border border-border bg-surface text-content text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 placeholder:text-content-muted"
+                    placeholder="Förnamn Efternamn"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-content mb-1.5" htmlFor="email">
+                    E-postadress
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    autoComplete="email"
+                    className="w-full px-3 py-2.5 rounded-lg border border-border bg-surface text-content text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 placeholder:text-content-muted"
+                    placeholder="din@epost.se"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-content mb-1.5" htmlFor="password">
+                    Lösenord
+                  </label>
+                  <input
+                    id="password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    autoComplete="new-password"
+                    minLength={8}
+                    className="w-full px-3 py-2.5 rounded-lg border border-border bg-surface text-content text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 placeholder:text-content-muted"
+                    placeholder="Minst 8 tecken"
+                  />
+                </div>
+
+                {error && (
+                  <p className="text-sm text-primary bg-primary/5 border border-primary/20 rounded-lg px-3 py-2">
+                    {error}
+                  </p>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full py-2.5 rounded-lg font-medium text-white transition-opacity disabled:opacity-60 cursor-pointer"
+                  style={{ backgroundColor: '#C75000' }}
+                >
+                  {loading ? 'Skapar konto...' : 'Skapa konto och starta'}
+                </button>
+              </form>
+
+              <p className="mt-6 text-sm text-center text-content-muted">
+                Har du redan ett konto?{' '}
+                <Link href="/auth/login" className="text-primary font-medium hover:underline">
+                  Logga in
+                </Link>
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
+  )
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense>
+      <RegisterForm />
+    </Suspense>
   )
 }

@@ -1,10 +1,18 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
-import { modules } from '@/data/modules'
+import { getModulesForTrack } from '@/data/modules'
 import { ModuleCard } from '@/components/course/ModuleCard'
 import { ProgressBar } from '@/components/course/ProgressBar'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import type { Track } from '@/types'
+
+const trackLabels: Record<Track, string> = {
+  utbildningsledare: 'AI för utbildningsledare – mellannivå',
+  'yh-ledning': 'AI för YH-ledning – mellannivå',
+  'yh-larare': 'AI för YH-lärare – mellannivå',
+  'yh-studerande': 'AI för YH-studerande – mellannivå',
+}
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -16,8 +24,9 @@ export default async function DashboardPage() {
   if (!user) redirect('/auth/login')
 
   const userName: string = user.user_metadata?.full_name ?? user.email ?? 'Deltagare'
+  const track: Track = (user.user_metadata?.track as Track) ?? 'utbildningsledare'
+  const modules = getModulesForTrack(track)
 
-  // Load progress
   const { data: progressRows } = await supabase
     .from('module_progress')
     .select('section_id')
@@ -28,7 +37,6 @@ export default async function DashboardPage() {
   const totalSections = modules.reduce((acc, m) => acc + m.sections.length, 0)
   const completedCount = completedSections.length
 
-  // Check for approved exam
   const { data: exam } = await supabase
     .from('exam_submissions')
     .select('approved')
@@ -46,17 +54,15 @@ export default async function DashboardPage() {
       <Header userName={userName} showNav />
 
       <main className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 py-8">
-        {/* Welcome */}
         <div className="mb-8">
           <h1 className="text-2xl sm:text-3xl font-bold text-content mb-1">
             Hej, {userName.split(' ')[0]}
           </h1>
           <p className="text-content-muted">
-            AI för utbildningsledare – mellannivå
+            {trackLabels[track]}
           </p>
         </div>
 
-        {/* Overall progress */}
         <div className="bg-surface-card border border-border rounded-xl p-5 mb-8">
           <h2 className="text-sm font-mono text-content-muted uppercase tracking-wider mb-4">
             Din sammanlagda progress
@@ -106,7 +112,6 @@ export default async function DashboardPage() {
           )}
         </div>
 
-        {/* Modules grid */}
         <h2 className="text-sm font-mono text-content-muted uppercase tracking-wider mb-4">
           Moduler
         </h2>
@@ -120,7 +125,6 @@ export default async function DashboardPage() {
           ))}
         </div>
 
-        {/* Exam card */}
         <div className="mt-6">
           <div
             className={`border-2 rounded-xl p-5 flex items-center gap-4 transition-colors ${

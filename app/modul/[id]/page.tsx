@@ -6,11 +6,12 @@ import { use, useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
-import { modules, getModule } from '@/data/modules'
+import { getModulesForTrack } from '@/data/modules'
 import { SectionContent } from '@/components/course/SectionContent'
 import { ProgressBar } from '@/components/course/ProgressBar'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import type { Track } from '@/types'
 
 interface PageProps {
   params: Promise<{ id: string }>
@@ -21,12 +22,12 @@ export default function ModulePage({ params }: PageProps) {
   const router = useRouter()
 
   const moduleId = parseInt(id, 10)
-  const module = getModule(moduleId)
 
   const [completedSections, setCompletedSections] = useState<string[]>([])
   const [reflections, setReflections] = useState<Record<string, string>>({})
   const [userName, setUserName] = useState('')
   const [loading, setLoading] = useState(true)
+  const [track, setTrack] = useState<Track>('utbildningsledare')
 
   const loadProgress = useCallback(async () => {
     const supabase = createClient()
@@ -34,6 +35,7 @@ export default function ModulePage({ params }: PageProps) {
     if (!user) { router.push('/auth/login'); return }
 
     setUserName(user.user_metadata?.full_name ?? user.email ?? '')
+    setTrack((user.user_metadata?.track as Track) ?? 'utbildningsledare')
 
     const { data } = await supabase
       .from('module_progress')
@@ -61,7 +63,10 @@ export default function ModulePage({ params }: PageProps) {
     setCompletedSections((prev) => [...prev, sectionId])
   }
 
-  if (!module) {
+  const modules = getModulesForTrack(track)
+  const module = modules.find((m) => m.id === moduleId)
+
+  if (!loading && !module) {
     return (
       <div className="min-h-screen bg-surface flex items-center justify-center">
         <div className="text-center">
@@ -74,9 +79,9 @@ export default function ModulePage({ params }: PageProps) {
     )
   }
 
-  const totalSections = module.sections.length
-  const completedCount = module.sections.filter((s) => completedSections.includes(s.id)).length
-  const isModuleComplete = completedCount === totalSections
+  const totalSections = module?.sections.length ?? 0
+  const completedCount = module?.sections.filter((s) => completedSections.includes(s.id)).length ?? 0
+  const isModuleComplete = totalSections > 0 && completedCount === totalSections
 
   const prevModule = modules.find((m) => m.id === moduleId - 1)
   const nextModule = modules.find((m) => m.id === moduleId + 1)
@@ -86,57 +91,57 @@ export default function ModulePage({ params }: PageProps) {
       <Header userName={userName} showNav />
 
       <main className="flex-1 max-w-3xl mx-auto w-full px-4 sm:px-6 py-8">
-        {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-content-muted mb-6" aria-label="Brödsmula">
           <Link href="/dashboard" className="hover:text-primary transition-colors">
             Kursöversikt
           </Link>
           <span>/</span>
-          <span className="text-content">Modul {module.id}</span>
+          <span className="text-content">Modul {moduleId}</span>
         </nav>
 
-        {/* Module header */}
-        <div className="mb-6">
-          <div className="flex items-center gap-3 mb-2">
-            <span className="text-3xl">{module.icon}</span>
-            <div>
-              <p className="text-xs font-mono text-content-muted">
-                Modul {module.id}
-              </p>
-              <h1 className="text-2xl sm:text-3xl font-bold text-content leading-tight">
-                {module.title}
-              </h1>
-              <p className="text-content-muted">{module.subtitle}</p>
+        {module && (
+          <>
+            <div className="mb-6">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-3xl">{module.icon}</span>
+                <div>
+                  <p className="text-xs font-mono text-content-muted">
+                    Modul {module.id}
+                  </p>
+                  <h1 className="text-2xl sm:text-3xl font-bold text-content leading-tight">
+                    {module.title}
+                  </h1>
+                  <p className="text-content-muted">{module.subtitle}</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        {/* Progress */}
-        <div className="bg-surface-card border border-border rounded-xl p-4 mb-8">
-          <ProgressBar
-            completed={completedCount}
-            total={totalSections}
-            label="Modulens avsnitt"
-          />
-          {isModuleComplete && (
-            <p className="mt-2 text-sm text-secondary font-medium flex items-center gap-1.5">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <circle cx="7" cy="7" r="6" fill="#2D807C" />
-                <path d="M4 7l2.5 2.5L10 4.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              Modulen är genomförd!
-            </p>
-          )}
-        </div>
+            <div className="bg-surface-card border border-border rounded-xl p-4 mb-8">
+              <ProgressBar
+                completed={completedCount}
+                total={totalSections}
+                label="Modulens avsnitt"
+              />
+              {isModuleComplete && (
+                <p className="mt-2 text-sm text-secondary font-medium flex items-center gap-1.5">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <circle cx="7" cy="7" r="6" fill="#2D807C" />
+                    <path d="M4 7l2.5 2.5L10 4.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  Modulen är genomförd!
+                </p>
+              )}
+            </div>
+          </>
+        )}
 
-        {/* Sections */}
         {loading ? (
           <div className="space-y-4">
             {[1, 2, 3].map((i) => (
               <div key={i} className="h-32 bg-surface-card border border-border rounded-xl animate-pulse" />
             ))}
           </div>
-        ) : (
+        ) : module ? (
           <div className="space-y-4">
             {module.sections.map((section) => (
               <SectionContent
@@ -152,9 +157,8 @@ export default function ModulePage({ params }: PageProps) {
               />
             ))}
           </div>
-        )}
+        ) : null}
 
-        {/* Navigation between modules */}
         <div className="flex items-center justify-between mt-10 pt-6 border-t border-border">
           {prevModule ? (
             <Link

@@ -1,3 +1,5 @@
+export type Track = 'utbildningsledare' | 'yh-ledning' | 'yh-larare' | 'yh-studerande'
+
 export interface ModuleSection {
   id: string
   type: 'intro' | 'concept' | 'example' | 'misconceptions' | 'warning' | 'reflection'
