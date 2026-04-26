@@ -61,6 +61,41 @@ export const modules: CourseModule[] = [
           'Tänk på ett beslut du nyligen fattade som utbildningsledare. Vilken typ av information låg till grund för det beslutet? Hade AI kunnat bidra till något av dessa underlag – och i så fall: hur hade du verifierat att svaret var korrekt innan du använde det?',
       },
     ],
+    quiz: [
+      {
+        question: "Vad gör en AI-modell när den svarar på din fråga?",
+        options: [
+          "Den söker på internet och sammanfattar svaret",
+          "Den resonerar logiskt utifrån fakta",
+          "Den förutsäger statistiskt sannolika tokens baserat på träningsdata",
+          "Den slår upp svar i en intern kunskapsdatabas"
+        ],
+        correctIndex: 2,
+        explanation: "AI-modeller genererar text genom att statistiskt förutsäga nästa token – de resonerar inte och verifierar inte sanningsenlighet.",
+      },
+      {
+        question: "Vad innebär \"hallucination\" i AI-sammanhang?",
+        options: [
+          "Att AI vägrar svara på känsliga frågor",
+          "Att AI presenterar felaktig information med hög säkerhet",
+          "Att AI repeterar sig i långa konversationer",
+          "Att AI byter ämne mitt i svaret"
+        ],
+        correctIndex: 1,
+        explanation: "Hallucination innebär att modellen genererar plausibelt klingande men faktiskt felaktig information – och presenterar den med samma säkra ton som korrekt fakta.",
+      },
+      {
+        question: "I vilken situation bör du INTE använda AI som primär källa?",
+        options: [
+          "Vid brainstorming av mötesagendor",
+          "Vid sökning av aktuell lagstiftning och föreskrifter",
+          "Vid formulering av interna kommunikationsmallar",
+          "Vid sammanfattning av egna anteckningar"
+        ],
+        correctIndex: 1,
+        explanation: "AI-modeller har ett träningsstopp och kan inte verifiera aktuella regler. Specifika lagstiftningskrav måste alltid verifieras mot primärkällor.",
+      },
+    ],
   },
 
   {
@@ -135,6 +170,41 @@ export const modules: CourseModule[] = [
         title: 'Reflektionsfråga',
         content:
           'Hur hanterar du i dag viktig information i långa e-posttrådar eller komplexa möten – hur säkerställer du att alla parter är på samma sida? Vilka av dessa strategier är direkt överförbara till hur du organiserar din interaktion med AI?',
+      },
+    ],
+    quiz: [
+      {
+        question: "Vad händer med tidiga instruktioner i en lång AI-konversation?",
+        options: [
+          "De stärks ju längre konversationen pågår",
+          "De sparas automatiskt till nästa session",
+          "De kan trängas bort ur AI:ns aktiva minne utan att du meddelas",
+          "De upprepas av AI vid behov"
+        ],
+        correctIndex: 2,
+        explanation: "Kontextfönstret har begränsad kapacitet. När innehållet ökar kan tidiga instruktioner falla bort utan att AI meddelar det.",
+      },
+      {
+        question: "Hur fungerar AI:ns minne mellan olika sessioner?",
+        options: [
+          "AI minns allt från föregående sessioner",
+          "AI minns de senaste 24 timmarna",
+          "AI har inget minne alls mellan sessioner",
+          "AI minns om du anger ditt namn"
+        ],
+        correctIndex: 2,
+        explanation: "Standardmodeller sparar ingen information mellan sessioner. Varje ny konversation börjar från noll – oavsett hur ofta du använt tjänsten.",
+      },
+      {
+        question: "Vilken strategi hjälper bäst mot kontextbegränsningar i långa arbetsflöden?",
+        options: [
+          "Skriva längre och mer detaljerade instruktioner",
+          "Dela upp arbetet i separata sessioner med tydliga instruktionsmallar",
+          "Använda kortare meningar genomgående",
+          "Byta AI-verktyg för varje uppgift"
+        ],
+        correctIndex: 1,
+        explanation: "Att dela upp arbetet i sessioner och återanvända strukturerade instruktionsmallar kompenserar för AI:ns minnesgränser på ett organisatoriskt sätt.",
       },
     ],
   },
@@ -212,6 +282,41 @@ export const modules: CourseModule[] = [
           'Välj en av dessa tre verkliga arbetsuppgifter och skriv en välstrukturerad prompt med alla fyra elementen (roll, kontext, uppgift, begränsning):\n\n1. Sammanfatta en tillsynsrapport från MYH inför ett ledningsgruppsmöte\n2. Skriv en dagordning för ett kursplanerevideringsmöte\n3. Utforma en kommunikation till LIA-handledare om uppdaterade krav\n\nEfter att du skrivit prompten: Vilken del var svårast att formulera? Vad säger det om vad som verkligen är komplext i den uppgiften?',
       },
     ],
+    quiz: [
+      {
+        question: "Vilka är de fyra beståndsdelarna i en välstrukturerad prompt?",
+        options: [
+          "Ämne, stil, längd och format",
+          "Roll, kontext, uppgift och begränsning",
+          "Fråga, exempel, förklaring och slutsats",
+          "Mål, metod, källa och målgrupp"
+        ],
+        correctIndex: 1,
+        explanation: "En välstrukturerad prompt innehåller: Roll (perspektiv), Kontext (situation), Uppgift (exakt output) och Begränsning (vad som ska exkluderas).",
+      },
+      {
+        question: "Vad ger en vag prompt vanligtvis för resultat?",
+        options: [
+          "Mer kreativa och originella svar",
+          "Kortare men mer precisa svar",
+          "Generiska svar som kräver full omarbetning",
+          "Felaktiga svar på grund av tekniska begränsningar"
+        ],
+        correctIndex: 2,
+        explanation: "AI genererar svar utifrån det input den får – vag input ger generisk output. Precisionen i instruktionen avgör direkt relevansen i resultatet.",
+      },
+      {
+        question: "Vad gör negativa instruktioner i en prompt?",
+        options: [
+          "Gör AI:n mer respektfull i tonen",
+          "Tar bort oönskat innehåll från svaret",
+          "Gör sessionen snabbare",
+          "Aktiverar AI:ns säkerhetsfilter"
+        ],
+        correctIndex: 1,
+        explanation: "Negativa instruktioner (\"exkludera\", \"inkludera inte\") styr AI:n bort från innehåll du inte vill ha – t.ex. byråkratisk jargong eller irrelevanta exempel.",
+      },
+    ],
   },
 
   {
@@ -287,6 +392,41 @@ export const modules: CourseModule[] = [
           'I vilka situationer i din roll som utbildningsledare behöver du se ett ärende från flera perspektiv? Hur gör du det i dag – och vem eller vad hjälper dig att se blinda fläckar? Hur kan AI:n komplettera detta utan att ersätta det verkliga samtalet med kollegor och studerande?',
       },
     ],
+    quiz: [
+      {
+        question: "Vad gör en persona faktiskt i en AI-kontext?",
+        options: [
+          "Ger AI tillgång till experters databaser",
+          "Aktiverar relevanta mönster från träningsdata för ett specifikt perspektiv",
+          "Gör AI mer sanningsenlig",
+          "Tillåter AI att söka på internet"
+        ],
+        correctIndex: 1,
+        explanation: "En persona aktiverar mönster i träningsdata kopplade till en specifik roll – den tillför inte ny kunskap men fokuserar svaret mot det perspektivet.",
+      },
+      {
+        question: "Vad är den största risken med bekräftande personas?",
+        options: [
+          "AI kan bli för formell i tonen",
+          "Befintliga åsikter kan förstärkas istället för utmanas",
+          "Sessionen kan ta för lång tid",
+          "AI kan vägra svara"
+        ],
+        correctIndex: 1,
+        explanation: "Om du söker bekräftelse snarare än utmaning tenderar AI att tillhandahålla just det – vilket minskar det analytiska värdet och förstärker blinda fläckar.",
+      },
+      {
+        question: "Vad är en lämplig användning av persona för en utbildningsledare?",
+        options: [
+          "Att simulera en inspektörs perspektiv inför tillsynsgranskning",
+          "Att ersätta faktiska samtal med intressenter",
+          "Att generera automatiska beslut",
+          "Att undvika att ta ställning i svåra frågor"
+        ],
+        correctIndex: 0,
+        explanation: "Att använda en MYH-inspektörs perspektiv hjälper dig identifiera vilka frågor en granskning sannolikt ställer – utan att ersätta riktiga samtal.",
+      },
+    ],
   },
 
   {
@@ -360,6 +500,41 @@ export const modules: CourseModule[] = [
         title: 'Designövning',
         content:
           'Välj ett administrativt arbetsmoment i din verksamhet som är repetitivt och tidskrävande. Skissa ett enkelt flöde:\n\n1. Vad skulle ett agentbaserat stöd göra i steg 1, 2, 3?\n2. Var i flödet MÅSTE du som utbildningsledare vara med och fatta ett aktivt beslut?\n3. Vad händer i värsta fall om agenten gör fel – och vem bär ansvar?\n\nFundera sedan: Är fördelarna med automatisering tillräckliga för att motivera det arbete som krävs för att bygga och underhålla rätt kontrollpunkter?',
+      },
+    ],
+    quiz: [
+      {
+        question: "Vad skiljer en agentbaserad AI från en vanlig prompt?",
+        options: [
+          "Agenter genererar mer kreativt innehåll",
+          "Agenter kräver mer specificerade instruktioner",
+          "Agenter utför sekventiella steg autonomt mot ett mål",
+          "Agenter minns tidigare sessioner"
+        ],
+        correctIndex: 2,
+        explanation: "Agentbaserade system bryter ner mål i delmål och utför dem autonomt – i motsats till en enstaka prompt-svar-cykel.",
+      },
+      {
+        question: "Varför är kontrollpunkter i agentflöden viktiga?",
+        options: [
+          "De gör agenter snabbare",
+          "De hindrar agenter från att göra allt för bra jobb",
+          "Fel tidigt i flödet kan förstärkas och spridas till alla efterföljande steg",
+          "De minskar kostnaden för AI-användning"
+        ],
+        correctIndex: 2,
+        explanation: "I agentflöden kompounderar tidiga fel – ett tolkningsfel i steg 1 kan påverka alla efterföljande dokument. Mänskliga kontrollpunkter bryter den automatiska felpropageringen.",
+      },
+      {
+        question: "Vilka processer lämpar sig INTE för agentbaserad automatisering?",
+        options: [
+          "Informationssökning och sammanfattning",
+          "Granskning av kursplaner mot checklistor",
+          "Antagning, betygsättning och LIA-godkännanden",
+          "Generering av mötesprotokoll från anteckningar"
+        ],
+        correctIndex: 2,
+        explanation: "Processer som påverkar studerandes rättigheter kräver formella mänskliga beslut – inte procedurellt godkännande av automatiserade resultat.",
       },
     ],
   },
@@ -438,6 +613,41 @@ export const modules: CourseModule[] = [
           'Identifiera tre typer av frågor du eller dina kollegor får regelbundet från studerande eller lärare. Kategorisera dem:\n\n1. Standardiserade faktafrågor med enkla, entydiga svar\n2. Frågor som kräver tolkning av en specifik situation\n3. Frågor med rättsliga eller avtalsrättsliga dimensioner\n\nVilken kategori är lämplig för AI-stöd? Var går gränsen – och hur kommunicerar du den gränsen till dina användare?',
       },
     ],
+    quiz: [
+      {
+        question: "Vad är en kritisk förutsättning för att en AI-chatbot ska vara tillförlitlig?",
+        options: [
+          "Att den kan svara på alla möjliga frågor",
+          "Att kunskapsbasen uppdateras löpande och systemet kommunicerar sina begränsningar",
+          "Att den alltid hänvisar vidare",
+          "Att den inte kostar något att drifta"
+        ],
+        correctIndex: 1,
+        explanation: "En chatbot är bara lika aktuell som sin kunskapsbas. Utan regelbundna uppdateringar och tydlig kommunikation om begränsningar riskerar felaktig information att spridas.",
+      },
+      {
+        question: "Vilka frågetyper är OLÄMPLIGA att delegera till en AI-chatbot?",
+        options: [
+          "Kontaktinformation och öppettider",
+          "Allmän information om kurser",
+          "Individuell bedömning och avtalstolkning",
+          "Navigering på webbplatsen"
+        ],
+        correctIndex: 2,
+        explanation: "Rättighetsgrundade beslut och individuell bedömning kräver mänskligt ansvar – chatbottar hanterar navigation och allmän information, inte myndighetsbeslut.",
+      },
+      {
+        question: "Vilket krav är juridiskt grundläggande för AI-chatbotar mot användare?",
+        options: [
+          "Att chatboten alltid ger fem svarsalternativ",
+          "Att användare informeras om att de kommunicerar med ett automatiserat system",
+          "Att chatboten kan hantera alla språk",
+          "Att svarstiden är under en sekund"
+        ],
+        correctIndex: 1,
+        explanation: "Transparens om automatiserade system är ett juridiskt krav – användare har rätt att veta att de interagerar med AI och var de kan nå en människa.",
+      },
+    ],
   },
 
   {
@@ -511,6 +721,41 @@ export const modules: CourseModule[] = [
         title: 'Inventering och reflektionsfråga',
         content:
           'Gör en snabb inventering:\n\n1. Var i din verksamhet används AI-verktyg i dag – formellt eller informellt?\n2. Har ni diskuterat juridiska och etiska ramar för denna användning?\n3. Finns det verksamhetsmoment där AI används utan att det är känt för ledningen?\n\nVilka av dessa användningar är välgrundade och vilka bör utvärderas eller stoppas? Vad är ditt nästa steg som utbildningsledare?',
+      },
+    ],
+    quiz: [
+      {
+        question: "Vad innebär GDPR för AI-verktyg som används i utbildningsorganisationer?",
+        options: [
+          "GDPR gäller bara för fysiska databaser, inte AI-verktyg",
+          "Externt AI-verktyg som hanterar personuppgifter kräver rättslig grund och eventuellt biträdesavtal",
+          "GDPR gäller bara vid lagring, inte vid bearbetning",
+          "GDPR gäller inte YH-verksamhet"
+        ],
+        correctIndex: 1,
+        explanation: "All bearbetning av personuppgifter – inklusive via externa AI-tjänster – kräver rättslig grund under GDPR. Det räcker inte att uppgifterna \"bara analyseras\".",
+      },
+      {
+        question: "Var placerar EU AI-förordningen utbildningssystem?",
+        options: [
+          "I kategorin lågriskapplikationer",
+          "I kategorin oacceptabel risk",
+          "I kategorin högrisk",
+          "Utanför förordningens tillämpningsområde"
+        ],
+        correctIndex: 2,
+        explanation: "EU AI Act klassificerar system som används i utbildning som högrisk – vilket kräver transparens, kontroll och dokumentation.",
+      },
+      {
+        question: "Hur påverkar AI-inblandning organisationens ansvar för ett dokument?",
+        options: [
+          "Ansvaret minskar eftersom AI är ansvarig för innehållet",
+          "Ansvaret är oförändrat – organisationen ansvarar fullt ut oavsett produktionssätt",
+          "Ansvaret delas lika mellan organisationen och AI-leverantören",
+          "Ansvaret bortfaller om AI-verktyget är GDPR-certifierat"
+        ],
+        correctIndex: 1,
+        explanation: "Det finns inget rättsligt undantag för AI-producerat innehåll. Organisationen ansvarar fullt ut för dokument och beslut oavsett vilket verktyg som användes.",
       },
     ],
   },
@@ -594,6 +839,41 @@ export const modules: CourseModule[] = [
         title: 'Avslutande reflektion',
         content:
           'Den här kursen avslutas inte med ett svar – den avslutas med en fråga som du som utbildningsledare bär med dig:\n\nVad är det mest angelägna AI-relaterade beslutet i din organisation just nu? Vad vet du nu som du inte visste före kursen? Och vilket är ditt nästa konkreta steg?\n\nSkriv ner ditt svar. Det är utgångspunkten för ditt examensarbete – och för ditt fortsatta ledarskap i en tid av snabb teknologisk förändring.',
+      },
+    ],
+    quiz: [
+      {
+        question: "Vilka fyra dimensioner ingår i ramverket för AI-beslut?",
+        options: [
+          "Kostnad, hastighet, säkerhet och design",
+          "Nytta, risk, genomförbarhet och ansvar",
+          "Innovation, skalbarhet, kompetens och budget",
+          "Strategi, taktik, operation och kontroll"
+        ],
+        correctIndex: 1,
+        explanation: "Ramverket för AI-beslut: Nytta (löser ett verkligt problem?), Risk (konsekvenser?), Genomförbarhet (kapacitet att förvalta?) och Ansvar (vem äger det?).",
+      },
+      {
+        question: "Vad innebär \"transparens\" i en organisations AI-policy?",
+        options: [
+          "Att AI-verktyg aldrig används i känsliga sammanhang",
+          "Att AI-inblandning alltid kommuniceras öppet i dokument och beslutsunderlag",
+          "Att all AI-kod är öppen källkod",
+          "Att personal informeras om vilka AI-verktyg leverantören använder"
+        ],
+        correctIndex: 1,
+        explanation: "Transparensprincipen innebär att AI-inblandning alltid kommuniceras – i dokument, beslut och kommunikation – så att mottagare kan värdera informationen korrekt.",
+      },
+      {
+        question: "Vad händer om en organisation väljer att inte ha några AI-riktlinjer?",
+        options: [
+          "Användningen upphör av sig självt",
+          "Personalen använder inga AI-verktyg utan riktlinjer",
+          "Oreglerad användning med kvalitets- och compliancerisker uppstår",
+          "Ansvaret för AI-misstag övergår till AI-leverantören"
+        ],
+        correctIndex: 2,
+        explanation: "Avsaknad av riktlinjer är ett aktivt beslut som resulterar i oreglerad AI-användning – inte neutralitet. Det är en professionell styrelsefråga.",
       },
     ],
   },

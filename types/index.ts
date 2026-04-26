@@ -8,6 +8,13 @@ export interface ModuleSection {
   items?: string[]
 }
 
+export interface QuizQuestion {
+  question: string
+  options: string[]
+  correctIndex: number
+  explanation: string
+}
+
 export interface CourseModule {
   id: number
   title: string
@@ -15,6 +22,7 @@ export interface CourseModule {
   duration: string
   icon: string
   sections: ModuleSection[]
+  quiz?: QuizQuestion[]
 }
 
 export interface UserProfile {

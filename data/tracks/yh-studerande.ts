@@ -61,6 +61,41 @@ export const modules: CourseModule[] = [
           'Tänk på hur du hittills använt AI-verktyg i dina studier – eller om du inte använt dem alls. Vad är din nuvarande bild av vad AI kan och inte kan? Har det här avsnittet förändrat något i den bilden? Vad är det viktigaste du tar med dig vidare?',
       },
     ],
+    quiz: [
+      {
+        question: "Vad gör en AI-modell när den genererar text?",
+        options: [
+          "Den söker på internet och sammanfattar svaret",
+          "Den resonerar logiskt utifrån fakta",
+          "Den förutsäger statistiskt sannolika ord baserat på träningsdata",
+          "Den slår upp fakta i en intern databas"
+        ],
+        correctIndex: 2,
+        explanation: "AI-modeller genererar text genom att statistiskt förutsäga nästa ord/token – inte genom logiskt resonemang eller faktauppslag. Det förklarar varför de kan låta rätt men ha fel.",
+      },
+      {
+        question: "Vad bör du alltid göra med specifika faktapåståenden från AI?",
+        options: [
+          "Acceptera dem om de låter rimliga",
+          "Verifiera dem mot primärkällor",
+          "Fråga AI en gång till för att bekräfta",
+          "Jämföra med en annan AI-tjänst"
+        ],
+        correctIndex: 1,
+        explanation: "AI kan presentera felaktiga fakta med hög säkerhet. Specifika påståenden – lagparagrafer, statistik, citat, datum – måste alltid verifieras mot primärkällor.",
+      },
+      {
+        question: "Vad innebär att AI \"hallucinerar\"?",
+        options: [
+          "Att AI slutar svara mitt i en session",
+          "Att AI genererar plausibelt klingande men faktiskt felaktig information",
+          "Att AI ger för långa svar",
+          "Att AI tar lång tid att svara"
+        ],
+        correctIndex: 1,
+        explanation: "Hallucination innebär att modellen genererar information som låter trovärdig men är faktiskt felaktig – och presenterar den med samma säkra ton som korrekt information.",
+      },
+    ],
   },
 
   {
@@ -134,6 +169,41 @@ export const modules: CourseModule[] = [
         title: 'Reflektionsfråga',
         content:
           'Har du upplevt att AI verkat "glömma" dina instruktioner under en lång session? Hur reagerade du då – och hur hade du kunnat hantera det med kunskapen om kontextfönstret? Hur tänker du använda AI mer strukturerat i dina studier framöver?',
+      },
+    ],
+    quiz: [
+      {
+        question: "Vad händer med dina tidiga instruktioner i en lång AI-konversation?",
+        options: [
+          "De sparas automatiskt för nästa session",
+          "De stärks ju längre konversationen pågår",
+          "De kan trängas bort ur AI:ns aktiva minne utan att du meddelas",
+          "De upprepas av AI vid behov"
+        ],
+        correctIndex: 2,
+        explanation: "Kontextfönstret har begränsad kapacitet – när nytt innehåll läggs till kan tidiga instruktioner och krav falla bort utan att AI meddelar det.",
+      },
+      {
+        question: "Hur länge minns AI information från en tidigare session?",
+        options: [
+          "Upp till 24 timmar",
+          "Tills du stänger webbläsaren",
+          "Inte alls – varje session börjar från noll",
+          "Så länge du är inloggad på kontot"
+        ],
+        correctIndex: 2,
+        explanation: "Standardmodeller har inget persistent minne mellan sessioner. Varje ny konversation börjar utan kännedom om tidigare samtal.",
+      },
+      {
+        question: "Vad är det bästa sättet att hantera ett komplext examensarbete med AI-stöd?",
+        options: [
+          "Hålla allt i en enda lång session",
+          "Dela upp arbetet i separata sessioner med sparade instruktioner som återanvänds",
+          "Använda flera olika AI-tjänster parallellt",
+          "Aldrig använda AI för examensarbeten"
+        ],
+        correctIndex: 1,
+        explanation: "Separata sessioner med tydliga sparade startinstruktioner motverkar kontextbegränsningens effekter – och gör arbetsprocessen mer strukturerad och spårbar.",
       },
     ],
   },
@@ -212,6 +282,41 @@ export const modules: CourseModule[] = [
           'Tänk på en kursuppgift du nyligen arbetat med. Hur använde du (eller kunde du ha använt) AI på ett sätt som stöder ditt lärande, snarare än ersätter det? Vad är skillnaden mellan de sätt att använda AI som hjälper dig bli mer kompetent, och de som tar en genväg förbi kompetensen?',
       },
     ],
+    quiz: [
+      {
+        question: "Vilken AI-användning stöder ditt lärande bäst?",
+        options: [
+          "Att klistra in AI:s svar direkt i din inlämning",
+          "Att be AI sammanfatta texter du inte läst",
+          "Att be AI förklara ett svårt begrepp och sedan skriva din egen förklaring",
+          "Att använda AI för att svara på övningsfrågor utan att försöka själv"
+        ],
+        correctIndex: 2,
+        explanation: "Att ta del av AI:s förklaring och sedan formulera om med egna ord skapar aktiv bearbetning – det är det som producerar inlärning, inte att kopiera svaret.",
+      },
+      {
+        question: "Varför är det problematiskt att använda AI för att direkt svara på övningsfrågor?",
+        options: [
+          "Det tar för lång tid",
+          "AI svarar ofta fel på sådana frågor",
+          "Du missar träningen att ta sig igenom problemet – det är just det som bygger kompetens",
+          "Övningsfrågor är upphovsrättsskyddade"
+        ],
+        correctIndex: 2,
+        explanation: "Kompetens byggs av att kämpa med ett problem och komma fram till lösningen. AI som ersätter den processen tar bort det lärande momentet, inte bara produkten.",
+      },
+      {
+        question: "Vad bör du fråga dig innan du använder AI på en studieuppgift?",
+        options: [
+          "Hur snabbt kan AI lösa det här?",
+          "Vad lär jag mig av det här om AI gör det åt mig?",
+          "Vilket AI-verktyg är bäst för den här uppgiften?",
+          "Kommer min lärare märka att jag använde AI?"
+        ],
+        correctIndex: 1,
+        explanation: "Kärnfrågan vid all AI-användning i studier är om verktyget stöder ditt lärande eller ersätter det. Du betalar för kompetens, inte för producerade texter.",
+      },
+    ],
   },
 
   {
@@ -286,6 +391,41 @@ export const modules: CourseModule[] = [
         title: 'Reflektionsfråga',
         content:
           'Hur källkritisk är du i din vanliga studievardag – mot läroböcker, mot artiklar, mot information du hittar på internet? Hur skiljer sig den kritiska granskningen du gör mot dessa källor från vad du faktiskt gör när du läser ett AI-svar? Vad behöver du ändra i din rutin?',
+      },
+    ],
+    quiz: [
+      {
+        question: "Varför är AI-hallucination extra farlig för akademiska texter?",
+        options: [
+          "Eftersom AI skriver på för avancerad nivå",
+          "Eftersom fabricerade källor och fakta presenteras med samma säkra ton som korrekt information",
+          "Eftersom AI inte förstår akademisk stil",
+          "Eftersom AI-text är lätt att identifiera"
+        ],
+        correctIndex: 1,
+        explanation: "Hallucinerande AI presenterar falska påståenden och fabricerade källhänvisningar med exakt samma säkerhet som korrekt information – du kan inte skilja dem åt utan extern verifiering.",
+      },
+      {
+        question: "Vilka informationstyper är mest hallucineringskänsliga?",
+        options: [
+          "Allmänna beskrivningar och definitioner",
+          "Kreativa berättelser och metaforer",
+          "Specifika fakta som lagparagrafer, statistik, citat och källhänvisningar",
+          "Allmänna resonemang om begrepp"
+        ],
+        correctIndex: 2,
+        explanation: "Specifika faktadomäner – exakta paragrafnummer, statistiska siffror, källornas fullständiga detaljer – är de vanligaste hallucineringsfälten. Dessa kräver alltid primärkälleverifiering.",
+      },
+      {
+        question: "Varför är det akademiskt fel att citera AI som källa?",
+        options: [
+          "Eftersom AI är för ny för att vara pålitlig",
+          "Eftersom AI är upphovsrättsskyddad",
+          "Eftersom AI inte är en primärkälla – den pekar mot information du själv måste hitta och verifiera",
+          "Eftersom lärare inte accepterar det"
+        ],
+        correctIndex: 2,
+        explanation: "AI sammanfattar mönster i träningsdata – det är ingen primärkälla. I akademiska texter citeras den faktiska källan, inte verktyget du använde för att hitta den.",
       },
     ],
   },
@@ -364,6 +504,41 @@ export const modules: CourseModule[] = [
           'Gå igenom dina nuvarande kurser mentalt. Vet du exakt vad som gäller om AI för varje kurs? Om du inte är säker på en eller fler: Vad ska du göra för att ta reda på det? Och vilka av dina nuvarande uppgifter designar du för att faktiskt lära dig – och vilka gör du för att "bli klar"?',
       },
     ],
+    quiz: [
+      {
+        question: "Vad gäller när en kursplan inte nämner AI?",
+        options: [
+          "Att all AI-användning är tillåten",
+          "Att AI-användning är förbjuden",
+          "Att det är oklart och du bör fråga läraren",
+          "Att du kan använda AI om du inte berättar det"
+        ],
+        correctIndex: 2,
+        explanation: "Avsaknad av AI-regler i kursplanen skapar en gråzon. Fråga läraren direkt – en kort fråga eliminerar risken för missförstånd och potentiella konsekvenser.",
+      },
+      {
+        question: "Vem ansvarar för innehållet i det du lämnar in?",
+        options: [
+          "AI-verktyget, om du kan visa att det genererade innehållet",
+          "Din lärare, om instruktionen var otydlig",
+          "Du – alltid, oavsett hur innehållet producerats",
+          "AI-tjänstens leverantör"
+        ],
+        correctIndex: 2,
+        explanation: "Du äger alltid ansvaret för det du lämnar in – faktafel är dina fel, regelöverträdelser är ditt ansvar. \"AI skrev det\" är inte en hållbar förklaring.",
+      },
+      {
+        question: "Vilken AI-användning är alltid tillåten?",
+        options: [
+          "Att låta AI skriva argumentationsstrukturen och sedan redigera den",
+          "Att använda AI för att sammanfatta texter du ska läsa",
+          "Att använda AI som stavnings- och grammatikkontroll",
+          "Att låta AI svara på tentafrågor du sedan skickar in"
+        ],
+        correctIndex: 2,
+        explanation: "Stavnings- och grammatikverktyg hjälper dig kommunicera tydligare utan att ersätta ditt tänkande eller din kunskap – det är stöd för kommunikation, inte ersättning för lärande.",
+      },
+    ],
   },
 
   {
@@ -438,6 +613,41 @@ export const modules: CourseModule[] = [
         title: 'Reflektionsfråga',
         content:
           'Tänk på den bransch och arbetsplats du är eller ska vara på under LIA. Vilka typer av konfidentiell information hanteras där? Hur tänker du ta reda på arbetsplatsens policy för AI-verktyg? Och vilken typ av AI-kompetens tror du är mest efterfrågad i den branschen?',
+      },
+    ],
+    quiz: [
+      {
+        question: "Vilka regler gäller på LIA-platsen när det gäller AI?",
+        options: [
+          "Skolans regler gäller alltid, även på arbetsplatsen",
+          "Arbetsplatsens regler gäller – fråga din handledare innan du använder AI-verktyg",
+          "Du kan använda samma verktyg som hemma",
+          "Inga regler gäller under LIA om arbetsgivaren inte nämner det"
+        ],
+        correctIndex: 1,
+        explanation: "Under LIA gäller arbetsplatsens regler och policies. Fråga din handledare om vad som är tillåtet innan du använder AI – det gäller som en del av professionellt uppträdande.",
+      },
+      {
+        question: "Vad gäller absolut för konfidentiell information på arbetsplatsen?",
+        options: [
+          "Du kan dela den i anonymiserad form med externa AI-verktyg",
+          "Du kan dela den om du raderar sessionen efteråt",
+          "Konfidentiell information stannar på arbetsplatsens system – aldrig i externa AI-verktyg",
+          "Externa gratis AI-verktyg är okej om arbetsgivaren inte sagt något"
+        ],
+        correctIndex: 2,
+        explanation: "Konfidentiell information – om kunder, patienter, klienter eller affärsprocesser – kan aldrig matas in i externa AI-tjänster. Det bryter mot sekretessavtal och kan ha allvarliga konsekvenser.",
+      },
+      {
+        question: "Vad visar du som yrkeskompetens under LIA?",
+        options: [
+          "Att du använder AI så mycket som möjligt för att vara effektiv",
+          "Att du förstår när AI-användning är lämplig och hanterar konfidentialitet professionellt",
+          "Att du undviker all AI-användning för att vara säker",
+          "Att du lär ut AI-verktyg till arbetsplatsens personal"
+        ],
+        correctIndex: 1,
+        explanation: "AI-kompetens inkluderar att förstå gränser – att veta när AI tillför värde, hur man hanterar konfidentiell data, och hur man kommunicerar öppet om sin AI-användning.",
       },
     ],
   },
@@ -516,6 +726,41 @@ export const modules: CourseModule[] = [
           'Tänk på den kurs du just nu upplever som svårast. Vad är det svåraste med den – och hur hanterar du det i dag? Har det funnits tillfällen där du använde AI på ett sätt du var lite osäker på? Hur kan du hantera svårigheten på ett sätt som faktiskt stöder ditt lärande, snarare än kringgår det?',
       },
     ],
+    quiz: [
+      {
+        question: "Varför skadar fusk i grunden dig själv?",
+        options: [
+          "Risken att bli påkommen är för stor",
+          "Du missar kompetensen som kursen är tänkt att ge – kompetens du förväntas ha i ditt yrke",
+          "Det är svårt att hålla reda på vad AI och du har skrivit",
+          "Det tar faktiskt lika lång tid som att göra det själv"
+        ],
+        correctIndex: 1,
+        explanation: "Fusk tar bort lärprocessen och resulterar i ett examinationsresultat utan underliggande kompetens. Den kompetensen förväntas av arbetsgivare – och bristen drabbar dig i yrkeslivet.",
+      },
+      {
+        question: "Vad bör du göra om du är osäker på om en specifik AI-användning är tillåten?",
+        options: [
+          "Undvika all AI-användning i den uppgiften",
+          "Använda AI om du inte hittar ett uttryckligt förbud",
+          "Fråga din lärare innan du lämnar in",
+          "Jämföra med hur klasskamrater hanterar det"
+        ],
+        correctIndex: 2,
+        explanation: "En direkt fråga till läraren eliminerar osäkerheten. Det visar också ärlighet och ansvarstagande – egenskaper som bidrar till ett gott förhållande och bättre lärande.",
+      },
+      {
+        question: "Vilka konsekvenser kan akademiska integritetsöverträdelser leda till?",
+        options: [
+          "Enbart en muntlig varning vid första tillfället",
+          "Inga konsekvenser om det är första gången",
+          "Underkänt, varning, avstängning eller i allvarliga fall permanent avvisning",
+          "Automatisk omtentamen utan vidare åtgärder"
+        ],
+        correctIndex: 2,
+        explanation: "Konsekvenserna av integritetsöverträdelser varierar men kan vara allvarliga – inklusive permanent avvisning. I vissa yrken kan dokumenterade brott även påverka framtida anställning.",
+      },
+    ],
   },
 
   {
@@ -586,6 +831,41 @@ export const modules: CourseModule[] = [
         title: 'Avslutande reflektion',
         content:
           'Kursen avslutas med en framtidsfråga:\n\nTänk på det yrke du utbildar dig till. Hur tror du att AI kommer att påverka arbetsuppgifterna i det yrket under de närmaste fem åren? Vilka uppgifter tror du AI kan ta över – och vilka tror du kräver mänskligt omdöme, relation och ansvar?\n\nOch: Vad är det du faktiskt utbildar dig till som gör dig värdefull i ett yrke där AI är ett dagligt verktyg?\n\nSkriv ner ditt svar. Det är utgångspunkten för din examination – och för din professionella identitet.',
+      },
+    ],
+    quiz: [
+      {
+        question: "Vilken AI-kompetens värdesätter arbetsgivare mest?",
+        options: [
+          "Att kunna lista flest möjliga AI-verktyg",
+          "Att förstå när och hur AI är lämpligt och hantera det ansvarsfullt",
+          "Att producera mest output med AI-stöd",
+          "Att vara den snabbaste AI-användaren i teamet"
+        ],
+        correctIndex: 1,
+        explanation: "Arbetsgivare söker inte verktygskunskap – de söker omdöme: att förstå när AI tillför värde, när det inte gör det, och hur man hanterar data och ansvar ansvarsfullt.",
+      },
+      {
+        question: "Vad stannar kvar som värdefullt oavsett hur AI-verktygen förändras?",
+        options: [
+          "Kunskap om specifika AI-verktyg",
+          "Förmågan att snabbt lära sig nya verktyg",
+          "Principerna: källkritik, instruktionskvalitet, dataansvar och omdöme om lämplig användning",
+          "Erfarenhet av den senaste AI-modellen"
+        ],
+        correctIndex: 2,
+        explanation: "Specifika verktyg byts ut – principerna för ansvarsfull AI-användning är stabila och transferbara. Det är principkompetensen som är värdefull i ett yrkesliv.",
+      },
+      {
+        question: "Vad gör dig värdefull på arbetsmarknaden i ett AI-integrerat arbetsliv?",
+        options: [
+          "Att kunna ersätta mänskliga kollegor med AI",
+          "Att producera mest möjliga output",
+          "Att kombinera yrkeskunnande med förmågan att använda AI ansvarsfullt, källkritiskt och inom rätt ramar",
+          "Att ha tillgång till de dyraste AI-verktygen"
+        ],
+        correctIndex: 2,
+        explanation: "AI förändrar inte vad som gör dig värdefull – yrkeskunnande, omdöme och ansvarsfullt beteende – det skapar nya sätt att applicera dessa egenskaper effektivt.",
       },
     ],
   },

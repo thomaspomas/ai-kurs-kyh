@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { getModulesForTrack } from '@/data/modules'
 import { SectionContent } from '@/components/course/SectionContent'
+import { QuizCard } from '@/components/course/QuizCard'
 import { ProgressBar } from '@/components/course/ProgressBar'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
@@ -166,19 +167,41 @@ export default function ModulePage({ params }: PageProps) {
           </div>
         ) : module ? (
           <div className="space-y-4">
-            {module.sections.map((section) => (
-              <SectionContent
-                key={section.id}
-                section={section}
-                isCompleted={completedSections.includes(section.id)}
-                onComplete={(reflText, aiFeedback) => handleComplete(section.id, reflText, aiFeedback)}
-                reflectionValue={reflections[section.id] ?? ''}
-                onReflectionChange={(val) =>
-                  setReflections((prev) => ({ ...prev, [section.id]: val }))
-                }
-                moduleTitle={module.title}
-              />
-            ))}
+            {module.sections
+              .filter((s) => s.type !== 'reflection')
+              .map((section) => (
+                <SectionContent
+                  key={section.id}
+                  section={section}
+                  isCompleted={completedSections.includes(section.id)}
+                  onComplete={(reflText, aiFeedback) => handleComplete(section.id, reflText, aiFeedback)}
+                  reflectionValue={reflections[section.id] ?? ''}
+                  onReflectionChange={(val) =>
+                    setReflections((prev) => ({ ...prev, [section.id]: val }))
+                  }
+                  moduleTitle={module.title}
+                />
+              ))}
+
+            {module.quiz && module.quiz.length > 0 && (
+              <QuizCard questions={module.quiz} />
+            )}
+
+            {module.sections
+              .filter((s) => s.type === 'reflection')
+              .map((section) => (
+                <SectionContent
+                  key={section.id}
+                  section={section}
+                  isCompleted={completedSections.includes(section.id)}
+                  onComplete={(reflText, aiFeedback) => handleComplete(section.id, reflText, aiFeedback)}
+                  reflectionValue={reflections[section.id] ?? ''}
+                  onReflectionChange={(val) =>
+                    setReflections((prev) => ({ ...prev, [section.id]: val }))
+                  }
+                  moduleTitle={module.title}
+                />
+              ))}
           </div>
         ) : null}
 

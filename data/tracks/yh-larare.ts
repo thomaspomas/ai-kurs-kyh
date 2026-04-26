@@ -61,6 +61,41 @@ export const modules: CourseModule[] = [
           'Tänk på den examinationsform du använder mest just nu. I vilken grad mäter den studerandenas faktiska förståelse – och i vilken grad kan ett välgenererat AI-svar klara den utan att studeranden har lärt sig det du avsett? Vad skulle du behöva ändra för att göra din examination mer lärbevisande?',
       },
     ],
+    quiz: [
+      {
+        question: "Varför räcker det inte att läraren undviker AI för att hantera studenters AI-användning?",
+        options: [
+          "Läraren måste prova AI för att förstå det",
+          "Studenter använder AI oberoende av lärarens val – regler och pedagogik måste hantera det",
+          "Lärare och studenter har samma AI-tillgång",
+          "Skollagen kräver att lärare provar verktyg de reglerar"
+        ],
+        correctIndex: 1,
+        explanation: "Studenter använder AI oavsett lärarens eget förhållningssätt. Utan tydlig pedagogik och regler riskerar AI-användning drivas under ytan snarare än hanteras öppet.",
+      },
+      {
+        question: "Varför är AI-detektorer inte tillförlitliga för disciplinärenden?",
+        options: [
+          "De är för dyra för de flesta skolor",
+          "De fungerar bara för engelska texter",
+          "De har hög andel falska positiva och negativa – disciplinbeslut kan inte vila på dem",
+          "De bryter mot GDPR"
+        ],
+        correctIndex: 2,
+        explanation: "AI-detektorer missar mycket AI-genererat innehåll och flaggar ibland mänskligt skrivet text. Disciplinbeslut baserade enbart på detektorresultat är juridiskt svaga.",
+      },
+      {
+        question: "Vad är det grundläggande problemet med en inlämning som låter kunnig men saknar verklig förståelse?",
+        options: [
+          "Att studenten inte använde rätt format",
+          "Att examineringsformen mätte textproduktion snarare än faktisk kompetens",
+          "Att studenten hade för kort tid",
+          "Att läraren inte förklarade uppgiften tillräckligt"
+        ],
+        correctIndex: 1,
+        explanation: "Om en inlämning kan passera utan verklig förståelse har examineringsformen ett designproblem – det mäter text, inte kompetens. Lösningen är examination som kräver visad förståelse.",
+      },
+    ],
   },
 
   {
@@ -134,6 +169,41 @@ export const modules: CourseModule[] = [
         title: 'Reflektionsfråga',
         content:
           'Hur informerar du i dag dina studerande om hur de förväntas använda digitala hjälpmedel i dina kurser? Har du explicit diskuterat AI-verktyg – antingen som tillåtna verktyg med specifika regler, eller som otillåtna med förklaringar varför? Vad behöver du förtydliga för dina studerande inför nästa kursstart?',
+      },
+    ],
+    quiz: [
+      {
+        question: "Varför är det viktigt att lärare förstår kontextfönstret?",
+        options: [
+          "För att kunna programmera egna AI-system",
+          "Så att lärare kan förklara för studenter varför AI \"glömmer\" och hur man kan arbeta strukturerat",
+          "För att optimera AI-sessionernas hastighet",
+          "För att minska kostnaden för AI-verktyg"
+        ],
+        correctIndex: 1,
+        explanation: "Lärare som förstår kontextfönstret kan undervisa studenter i strukturerad AI-användning – och förhindra att tekniska begränsningar missförstås som dåliga instruktioner.",
+      },
+      {
+        question: "Vad är den pedagogiska konsekvensen av att lärare inte kommunicerar om kontextfönster?",
+        options: [
+          "Studenter slutar använda AI",
+          "Studenter kan bli frustrerade och felaktigt attribuera problem till dåliga instruktioner",
+          "Studenter lär sig hantera begränsningen intuitivt",
+          "Studenter använder kortare sessioner automatiskt"
+        ],
+        correctIndex: 1,
+        explanation: "Utan förklaring av kontextfönstret riskerar studenter att ge upp eller felaktigt tro att instruktioner inte fungerar – när det egentligen är ett tekniskt minnesproblem.",
+      },
+      {
+        question: "Vad bör lärare kräva om AI är tillåtet i en uppgift?",
+        options: [
+          "Att studenter inte använder AI alls",
+          "Att studenter dokumenterar sin AI-interaktion som en del av processen",
+          "Att studenter använder ett godkänt AI-verktyg utan dokumentation",
+          "Att studenter skickar in AI-sessioner på engelska"
+        ],
+        correctIndex: 1,
+        explanation: "Processdokumentation gör lärande synligt och möjliggör bedömning av studentens faktiska bidrag – snarare än bedömning av AI:ns output.",
       },
     ],
   },
@@ -211,6 +281,41 @@ export const modules: CourseModule[] = [
           'Välj en av dina nuvarande examinationsuppgifter och prova att be ett AI-verktyg lösa den. Hur bra är svaret? Vad saknar det? Vad säger det om uppgiftens förmåga att mäta faktisk inlärning kontra ytlig textproduktion? Vad skulle du ändra?',
       },
     ],
+    quiz: [
+      {
+        question: "Vad är det vanligaste misstaget när AI används för kursplanering?",
+        options: [
+          "Att använda AI utan licens",
+          "Att ge vaga instruktioner utan studentkontext eller lärandemål",
+          "Att använda AI för praktiska moment",
+          "Att inte spara AI-sessionerna"
+        ],
+        correctIndex: 1,
+        explanation: "AI genererar generiskt innehåll utan kontextuell input. Utan specificerad roll, studentgrupp, program och lärandemål ger AI material som kräver full omarbetning.",
+      },
+      {
+        question: "Varför bör lärare testa om AI kan lösa en uppgift innan den används i examination?",
+        options: [
+          "För att säkerställa att uppgiften är tillräckligt svår",
+          "För att kontrollera att uppgiften mäter kompetens och inte bara textproduktion",
+          "För att se till att AI-verktyget är tillräckligt avancerat",
+          "För att spara tid vid rättning"
+        ],
+        correctIndex: 1,
+        explanation: "Om AI kan producera ett acceptabelt svar utan att ha deltagit i kursen mäter uppgiften inte studentens kompetens – det är ett examineringsdesignproblem.",
+      },
+      {
+        question: "Vad kan AI bidra med i bedömningsdesign?",
+        options: [
+          "Att automatiskt sätta betyg",
+          "Att ersätta lärarens ämneskunskap",
+          "Att generera uppgiftsvarianter, skapa bedömningsmatriser och testa uppgifter från studentperspektiv",
+          "Att avgöra vilket betyg en student förtjänar"
+        ],
+        correctIndex: 2,
+        explanation: "AI är ett kraftfullt verktyg för att variera och testa bedömningsuppgifter – men bedömningsdesign kräver ämneskunnande och pedagogisk kompetens som läraren bidrar med.",
+      },
+    ],
   },
 
   {
@@ -283,6 +388,41 @@ export const modules: CourseModule[] = [
         title: 'Reflektionsfråga',
         content:
           'Välj ett kursmaterial du har – en lektionssida, en uppgiftsinstruktion, en bedömningsmatris. Välj en studerandegrupp i din kurs som du upplever har extra svårt med materialet och skriv en AI-instruktion som ber AI:n granska materialet från den gruppens perspektiv. Vad identifierar AI:n som du inte hade sett?',
+      },
+    ],
+    quiz: [
+      {
+        question: "Vad är syftet med att använda studentpersonas i kursplanering?",
+        options: [
+          "Att ersätta utvärderingar",
+          "Att identifiera tillgänglighetsproblem och otydligheter i material och instruktioner",
+          "Att spara tid på studentmöten",
+          "Att generera automatiska kursbetyg"
+        ],
+        correctIndex: 1,
+        explanation: "Studentpersonas hjälper lärare se kursmaterial med \"nybörjarögon\" – identifiera oklarheter, oförklarade termer och tillgänglighetsproblem innan materialet distribueras.",
+      },
+      {
+        question: "Vad händer med en AI-persona som ges en bristfällig rollbeskrivning?",
+        options: [
+          "Ger mer kreativa svar",
+          "Svarar från ett generellt perspektiv istället för det avsedda",
+          "Vägrar svara",
+          "Ber om förtydligande automatiskt"
+        ],
+        correctIndex: 1,
+        explanation: "Oprecisa rollbeskrivningar aktiverar generella mönster – inte det specifika perspektiv du efterfrågar. Precision i personabeskrivningen är avgörande för simuleringsresultatets värde.",
+      },
+      {
+        question: "Vad kan AI INTE göra vid studentperspektivsimuleringar?",
+        options: [
+          "Generera frågor en förvirrad student kan ställa",
+          "Identifiera potentiellt oklara instruktioner",
+          "Förutsäga hur en specifik student i din klass faktiskt uppfattar materialet",
+          "Simulera hur en dyslektisk student kan uppleva textlayout"
+        ],
+        correctIndex: 2,
+        explanation: "AI aktiverar generella mönster kopplade till en roll – det kan aldrig prediktera en specifik individs reaktion. Faktiska studentsamtal och utvärderingar ger den precisa feedbacken.",
       },
     ],
   },
@@ -362,6 +502,41 @@ export const modules: CourseModule[] = [
           'Tänk på det mest tidskrävande bedömningsarbetet i din kurs. Vilka delar av det arbetet är formulering och strukturering av återkoppling – och vilka delar kräver din professionella bedömning? Hur skulle du kunna använda AI för att hantera det förra utan att kompromissa med det senare?',
       },
     ],
+    quiz: [
+      {
+        question: "Vad kan AI bidra med i formativ bedömning?",
+        options: [
+          "Att sätta slutbetyg baserat på lärandemål",
+          "Att generera preliminär feedback på utkast och identifiera mönster i studenters svar",
+          "Att ersätta lärarens summativa bedömning",
+          "Att avgöra om en student ska ta om en kurs"
+        ],
+        correctIndex: 1,
+        explanation: "AI kan effektivt stödja formativa processer – generera feedback på utkast och identifiera mönster. Summativ bedömning är alltid lärarens ansvar med juridisk och pedagogisk vikt.",
+      },
+      {
+        question: "Vad kräver GDPR när lärare matar in studentdata i AI-verktyg?",
+        options: [
+          "Inget – anonymiserade data är alltid fria att använda",
+          "Rättslig grund för behandlingen, även vid anonymiserade data",
+          "Enbart att verktyget är populärt och välkänt",
+          "Att studenten godkänt varje enskild session"
+        ],
+        correctIndex: 1,
+        explanation: "GDPR kräver rättslig grund för all personuppgiftsbehandling – inklusive vid användning av externa AI-tjänster. Anonymisering reducerar risk men eliminerar inte alltid kravet.",
+      },
+      {
+        question: "Varför räcker det inte att \"granska\" AI-genererade betyg?",
+        options: [
+          "Det tar för lång tid",
+          "AI-verktyg är oftast felkonfigurerade",
+          "Granskning utan självständig bedömning mot lärandemål är inte professionellt läraransvar",
+          "Betyg måste alltid sättas helt manuellt"
+        ],
+        correctIndex: 2,
+        explanation: "Att godkänna AI-förslag utan substantiell analys mot lärandemål, kursinnehåll och studentens process är inte professionell bedömning – det är delegering av ett juridiskt ansvar.",
+      },
+    ],
   },
 
   {
@@ -435,6 +610,41 @@ export const modules: CourseModule[] = [
         title: 'Reflektionsfråga',
         content:
           'Hur har du kommunicerat regler om AI-verktyg inför din senaste LIA-period? Var reglerna tydliga nog för att studeranden med säkerhet visste vad som var tillåtet och otillåtet? Vad behöver förtydligas inför nästa omgång – och hur kommunicerar du det på ett sätt som når studeranden?',
+      },
+    ],
+    quiz: [
+      {
+        question: "Varför skapar otydliga AI-regler under LIA rättviseproblem?",
+        options: [
+          "Studenter med bättre AI-verktyg får fördelar",
+          "Utan tydliga regler kan studenter inte hållas ansvariga för AI-användning de inte förstod var förbjuden",
+          "LIA-handledare på arbetsplatser kan inte kontrollera AI-användning",
+          "AI-regler på arbetsplatsen är alltid hemliga"
+        ],
+        correctIndex: 1,
+        explanation: "Disciplin för AI-användning kräver att reglerna var klart kommunicerade. Otydliga regler skapar svaga disciplinärenden och missgynnar studenter som handlat i god tro.",
+      },
+      {
+        question: "Vad ska AI-regler för LIA specificera?",
+        options: [
+          "Vilka AI-verktyg som är gratis",
+          "Vad som är tillåtet på arbetsplatsen och vad som är tillåtet i LIA-dokumentation",
+          "Hur ofta studenterna ska rapportera till läraren",
+          "Vilka AI-leverantörer skolan samarbetar med"
+        ],
+        correctIndex: 1,
+        explanation: "LIA-regler behöver skilja mellan AI-användning i arbetsuppgifter på arbetsplatsen (arbetsgivarens regler gäller) och AI-användning i LIA-dokumentation (skolans regler gäller).",
+      },
+      {
+        question: "Hur kan AI stödja lärare i LIA-administrationen?",
+        options: [
+          "Genom att automatiskt bedöma LIA-kompetens",
+          "Genom att ta kontakt med handledare utan lärarens inblandning",
+          "Genom att utfärda LIA-intyg",
+          "Genom att utforma kommunikation, intervjumallar och sammanfatta reflektionsloggar"
+        ],
+        correctIndex: 3,
+        explanation: "AI kan effektivt stödja administrationen kring LIA – men bedömning av kompetens och kommunikation med ansvar kräver lärarens professionella närvaro.",
       },
     ],
   },
@@ -514,6 +724,41 @@ export const modules: CourseModule[] = [
           'Har du formulerat tydliga och specifika AI-regler för dina kurser? Specificerar de vad som är tillåtet och otillåtet, inte bara generellt utan per uppgiftstyp? Om en studerande i dag frågade vad som gäller – skulle svaret vara entydigt? Om inte: vad behöver du skriva för att göra det entydigt?',
       },
     ],
+    quiz: [
+      {
+        question: "Vad krävs för att ett disciplinärende om AI-fusk ska vara juridiskt hållbart?",
+        options: [
+          "En utskriven AI-detektionsrapport",
+          "Att minst tre lärare instämmer",
+          "Dokumenterade observationer, klar regelöverträdelse, studentens möjlighet att förklara sig och administrativ involvering",
+          "Att studenten erkänner"
+        ],
+        correctIndex: 2,
+        explanation: "Disciplinärenden kräver process: dokumentation, tydlig regelöverträdelse, studentens rätt att förklara sig, och korrekt administrativ handläggning. Ensidiga beslut är juridiskt svaga.",
+      },
+      {
+        question: "Varför driver förbud utan pedagogik AI-användning underground?",
+        options: [
+          "Studenter saknar självdisciplin",
+          "Studenter förstår inte reglerna",
+          "Studenter saknar alternativa lärstrategier och söker effektivare vägar",
+          "Studenter är rädda för att bli ertappade"
+        ],
+        correctIndex: 2,
+        explanation: "Utan pedagogik kring varför regler finns och hur man lär sig effektivt söker studenter den snabbaste vägen. Förbud utan förståelse skapar dold användning snarare än förändrat beteende.",
+      },
+      {
+        question: "Vad är en \"gråzon\" i AI-fuskdefinitioner?",
+        options: [
+          "Situationer där AI-verktyget inte fungerar korrekt",
+          "Situationer där regler saknas och AI-användningens tillåtlighet är oklar",
+          "Situationer där läraren inte kan avgöra vem som skrivit texten",
+          "Situationer där AI genererat ett bättre svar än studenten hade gjort"
+        ],
+        correctIndex: 1,
+        explanation: "Gråzoner uppstår när regler inte specificerat om en viss AI-användning är tillåten. Löses bäst med klara regler i förväg – inte med disciplin i efterhand.",
+      },
+    ],
   },
 
   {
@@ -583,6 +828,41 @@ export const modules: CourseModule[] = [
         title: 'Avslutande reflektion',
         content:
           'Vad har den här kursen förändrat i hur du ser på AI i din undervisning? Vad är dina tre viktigaste konkreta åtgärder – en för dina examinationsuppgifter, en för hur du kommunicerar AI-regler till dina studerande, och en för hur du eventuellt använder AI som stöd i ditt eget arbete?\n\nSkriv ner svaret. Det är ditt examensunderlag – och utgångspunkten för hur du som lärare navigerar AI på ett professionellt och välgrundat sätt.',
+      },
+    ],
+    quiz: [
+      {
+        question: "Vad är lärarens oersättliga bidrag jämfört med AI?",
+        options: [
+          "Förmågan att ge snabbare feedback",
+          "Pedagogiskt omdöme, ämneskunskap i kontext, professionell bedömning av lärandetrajektorier och etisk kompass",
+          "Tillgång till mer information",
+          "Förmågan att producera mer text"
+        ],
+        correctIndex: 1,
+        explanation: "AI kan utföra många operativa uppgifter, men pedagogen bidrar med det AI saknar: omdöme om lärande, kunskap om individen, och etiskt-professionellt ansvar.",
+      },
+      {
+        question: "Hur ofta bör lärare se över sina examineringsuppgifter med hänsyn till AI?",
+        options: [
+          "Aldrig – uppgifter fungerar tills studenter klagar",
+          "Varje gång ett nytt AI-verktyg lanseras",
+          "Löpande, minst en gång per läsår, för att säkerställa AI-robusthet",
+          "Enbart vid kursrevideringar"
+        ],
+        correctIndex: 2,
+        explanation: "AI-kapabiliteter utvecklas snabbt. Uppgifter som var robusta för ett år sedan kan idag lösas av AI utan kurskoppling. Löpande granskning är professionell standard.",
+      },
+      {
+        question: "Vad kommunicerar ett explicit AI-förhållningssätt till studenter i kursen?",
+        options: [
+          "Att läraren inte litar på studenter",
+          "Tydliga förväntningar och spelregler som minskar fusk och ökar produktivt AI-stöd",
+          "Att läraren är expert på AI-teknik",
+          "Att kursen är svårare än genomsnittet"
+        ],
+        correctIndex: 1,
+        explanation: "Explicit kommunikation om AI – varför regler ser ut som de gör – reducerar otydlighet och skapar förutsättningar för studenter att använda AI produktivt snarare än att dölja sin användning.",
       },
     ],
   },

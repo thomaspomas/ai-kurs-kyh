@@ -61,6 +61,41 @@ export const modules: CourseModule[] = [
           'Gör en snabb lägesbild: I vilken utsträckning tror du att AI-verktyg används i din organisation i dag – och i vilken grad har ledningen kännedom om och kontroll över denna användning? Vad är skillnaden mellan det du vet och det du tror? Vad är ditt nästa steg för att skapa klarhet?',
       },
     ],
+    quiz: [
+      {
+        question: "Varför behöver ledare förstå AI, även om de inte använder det dagligen?",
+        options: [
+          "För att kunna programmera AI-system",
+          "För att kunna bedöma risker och fatta informerade beslut",
+          "För att ersätta IT-avdelningens roll",
+          "För att godkänna varje medarbetares AI-användning"
+        ],
+        correctIndex: 1,
+        explanation: "Ledare behöver tillräcklig AI-förståelse för att bedöma risker, ställa rätt frågor och styra ansvarsfull användning – inte nödvändigtvis vara dagliga användare.",
+      },
+      {
+        question: "Vem i organisationen bär ansvaret för personalens AI-användning?",
+        options: [
+          "Den enskilda medarbetaren exklusivt",
+          "IT-avdelningen",
+          "Organisationen som helhet, med ledningen som ansvarig",
+          "AI-verktygets leverantör"
+        ],
+        correctIndex: 2,
+        explanation: "Organisationen är ansvarig för hur personalen använder AI i tjänsten – precis som för alla andra verktyg och processer.",
+      },
+      {
+        question: "Vad innebär det att \"styra\" AI-användning snarare än att förbjuda den?",
+        options: [
+          "Att tillåta all AI-användning utan regler",
+          "Att skapa riktlinjer för ansvarsfull och ändamålsenlig användning",
+          "Att blockera AI-tjänster tekniskt",
+          "Att överlåta besluten till varje medarbetare"
+        ],
+        correctIndex: 1,
+        explanation: "Styrning av AI innebär att definiera var och hur AI ska användas ansvarsfullt – vilket är mer effektivt och professionellt än generella förbud.",
+      },
+    ],
   },
 
   {
@@ -134,6 +169,41 @@ export const modules: CourseModule[] = [
         title: 'Reflektionsfråga',
         content:
           'Vilka rutiner för dokumentgranskning har din organisation i dag – oberoende av AI? Är dessa rutiner tillräckliga för att fånga upp fel som uppstår när AI används som stöd? Vad behöver förstärkas – och vem ansvarar för att göra det?',
+      },
+    ],
+    quiz: [
+      {
+        question: "Vilken organisatorisk risk skapar AI:ns kontextbegränsningar?",
+        options: [
+          "Att AI tar för lång tid att svara",
+          "Att personal fattar beslut baserade på ofullständig information om AI tappat tidiga krav",
+          "Att AI-sessioner kostar mer vid längre konversationer",
+          "Att AI ger kortare svar i långa konversationer"
+        ],
+        correctIndex: 1,
+        explanation: "Om personal inte känner till kontextfönstrets begränsningar kan de lita på att AI håller alla krav i minnet – och leverera dokument där viktiga tidiga instruktioner faktiskt fallit bort.",
+      },
+      {
+        question: "Vilken organisatorisk motåtgärd mot AI:ns minnesgränser är mest effektiv?",
+        options: [
+          "Begränsa AI-sessionernas längd till tio minuter",
+          "Köpa dyrare AI-verktyg med längre kontext",
+          "Etablera checklistor och verifieringsrutiner mot primärkällor",
+          "Använda AI enbart för korta uppgifter"
+        ],
+        correctIndex: 2,
+        explanation: "Organisatoriska rutiner – checklistor, sessionsprotokoll och verifiering mot primärkällor – kompenserar för AI:ns tekniska begränsningar och minskar risken för fel.",
+      },
+      {
+        question: "Vilka dokument kräver alltid mänsklig slutgranskning oavsett AI-stöd?",
+        options: [
+          "Interna mötesanteckningar",
+          "Informationsbroschyrer utan rättslig relevans",
+          "Utbildningsplaner, kursplaner och avtal",
+          "Sociala medier-inlägg"
+        ],
+        correctIndex: 2,
+        explanation: "Rättighetsgrundade och regulatoriska dokument – kursplaner, utbildningsplaner, avtal, tillsynsrapporter – kräver alltid mänsklig verifiering av faktainnehållet.",
       },
     ],
   },
@@ -211,6 +281,41 @@ export const modules: CourseModule[] = [
           'Välj en av dina återkommande ledningsuppgifter – exempelvis att producera underlag inför styrelsemöten, sammanfatta externa revisioner eller kommunicera med arbetsgivare om utbildningskrav. Hur ser en väldefinierad instruktion ut för den uppgiften? Skriv ner de fyra elementen (roll, kontext, uppgift, begränsning) för det specifika fallet.',
       },
     ],
+    quiz: [
+      {
+        question: "Vad avgör kvaliteten på en AI:s output i ett beslutsunderlag?",
+        options: [
+          "Hur avancerat AI-verktyget är",
+          "Hur lång tid AI fick på sig",
+          "Kvaliteten på den instruktion som gavs",
+          "Antalet ord i svaret"
+        ],
+        correctIndex: 2,
+        explanation: "Instruktionens kvalitet – roll, kontext, uppgift, begränsning – avgör direkt hur användbart resultatet är. Generiska instruktioner ger generiska underlag.",
+      },
+      {
+        question: "Vad innebär \"beställarkompetens\" i relation till AI?",
+        options: [
+          "Att kunna programmera AI-system",
+          "Att veta hur man formulerar precisa instruktioner för att få rätt output",
+          "Att ha teknisk tillgång till AI-verktyg",
+          "Att känna till vilka AI-leverantörer som är bäst"
+        ],
+        correctIndex: 1,
+        explanation: "Beställarkompetens handlar om att formulera tydliga instruktioner med rätt roll, kontext, uppgift och begränsning – inte om teknisk expertis.",
+      },
+      {
+        question: "Vilket ansvar förändras INTE av välformulerade AI-instruktioner?",
+        options: [
+          "Ansvaret för dokumentets struktur",
+          "Ansvaret för faktakontroll av regulatorisk och rättighetsgrundad information",
+          "Ansvaret för att välja rätt format",
+          "Ansvaret för att kommunicera med rätt intressenter"
+        ],
+        correctIndex: 1,
+        explanation: "Faktagranskning av regulatorisk information och rättighetsgrundade påståenden är alltid obligatorisk – oavsett hur välformulerad instruktionen var.",
+      },
+    ],
   },
 
   {
@@ -286,6 +391,41 @@ export const modules: CourseModule[] = [
           'Tänk på ett beslut du har framför dig – ett förslag till styrelsen, en ny policy, en förändring i utbildningsplanen. Välj två av de viktigaste intressenterna för det beslutet och formulera en AI-instruktion som ber AI:n granska förslaget från respektive perspektiv. Vad fick du ut som du inte redan visste?',
       },
     ],
+    quiz: [
+      {
+        question: "Vad är det primära syftet med AI-perspektivsimuleringar i ledningsarbetet?",
+        options: [
+          "Att ersätta möten med intressenter",
+          "Att avslöja potentiella friktionspunkter och blinda fläckar",
+          "Att generera automatiska beslut",
+          "Att spara tid på analyser"
+        ],
+        correctIndex: 1,
+        explanation: "Perspektivsimuleringar hjälper ledare identifiera frågor och invändningar de kanske missat – som komplement till, inte ersättning för, riktiga intressentsamtal.",
+      },
+      {
+        question: "Vad bör du undvika när du använder perspektivsimuleringar?",
+        options: [
+          "Att använda tekniska termer i instruktionen",
+          "Att simulera enbart bekräftande perspektiv",
+          "Att använda mer än tre perspektiv",
+          "Att spara simuleringsresultaten"
+        ],
+        correctIndex: 1,
+        explanation: "Bekräftande perspektiv har minimalt analytiskt värde. Sök aktivt perspektiv som utmanar och identifierar svagheter – inte de som bekräftar det du redan tror.",
+      },
+      {
+        question: "Vad kan AI INTE göra vid perspektivsimuleringar?",
+        options: [
+          "Simulera en styrelseledamots generella prioriteringar",
+          "Identifiera allmänna invändningar mot en plan",
+          "Förutsäga en specifik individs faktiska reaktion",
+          "Hitta potentiella friktionspunkter i ett förslag"
+        ],
+        correctIndex: 2,
+        explanation: "AI kan simulera generella mönster kopplade till en roll, men kan inte förutsäga hur en specifik individ faktiskt kommer reagera – riktiga samtal är nödvändiga för det.",
+      },
+    ],
   },
 
   {
@@ -359,6 +499,41 @@ export const modules: CourseModule[] = [
         title: 'Reflektionsfråga',
         content:
           'Identifiera ett administrativt arbetsmoment i din organisation som skulle kunna vara aktuellt för automatisering. Gå igenom det med den här frågelistan:\n\n1. Vilka beslut ingår i momentet, och vilka av dem har rättsliga konsekvenser?\n2. Var behöver en människa vara involverad – och med vilket djup av granskning?\n3. Vad händer i värsta fall om systemet gör fel, och vem bär ansvaret?\n4. Vilka rutiner för övervakning och underhåll kräver systemet?\n\nÄr fördelarna med automatisering tillräckliga för att motivera de organisatoriska kraven?',
+      },
+    ],
+    quiz: [
+      {
+        question: "Vem ansvarar för beslut om vilka administrativa processer som ska automatiseras?",
+        options: [
+          "IT-avdelningen",
+          "AI-verktygets leverantör",
+          "Ledningen – det är en strategisk ledningsfråga",
+          "Den operativa personalen som använder systemen"
+        ],
+        correctIndex: 2,
+        explanation: "Beslut om automation är strategiska ledningsbeslut – de kräver definition av vad agenter ska göra autonomt vs. vad som kräver mänskligt godkännande, och tydlig ansvarssättning.",
+      },
+      {
+        question: "Vad innebär \"proportionerlig kontroll\" i agentflöden?",
+        options: [
+          "Att kontrollera alla agentbeslut oavsett konsekvens",
+          "Att matcha kontrollfrekvensen mot konsekvensens allvarlighetsgrad",
+          "Att kontrollera slumpmässiga urval",
+          "Att enbart kontrollera om problem rapporteras"
+        ],
+        correctIndex: 1,
+        explanation: "Låga konsekvenser kan hanteras autonomt; höga konsekvenser (antagning, betyg, avtal) kräver mänskliga beslut – kontrollen ska motsvara risken.",
+      },
+      {
+        question: "Varför kan felaktig automation vara farligare än ingen automation?",
+        options: [
+          "Automation är alltid dyrare",
+          "Automatiserade processer är synliga för alla",
+          "Fel skalas upp och kan påverka alla utfall utan att märkas",
+          "Automation kräver dyra licenser"
+        ],
+        correctIndex: 2,
+        explanation: "Automation förstärker ett fel – ett konfigurationsfel kan sprida sig till hundratals beslut utan att någon märker det. Utan kontrollpunkter riskerar systematiska fel förbli oupptäckta.",
       },
     ],
   },
@@ -437,6 +612,41 @@ export const modules: CourseModule[] = [
           'Tänk på de vanligaste frågorna som din organisation får från studerande under ett läsår. Kategorisera dem:\n\n1. Faktafrågor med entydiga, standardiserade svar (t.ex. "när stänger systemet?", "vilken blankett ska jag fylla i?")\n2. Situationsberoende frågor som kräver bedömning (t.ex. "kan jag byta LIA-plats?", "vad händer om jag är sjuk under tentamen?")\n3. Rättighetsfrågor med juridiska dimensioner\n\nVilken kategori är lämplig för AI-stöd? Hur kommunicerar du gränsen till dina studerande?',
       },
     ],
+    quiz: [
+      {
+        question: "Vad kräver ett förvaltningsbart AI-stödsystem riktat mot studerande?",
+        options: [
+          "Att det kan svara på alla tänkbara frågor",
+          "Att kunskapsbasen uppdateras regelbundet och systemet kommunicerar sina gränser tydligt",
+          "Att det har ett attraktivt gränssnitt",
+          "Att det är gratis att använda"
+        ],
+        correctIndex: 1,
+        explanation: "En chatbot är bara lika pålitlig som sin kunskapsbas. Utan löpande uppdateringar och tydlig kommunikation om begränsningar riskerar studerande att agera på felaktig information.",
+      },
+      {
+        question: "Vad skapar organisatoriskt ansvar när en AI-chatbot ger felaktig information till studerande?",
+        options: [
+          "Inget – det är ett tekniskt problem för leverantören",
+          "Studeranden borde ha verifierat informationen",
+          "Organisationen, eftersom informationen distribuerades via officiella kanaler",
+          "Den enskilda medarbetare som konfigurerade chatbotten"
+        ],
+        correctIndex: 2,
+        explanation: "Information som distribueras via organisationens officiella kanaler – oavsett om det är AI eller människa – är organisationens ansvar. Studerande kan agera i god tro på den informationen.",
+      },
+      {
+        question: "Vad är ett juridiskt krav (inte bara god praxis) vid AI-chatbotar mot användare?",
+        options: [
+          "Att chatboten svarar inom en sekund",
+          "Att chatboten kan hantera minst fem ämnesområden",
+          "Att användare informeras om att de kommunicerar med ett automatiserat system",
+          "Att chatboten kan kommunicera på minst tre språk"
+        ],
+        correctIndex: 2,
+        explanation: "Transparens om automatiserade system är ett juridiskt krav – inte bara en rekommendation. Användare har rätt att veta om de pratar med en människa eller ett system.",
+      },
+    ],
   },
 
   {
@@ -511,6 +721,41 @@ export const modules: CourseModule[] = [
         title: 'Inventering och prioritering',
         content:
           'Gör en preliminär inventering:\n\n1. Vilka kommersiella AI-verktyg används i din organisation – formellt godkänt eller inte?\n2. Finns det databehandlingsavtal för dessa verktyg?\n3. Används något AI-system i beslut som påverkar studeranderättigheter?\n4. Vem i din organisation är ansvarig för att besvara dessa frågor?\n\nVad är de tre viktigaste åtgärderna du behöver vidta under de närmaste tre månaderna?',
+      },
+    ],
+    quiz: [
+      {
+        question: "Vilka tre regelverk är centrala för YH-organisationer som använder AI?",
+        options: [
+          "ISO, ITIL och PCI-DSS",
+          "GDPR, EU AI-förordningen och YH-förordningen",
+          "NIS2, DORA och eIDAS",
+          "Dataskyddslagen, upphovsrättslagen och konsumentlagen"
+        ],
+        correctIndex: 1,
+        explanation: "GDPR reglerar personuppgiftsbehandling, EU AI-förordningen klassificerar utbildningssystem som högrisk, och YH-förordningens kvalitetskrav gäller oavsett hur dokument producerats.",
+      },
+      {
+        question: "Vad innebär högriskklassificering under EU AI-förordningen för en YH-organisation?",
+        options: [
+          "Att AI-användning är förbjuden",
+          "Att inga krav ställs eftersom klassificeringen är preliminär",
+          "Att krav på transparens, kontroll och dokumentation gäller",
+          "Att alla AI-system måste granskas av Skolinspektionen"
+        ],
+        correctIndex: 2,
+        explanation: "Högriskklassificering under EU AI Act innebär specifika krav: dokumentation av AI-användning, transparens mot berörda, och kontrollstrukturer – inte förbud.",
+      },
+      {
+        question: "Vad skyddar en organisation mot juridiska konsekvenser vid AI-relaterade brister?",
+        options: [
+          "Att använda välkända AI-leverantörer",
+          "Att inte dokumentera AI-användningen",
+          "Proaktiv inventering och strukturerat styrningsarbete",
+          "Att enbart använda AI för interna dokument"
+        ],
+        correctIndex: 2,
+        explanation: "Ovetskap eliminerar inte organisationsansvar. Proaktiv inventering, rättslig grund för verktyg, och tydliga styrningsrutiner är det enda effektiva riskminimeringsarbetet.",
       },
     ],
   },
@@ -594,6 +839,41 @@ export const modules: CourseModule[] = [
         title: 'Avslutande reflektion',
         content:
           'Den här kursen avslutas inte med ett svar – den avslutas med ett uppdrag:\n\nFormulera organisationens AI-ställningstagande i tre delar:\n\n1. Var ser vi tydlig nytta med hanterbara risker – och vad krävs för att realisera den nyttan ansvarsfullt?\n2. Var sätter vi en tydlig gräns – och hur kommunicerar vi den till personal och studerande?\n3. Vad är vårt nästa konkreta steg, och vem äger det?\n\nDetta är utgångspunkten för ditt examensarbete – och för ditt strategiska ledarskap i en tid av snabb teknologisk förändring.',
+      },
+    ],
+    quiz: [
+      {
+        question: "Vad innebär proaktiv AI-styrning till skillnad från reaktiv?",
+        options: [
+          "Att följa med i den senaste AI-forskningen",
+          "Att definiera användning, sätta policy och etablera granskningsrutiner innan problem uppstår",
+          "Att reagera snabbt när AI-relaterade incidenter inträffar",
+          "Att blockera alla AI-verktyg tills de är tillräckligt mogna"
+        ],
+        correctIndex: 1,
+        explanation: "Proaktiv styrning innebär att organisationen äger sin AI-strategi och definierar spelreglerna i förväg – snarare än att hantera konsekvenser av oreglerad användning.",
+      },
+      {
+        question: "Vilken fråga är viktigast att ställa till en AI-leverantör vid upphandling?",
+        options: [
+          "Hur många kunder har ni?",
+          "Vilket programmeringsspråk använder ni?",
+          "Vem äger data vi matar in, var lagras den, och hur uppdateras kunskapsbasen?",
+          "Hur lång är er supporttelefontid?"
+        ],
+        correctIndex: 2,
+        explanation: "Dataägarskap, lagringsplats och uppdateringsrutiner är kärnan i ansvarsfull upphandling – de avgör GDPR-compliance och systemets pålitlighet över tid.",
+      },
+      {
+        question: "Vad händer i praktiken om en organisation väljer att inte besluta om en AI-policy?",
+        options: [
+          "Personalen slutar använda AI",
+          "IT-avdelningen tar automatiskt över ansvaret",
+          "Oreglerad och okontrollerad AI-användning med kvalitets- och compliancerisker uppstår",
+          "Ansvaret vilar automatiskt på den enskilde medarbetaren"
+        ],
+        correctIndex: 2,
+        explanation: "Att inte besluta är ett aktivt beslut – det resulterar i oreglerad användning med reella risker för kvalitet och regelefterlevnad. Det finns ingen neutral position.",
       },
     ],
   },
