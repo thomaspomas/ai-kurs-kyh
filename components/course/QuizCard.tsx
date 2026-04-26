@@ -5,19 +5,19 @@ import type { QuizQuestion } from '@/types'
 
 interface QuizCardProps {
   questions: QuizQuestion[]
+  onPassed?: () => void
+  alreadyPassed?: boolean
 }
 
-export function QuizCard({ questions }: QuizCardProps) {
+export function QuizCard({ questions, onPassed, alreadyPassed }: QuizCardProps) {
   const [current, setCurrent] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)
   const [answers, setAnswers] = useState<(number | null)[]>(Array(questions.length).fill(null))
   const [done, setDone] = useState(false)
-
-  const question = questions[current]
-  const isAnswered = selected !== null
+  const [passed, setPassed] = useState(alreadyPassed ?? false)
 
   function handleSelect(index: number) {
-    if (isAnswered) return
+    if (selected !== null) return
     setSelected(index)
     setAnswers((prev) => {
       const next = [...prev]
@@ -31,7 +31,12 @@ export function QuizCard({ questions }: QuizCardProps) {
       setCurrent((c) => c + 1)
       setSelected(answers[current + 1])
     } else {
+      const allCorrect = answers.every((a, i) => a === questions[i].correctIndex)
       setDone(true)
+      if (allCorrect) {
+        setPassed(true)
+        onPassed?.()
+      }
     }
   }
 
@@ -42,44 +47,55 @@ export function QuizCard({ questions }: QuizCardProps) {
     setDone(false)
   }
 
+  if (passed) {
+    return (
+      <div className="bg-surface-card border border-secondary/40 rounded-xl p-5 flex items-center gap-3">
+        <div
+          className="w-8 h-8 rounded-full flex items-center justify-center shrink-0"
+          style={{ backgroundColor: '#2D807C' }}
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M3 7l3 3 5-5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+        <div className="flex-1">
+          <span className="text-xs font-mono text-content-muted uppercase tracking-wider">Quiz</span>
+          <p className="text-sm font-medium text-secondary">Alla frågor besvarade rätt – reflektionen är upplåst.</p>
+        </div>
+        <button
+          onClick={() => { setPassed(false); handleRestart() }}
+          className="text-xs text-content-muted hover:text-primary transition-colors cursor-pointer shrink-0"
+        >
+          Gör om
+        </button>
+      </div>
+    )
+  }
+
   if (done) {
-    const correct = answers.filter((a, i) => a === questions[i].correctIndex).length
+    const correctCount = answers.filter((a, i) => a === questions[i].correctIndex).length
     const total = questions.length
-    const pct = Math.round((correct / total) * 100)
     return (
       <div className="bg-surface-card border border-border rounded-xl p-6">
         <div className="flex items-center gap-2 mb-4">
           <span className="text-lg">🧠</span>
           <span className="text-xs font-mono text-content-muted uppercase tracking-wider">Quiz</span>
         </div>
-        <div className="text-center py-4">
-          <p className="text-3xl font-bold text-content mb-1">
-            {correct}/{total}
+        <div className="text-center py-2 mb-4">
+          <p className="text-3xl font-bold text-content mb-1">{correctCount}/{total}</p>
+          <p className="text-content-muted text-sm">
+            Du behöver svara rätt på alla frågor för att låsa upp reflektionen.
           </p>
-          <p className="text-content-muted text-sm mb-4">
-            {pct >= 80
-              ? 'Utmärkt! Du har greppat modulens kärna.'
-              : pct >= 50
-              ? 'Bra jobbat – gå gärna tillbaka och läs igenom avsnitten igen.'
-              : 'Läs igenom modulen en gång till – frågorna täcker de viktigaste begreppen.'}
-          </p>
-          <button
-            onClick={handleRestart}
-            className="text-sm text-primary hover:underline cursor-pointer"
-          >
-            Gör om quizet
-          </button>
         </div>
-        <div className="space-y-3 mt-4 border-t border-border pt-4">
+        <div className="space-y-3 border-t border-border pt-4 mb-5">
           {questions.map((q, i) => {
-            const ans = answers[i]
-            const correct = ans === q.correctIndex
+            const isCorrect = answers[i] === q.correctIndex
             return (
               <div key={i} className="text-sm">
-                <p className={`font-medium mb-1 ${correct ? 'text-secondary' : 'text-primary'}`}>
-                  {correct ? '✓' : '✗'} {q.question}
+                <p className={`font-medium mb-0.5 ${isCorrect ? 'text-secondary' : 'text-primary'}`}>
+                  {isCorrect ? '✓' : '✗'} {q.question}
                 </p>
-                {!correct && (
+                {!isCorrect && (
                   <p className="text-content-muted text-xs pl-4">
                     Rätt svar: {q.options[q.correctIndex]} — {q.explanation}
                   </p>
@@ -88,9 +104,21 @@ export function QuizCard({ questions }: QuizCardProps) {
             )
           })}
         </div>
+        <div className="flex justify-center">
+          <button
+            onClick={handleRestart}
+            className="px-5 py-2 rounded-lg text-sm font-medium text-white cursor-pointer"
+            style={{ backgroundColor: '#C75000' }}
+          >
+            Försök igen
+          </button>
+        </div>
       </div>
     )
   }
+
+  const question = questions[current]
+  const isAnswered = selected !== null
 
   return (
     <div className="bg-surface-card border border-border rounded-xl p-6">
@@ -99,15 +127,13 @@ export function QuizCard({ questions }: QuizCardProps) {
           <span className="text-lg">🧠</span>
           <span className="text-xs font-mono text-content-muted uppercase tracking-wider">Quiz</span>
         </div>
-        <span className="text-xs text-content-muted">
-          {current + 1} / {questions.length}
-        </span>
+        <span className="text-xs text-content-muted">{current + 1} / {questions.length}</span>
       </div>
 
       <div className="w-full bg-border rounded-full h-1 mb-5">
         <div
           className="h-1 rounded-full transition-all"
-          style={{ width: `${((current) / questions.length) * 100}%`, backgroundColor: '#C75000' }}
+          style={{ width: `${(current / questions.length) * 100}%`, backgroundColor: '#C75000' }}
         />
       </div>
 

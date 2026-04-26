@@ -29,6 +29,7 @@ export default function ModulePage({ params }: PageProps) {
   const [userName, setUserName] = useState('')
   const [loading, setLoading] = useState(true)
   const [track, setTrack] = useState<Track>('utbildningsledare')
+  const [quizPassed, setQuizPassed] = useState(false)
 
   const loadProgress = useCallback(async () => {
     const supabase = createClient()
@@ -91,6 +92,10 @@ export default function ModulePage({ params }: PageProps) {
 
   const modules = getModulesForTrack(track)
   const module = modules.find((m) => m.id === moduleId)
+
+  const reflectionSections = module?.sections.filter((s) => s.type === 'reflection') ?? []
+  const reflectionAlreadyCompleted = reflectionSections.some((s) => completedSections.includes(s.id))
+  const canShowReflection = !module?.quiz?.length || quizPassed || reflectionAlreadyCompleted
 
   if (!loading && !module) {
     return (
@@ -184,24 +189,46 @@ export default function ModulePage({ params }: PageProps) {
               ))}
 
             {module.quiz && module.quiz.length > 0 && (
-              <QuizCard questions={module.quiz} />
+              <QuizCard
+                questions={module.quiz}
+                onPassed={() => setQuizPassed(true)}
+                alreadyPassed={quizPassed || reflectionAlreadyCompleted}
+              />
             )}
 
             {module.sections
               .filter((s) => s.type === 'reflection')
-              .map((section) => (
-                <SectionContent
-                  key={section.id}
-                  section={section}
-                  isCompleted={completedSections.includes(section.id)}
-                  onComplete={(reflText, aiFeedback) => handleComplete(section.id, reflText, aiFeedback)}
-                  reflectionValue={reflections[section.id] ?? ''}
-                  onReflectionChange={(val) =>
-                    setReflections((prev) => ({ ...prev, [section.id]: val }))
-                  }
-                  moduleTitle={module.title}
-                />
-              ))}
+              .map((section) =>
+                canShowReflection ? (
+                  <SectionContent
+                    key={section.id}
+                    section={section}
+                    isCompleted={completedSections.includes(section.id)}
+                    onComplete={(reflText, aiFeedback) => handleComplete(section.id, reflText, aiFeedback)}
+                    reflectionValue={reflections[section.id] ?? ''}
+                    onReflectionChange={(val) =>
+                      setReflections((prev) => ({ ...prev, [section.id]: val }))
+                    }
+                    moduleTitle={module.title}
+                  />
+                ) : (
+                  <div
+                    key={section.id}
+                    className="bg-surface-card border border-border rounded-xl p-6"
+                  >
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="text-base">🔒</span>
+                      <span className="text-xs font-mono text-content-muted uppercase tracking-wider">
+                        Reflektion
+                      </span>
+                    </div>
+                    <p className="font-semibold text-content mb-1">{section.title}</p>
+                    <p className="text-sm text-content-muted">
+                      Svara rätt på alla quizfrågor för att låsa upp reflektionen.
+                    </p>
+                  </div>
+                )
+              )}
           </div>
         ) : null}
 
