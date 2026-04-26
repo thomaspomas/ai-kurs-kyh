@@ -87,8 +87,8 @@ export function SectionContent({
       const text = await res.text()
       if (!res.ok) throw new Error(`HTTP ${res.status}: ${text}`)
       setFeedback(text)
-    } catch (err) {
-      setFeedbackError('Kunde inte hämta återkoppling. Försök igen. Fel: ' + (err instanceof Error ? err.message : String(err)))
+    } catch {
+      setFeedbackError('Kunde inte hämta återkoppling. Försök igen.')
     } finally {
       setLoadingFeedback(false)
     }
