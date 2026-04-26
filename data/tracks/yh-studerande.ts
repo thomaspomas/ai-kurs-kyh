@@ -276,7 +276,7 @@ export const modules: CourseModule[] = [
       {
         id: '4-warning',
         type: 'warning',
-        title: 'Citat AI som källa är akademiskt fel',
+        title: 'Att citera AI som källa är akademiskt fel',
         content:
           'AI är inte en akademisk källa. Du kan inte skriva "Enligt ChatGPT..." i ett akademiskt paper som om det vore en pålitlig källa. AI kan peka dig mot information – men du måste hitta och citera primärkällan, och kontrollera att informationen faktiskt stämmer.',
       },
