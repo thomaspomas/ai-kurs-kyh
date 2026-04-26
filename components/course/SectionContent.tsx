@@ -85,15 +85,7 @@ export function SectionContent({
         }),
       })
       if (!res.ok) throw new Error('Något gick fel')
-      const reader = res.body!.getReader()
-      const decoder = new TextDecoder()
-      let text = ''
-      while (true) {
-        const { done, value } = await reader.read()
-        if (done) break
-        text += decoder.decode(value, { stream: true })
-        setFeedback(text)
-      }
+      const text = await res.text()
       setFeedback(text)
     } catch {
       setFeedbackError('Kunde inte hämta återkoppling. Försök igen.')
