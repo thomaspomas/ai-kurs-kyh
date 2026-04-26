@@ -50,7 +50,7 @@ export function DiplomaView({ userName, issuedAt, verificationCode, courseTitle 
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/thomas.png" alt="Thomas Carlberg" style={{ height: '192px', margin: '0 auto 8px' }} />
             <p className="text-sm font-medium" style={{ color: '#755E60', fontFamily: 'Courier New, monospace' }}>
-              KYH – Yrkeshögskolan
+              thomascarlberg – Yrkeshögskolan
             </p>
           </div>
 
@@ -87,7 +87,7 @@ export function DiplomaView({ userName, issuedAt, verificationCode, courseTitle 
               <div>
                 <p style={{ color: '#755E60', marginBottom: '4px' }}>Utfärdare</p>
                 <p className="font-medium" style={{ color: '#28221B' }}>
-                  KYH
+                  thomascarlberg
                 </p>
               </div>
               <div>
