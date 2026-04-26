@@ -15,6 +15,18 @@ const tracks = [
     title: 'YH-ledning',
     desc: 'Rektor, VD eller styrelseledamot. Fokus på strategisk AI-styrning, organisationsansvar och styrelsearbete.',
   },
+  {
+    id: 'yh-larare',
+    icon: '🎓',
+    title: 'YH-lärare',
+    desc: 'Lärare eller handledare på YH. Fokus på examination, akademisk integritet, AI-fusk och LIA-handledning.',
+  },
+  {
+    id: 'yh-studerande',
+    icon: '📚',
+    title: 'YH-studerande',
+    desc: 'Studerande på yrkeshögskola. Fokus på AI som studieverktyg, källkritik och akademisk integritet.',
+  },
 ]
 
 export default function LandingPage() {
@@ -73,7 +85,7 @@ export default function LandingPage() {
             <h2 className="text-sm font-mono text-content-muted uppercase tracking-wider mb-6">
               Välj din ingång
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {tracks.map((t) => (
                 <Link
                   key={t.id}

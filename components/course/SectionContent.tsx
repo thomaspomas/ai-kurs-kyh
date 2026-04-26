@@ -6,7 +6,7 @@ import type { ModuleSection } from '@/types'
 interface SectionContentProps {
   section: ModuleSection
   isCompleted: boolean
-  onComplete: () => void
+  onComplete: (reflectionText?: string, aiFeedback?: string) => void
   reflectionValue?: string
   onReflectionChange?: (val: string) => void
   moduleTitle?: string
@@ -94,6 +94,7 @@ export function SectionContent({
         text += decoder.decode(value, { stream: true })
         setFeedback(text)
       }
+      setFeedback(text)
     } catch {
       setFeedbackError('Kunde inte hämta återkoppling. Försök igen.')
     } finally {
@@ -214,7 +215,7 @@ export function SectionContent({
       {/* Complete button */}
       {!isCompleted && (
         <button
-          onClick={onComplete}
+          onClick={() => onComplete(isReflection ? reflectionValue : undefined, isReflection ? feedback : undefined)}
           disabled={!canComplete}
           className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm text-white transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
           style={{ backgroundColor: canComplete ? '#C75000' : '#9ca3af' }}

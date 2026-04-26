@@ -22,6 +22,18 @@ const trackOptions: { id: Track; label: string; desc: string; icon: string }[] =
     desc: 'Rektor, VD eller styrelsefunktion i en YH-organisation',
     icon: '🏛️',
   },
+  {
+    id: 'yh-larare',
+    label: 'YH-lärare',
+    desc: 'Lärare eller handledare på en YH- eller KY-utbildning',
+    icon: '🎓',
+  },
+  {
+    id: 'yh-studerande',
+    label: 'YH-studerande',
+    desc: 'Studerande på en yrkeshögskola eller vuxenutbildning',
+    icon: '📚',
+  },
 ]
 
 function RegisterForm() {

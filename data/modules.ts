@@ -1,6 +1,8 @@
 import type { CourseModule, Track } from '@/types'
 import { modules as utbildningsledareModules } from './tracks/utbildningsledare'
 import { modules as yhLedningModules } from './tracks/yh-ledning'
+import { modules as yhLarareModules } from './tracks/yh-larare'
+import { modules as yhStuderandeModules } from './tracks/yh-studerande'
 
 export { modules } from './tracks/utbildningsledare'
 
@@ -8,6 +10,10 @@ export function getModulesForTrack(track: Track): CourseModule[] {
   switch (track) {
     case 'yh-ledning':
       return yhLedningModules
+    case 'yh-larare':
+      return yhLarareModules
+    case 'yh-studerande':
+      return yhStuderandeModules
     case 'utbildningsledare':
     default:
       return utbildningsledareModules

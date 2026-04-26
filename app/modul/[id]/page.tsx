@@ -37,19 +37,33 @@ export default function ModulePage({ params }: PageProps) {
     setUserName(user.user_metadata?.full_name ?? user.email ?? '')
     setTrack((user.user_metadata?.track as Track) ?? 'utbildningsledare')
 
-    const { data } = await supabase
-      .from('module_progress')
-      .select('section_id')
-      .eq('user_id', user.id)
-      .eq('module_id', moduleId)
+    const [progressRes, reflRes] = await Promise.all([
+      supabase
+        .from('module_progress')
+        .select('section_id')
+        .eq('user_id', user.id)
+        .eq('module_id', moduleId),
+      supabase
+        .from('reflections')
+        .select('section_id, reflection_text')
+        .eq('user_id', user.id)
+        .eq('module_id', moduleId),
+    ])
 
-    setCompletedSections((data ?? []).map((r: { section_id: string }) => r.section_id))
+    setCompletedSections((progressRes.data ?? []).map((r: { section_id: string }) => r.section_id))
+
+    const reflMap: Record<string, string> = {}
+    for (const r of (reflRes.data ?? []) as { section_id: string; reflection_text: string }[]) {
+      reflMap[r.section_id] = r.reflection_text
+    }
+    setReflections(reflMap)
+
     setLoading(false)
   }, [moduleId, router])
 
   useEffect(() => { loadProgress() }, [loadProgress])
 
-  async function handleComplete(sectionId: string) {
+  async function handleComplete(sectionId: string, reflectionText?: string, aiFeedback?: string) {
     const supabase = createClient()
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) return
@@ -59,6 +73,17 @@ export default function ModulePage({ params }: PageProps) {
       module_id: moduleId,
       section_id: sectionId,
     }, { onConflict: 'user_id,module_id,section_id' })
+
+    if (reflectionText) {
+      await supabase.from('reflections').upsert({
+        user_id: user.id,
+        module_id: moduleId,
+        section_id: sectionId,
+        reflection_text: reflectionText,
+        ai_feedback: aiFeedback ?? '',
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id,module_id,section_id' })
+    }
 
     setCompletedSections((prev) => [...prev, sectionId])
   }
@@ -105,9 +130,7 @@ export default function ModulePage({ params }: PageProps) {
               <div className="flex items-center gap-3 mb-2">
                 <span className="text-3xl">{module.icon}</span>
                 <div>
-                  <p className="text-xs font-mono text-content-muted">
-                    Modul {module.id}
-                  </p>
+                  <p className="text-xs font-mono text-content-muted">Modul {module.id}</p>
                   <h1 className="text-2xl sm:text-3xl font-bold text-content leading-tight">
                     {module.title}
                   </h1>
@@ -148,7 +171,7 @@ export default function ModulePage({ params }: PageProps) {
                 key={section.id}
                 section={section}
                 isCompleted={completedSections.includes(section.id)}
-                onComplete={() => handleComplete(section.id)}
+                onComplete={(reflText, aiFeedback) => handleComplete(section.id, reflText, aiFeedback)}
                 reflectionValue={reflections[section.id] ?? ''}
                 onReflectionChange={(val) =>
                   setReflections((prev) => ({ ...prev, [section.id]: val }))

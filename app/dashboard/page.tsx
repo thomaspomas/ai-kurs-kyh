@@ -5,6 +5,7 @@ import { ModuleCard } from '@/components/course/ModuleCard'
 import { ProgressBar } from '@/components/course/ProgressBar'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { DownloadReflections } from '@/components/course/DownloadReflections'
 import type { Track } from '@/types'
 
 const trackLabels: Record<Track, string> = {
@@ -112,9 +113,12 @@ export default async function DashboardPage() {
           )}
         </div>
 
-        <h2 className="text-sm font-mono text-content-muted uppercase tracking-wider mb-4">
-          Moduler
-        </h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-sm font-mono text-content-muted uppercase tracking-wider">
+            Moduler
+          </h2>
+          <DownloadReflections userName={userName} track={track} />
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {modules.map((module) => (
             <ModuleCard
