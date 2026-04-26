@@ -506,7 +506,7 @@ export const modules: CourseModule[] = [
         type: 'warning',
         title: 'Konsekvenserna av fusk är verkliga',
         content:
-          'Disciplinärenden kring akademisk integritet kan leda till underkänt betyg, varning, tillfällig avstängning och i allvarliga fall permanent avlägsnande från utbildningen. De kan också nota sig i utbildningsdokumentation som arbetsgivare i vissa branscher begär. Det är inte värt risken – och det är verkligen inte värt att inte lära sig det du behöver kunna.',
+          'Disciplinärenden kring akademisk integritet kan leda till underkänt betyg, varning, tillfällig avstängning och i allvarliga fall permanent avlägsnande från utbildningen. De kan också noteras i utbildningsdokumentation som arbetsgivare i vissa branscher begär. Det är inte värt risken – och det är verkligen inte värt att inte lära sig det du behöver kunna.',
       },
       {
         id: '7-reflection',
