@@ -55,7 +55,7 @@ export default function LandingPage() {
         <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
           <div className="flex flex-col sm:flex-row items-center gap-10">
           <img
-            src="/hero-pic.png"
+            src="/hero_pic.png"
             alt=""
             aria-hidden="true"
             className="w-full sm:w-80 md:w-96 shrink-0 object-contain"
