@@ -10,7 +10,7 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: 'AI för utbildningsledare – KYH',
+  title: 'AI för utbildningsledare – YH',
   description:
     'Tillämpad AI-kurs på mellannivå för utbildningsledare inom yrkeshögskola och vuxenutbildning.',
 }
