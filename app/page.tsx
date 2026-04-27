@@ -64,7 +64,14 @@ export default function LandingPage() {
             src="/hero_pic.png"
             alt=""
             aria-hidden="true"
-            className="w-full sm:w-80 md:w-96 shrink-0 object-contain rounded"
+            className="w-full sm:w-80 md:w-96 shrink-0 object-contain rounded dark:hidden"
+            style={{ border: '2px solid rgb(192, 70, 0)' }}
+          />
+          <img
+            src="/hero_pic_dm.png"
+            alt=""
+            aria-hidden="true"
+            className="w-full sm:w-80 md:w-96 shrink-0 object-contain rounded hidden dark:block"
             style={{ border: '2px solid rgb(192, 70, 0)' }}
           />
           <div className="max-w-2xl">
