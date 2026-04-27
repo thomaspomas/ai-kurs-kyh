@@ -80,7 +80,9 @@ export default function LandingPage() {
               Detta är en tillämpad kurs, anpassad efter din roll – personal, lärare eller studerande
               på en yrkeshögskoleutbildning. Kursen är tänkt att ta dig bortom både grundläggande
               "vad är AI?" och enkelt chattande, och vidare mot strategisk förståelse, ansvarsfull
-              användning och ett mer informerat beslutsfattande i praktiken. Hoppas du har nytta av den!
+              användning och ett mer informerat beslutsfattande i praktiken. Om du känner att AI är
+              helt nytt, så finns en modul för dig med (AI-grundkurs). Välkommen och hoppas du har
+              nytta av sidan!
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
