@@ -58,7 +58,8 @@ export default function LandingPage() {
             src="/hero_pic.png"
             alt=""
             aria-hidden="true"
-            className="w-full sm:w-80 md:w-96 shrink-0 object-contain"
+            className="w-full sm:w-80 md:w-96 shrink-0 object-contain rounded"
+            style={{ border: '2px solid rgb(192, 70, 0)' }}
           />
           <div className="max-w-2xl">
             <p className="text-sm font-mono text-primary mb-4 uppercase tracking-wider">
