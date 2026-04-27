@@ -42,7 +42,7 @@ export function AudioIntro() {
       </button>
       <div>
         <p className="text-xs font-mono text-content-muted uppercase tracking-wider mb-0.5">Ljudintroduktion</p>
-        <p className="text-sm font-medium text-content">Lyssna på en kort sammanfattning av vad AI är och hur det fungerar</p>
+        <p className="text-sm font-medium text-content">Lyssna på en kort sammanfattning av vad AI är och hur det fungerar <span className="text-content-muted font-normal">(ca 1 minut)</span></p>
       </div>
       <audio ref={audioRef} src="/AIpraktikant.m4a" onEnded={handleEnded} />
     </div>
