@@ -3,7 +3,7 @@ import { Footer } from '@/components/layout/Footer'
 import { ThemeToggle } from '@/components/layout/ThemeToggle'
 
 export const metadata = {
-  title: 'Integritetspolicy – AI för utbildningsledare',
+  title: 'Integritetspolicy – AI för Yrkeshögskolan',
 }
 
 export default function IntegritetspolicyPage() {
@@ -25,7 +25,7 @@ export default function IntegritetspolicyPage() {
       <main className="flex-1 max-w-3xl mx-auto w-full px-4 sm:px-6 py-12">
         <h1 className="text-3xl font-bold text-content mb-2">Integritetspolicy</h1>
         <p className="text-content-muted text-sm mb-10">
-          Senast uppdaterad: 25 april 2026
+          Senast uppdaterad: 27 april 2026
         </p>
 
         <div className="space-y-10 text-content leading-relaxed">
@@ -34,7 +34,7 @@ export default function IntegritetspolicyPage() {
             <h2 className="text-xl font-bold text-content mb-3">1. Personuppgiftsansvarig</h2>
             <p>
               Thomas Carlberg är personuppgiftsansvarig för behandlingen av personuppgifter i
-              samband med kursen <em>AI för utbildningsledare</em>. Kontakt:{' '}
+              samband med kursen <em>AI för Yrkeshögskolan</em>. Kontakt:{' '}
               <a
                 href="mailto:thomascarlberghemma@proton.me"
                 className="text-primary hover:underline"
