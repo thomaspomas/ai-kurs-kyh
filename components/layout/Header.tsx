@@ -23,7 +23,9 @@ export function Header({ userName, showNav = true }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 bg-surface-card border-b border-border shadow-sm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-36 flex items-center justify-between gap-4">
-        <img src="/thomas.png" alt="Thomas Carlberg" className="shrink-0 h-32 logo-adaptive" />
+        <Link href="/">
+          <img src="/thomas.png" alt="Thomas Carlberg" className="shrink-0 h-32 logo-adaptive" />
+        </Link>
 
         {showNav && (
           <nav className="hidden sm:flex items-center gap-6 text-sm font-medium">

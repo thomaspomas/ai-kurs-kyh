@@ -27,6 +27,12 @@ const tracks = [
     title: 'YH-studerande',
     desc: 'Studerande på yrkeshögskola. Fokus på AI som studieverktyg, källkritik och akademisk integritet.',
   },
+  {
+    id: 'yh-affarsutvecklare',
+    icon: '🚀',
+    title: 'Affärsutvecklare inom YH',
+    desc: 'Affärsutvecklare eller verksamhetsutvecklare i en YH-organisation. Fokus på AI i marknadsanalys, innovation och strategiskt beslutsfattande.',
+  },
 ]
 
 export default function LandingPage() {
@@ -34,7 +40,9 @@ export default function LandingPage() {
     <div className="flex flex-col min-h-screen bg-surface">
       <header className="bg-surface-card border-b border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <img src="/thomas.png" alt="Thomas Carlberg" className="h-32 logo-adaptive" />
+          <Link href="/">
+            <img src="/thomas.png" alt="Thomas Carlberg" className="h-32 logo-adaptive" />
+          </Link>
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <span className="text-xs text-content-muted select-none">Darkmode On/Off</span>

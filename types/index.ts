@@ -1,4 +1,4 @@
-export type Track = 'utbildningsledare' | 'yh-ledning' | 'yh-larare' | 'yh-studerande'
+export type Track = 'utbildningsledare' | 'yh-ledning' | 'yh-larare' | 'yh-studerande' | 'yh-affarsutvecklare'
 
 export interface ModuleSection {
   id: string

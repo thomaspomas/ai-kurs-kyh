@@ -34,6 +34,12 @@ const trackOptions: { id: Track; label: string; desc: string; icon: string }[] =
     desc: 'Studerande på en yrkeshögskola eller vuxenutbildning',
     icon: '📚',
   },
+  {
+    id: 'yh-affarsutvecklare',
+    label: 'Affärsutvecklare inom YH',
+    desc: 'Affärsutvecklare eller verksamhetsutvecklare i en YH-organisation',
+    icon: '🚀',
+  },
 ]
 
 function RegisterForm() {

@@ -3,6 +3,7 @@ import { modules as utbildningsledareModules } from './tracks/utbildningsledare'
 import { modules as yhLedningModules } from './tracks/yh-ledning'
 import { modules as yhLarareModules } from './tracks/yh-larare'
 import { modules as yhStuderandeModules } from './tracks/yh-studerande'
+import { modules as yhAffarsutvecklareModules } from './tracks/yh-affarsutvecklare'
 
 export { modules } from './tracks/utbildningsledare'
 
@@ -14,6 +15,8 @@ export function getModulesForTrack(track: Track): CourseModule[] {
       return yhLarareModules
     case 'yh-studerande':
       return yhStuderandeModules
+    case 'yh-affarsutvecklare':
+      return yhAffarsutvecklareModules
     case 'utbildningsledare':
     default:
       return utbildningsledareModules
