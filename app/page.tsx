@@ -53,6 +53,13 @@ export default function LandingPage() {
       <main className="flex-1">
         {/* Hero */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+          <div className="flex flex-col sm:flex-row items-center gap-10">
+          <img
+            src="/hero-pic.png"
+            alt=""
+            aria-hidden="true"
+            className="w-full sm:w-80 md:w-96 shrink-0 object-contain"
+          />
           <div className="max-w-2xl">
             <p className="text-sm font-mono text-primary mb-4 uppercase tracking-wider">
               Mellannivå · Självstudier
@@ -86,6 +93,7 @@ export default function LandingPage() {
                 Logga in
               </Link>
             </div>
+          </div>
           </div>
         </section>
 
