@@ -63,8 +63,9 @@ export default function LandingPage() {
               <span style={{ color: '#C75000' }}>yrkeshögskolan</span>
             </h1>
             <p className="text-lg text-content-muted mb-8 leading-relaxed">
-              En tillämpad kurs anpassad efter din roll – bortom "vad är AI?" och mot strategisk
-              förståelse, ansvarsfull användning och informerat beslutsfattande.
+              En tillämpad kurs anpassad efter din roll – bortom både grundläggande "vad är AI?"
+              och enkelt chattande, och vidare mot strategisk förståelse, ansvarsfull användning
+              och ett mer informerat beslutsfattande i praktiken.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
