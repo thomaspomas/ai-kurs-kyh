@@ -251,6 +251,10 @@ function RegisterForm() {
                 >
                   {loading ? 'Skapar konto...' : 'Skapa konto och starta'}
                 </button>
+
+                <p className="text-xs text-content-muted text-center leading-relaxed">
+                  Du kommer få ett mail med avsändare "Supabase Auth". Klicka på länken i detta för att skapa ditt konto.
+                </p>
               </form>
 
               <p className="mt-6 text-sm text-center text-content-muted">
