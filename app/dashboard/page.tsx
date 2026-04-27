@@ -6,6 +6,7 @@ import { ProgressBar } from '@/components/course/ProgressBar'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { DownloadReflections } from '@/components/course/DownloadReflections'
+import { AudioIntro } from '@/components/course/AudioIntro'
 import type { Track } from '@/types'
 
 const trackLabels: Record<Track, string> = {
@@ -57,6 +58,7 @@ export default async function DashboardPage() {
       <Header userName={userName} showNav />
 
       <main className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 py-8">
+        {track === 'ai-grundkurs' && <AudioIntro />}
         <div className="mb-8">
           <h1 className="text-2xl sm:text-3xl font-bold text-content mb-1">
             Hej, {userName.split(' ')[0]}
