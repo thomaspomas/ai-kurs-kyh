@@ -175,7 +175,7 @@ export default function LandingPage() {
                 },
                 {
                   icon: '📍',
-                  title: 'Återuppta var du slutade',
+                  title: 'Återuppta där du slutade',
                   desc: 'Dina framsteg sparas automatiskt. Fortsätt kursen när det passar dig.',
                 },
                 {
