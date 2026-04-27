@@ -181,7 +181,7 @@ export default function LandingPage() {
                 {
                   icon: '🔒',
                   title: 'Baserat på YH-praxis',
-                  desc: 'Alla exempel och övningar är hämtade från utbildningsledarens faktiska arbetskontext.',
+                  desc: 'Alla exempel och övningar är hämtade från yrkeshögskolans faktiska kontext.',
                 },
               ].map((f) => (
                 <div key={f.title} className="bg-surface border border-border rounded-xl p-5">
