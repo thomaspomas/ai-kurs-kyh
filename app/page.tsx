@@ -183,6 +183,11 @@ export default function LandingPage() {
                   title: 'Baserat på YH-praxis',
                   desc: 'Alla exempel och övningar är hämtade från yrkeshögskolans faktiska kontext.',
                 },
+                {
+                  icon: '💬',
+                  title: 'Reflektion med återkoppling',
+                  desc: 'Du kommer i varje uppgift behöva reflektera på det du just lärt dig. Om du vill kommer du direkt få återkoppling på din reflektion från en inbyggd AI.',
+                },
               ].map((f) => (
                 <div key={f.title} className="bg-surface border border-border rounded-xl p-5">
                   <span className="text-2xl mb-3 block">{f.icon}</span>
