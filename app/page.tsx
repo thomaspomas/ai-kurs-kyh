@@ -33,6 +33,12 @@ const tracks = [
     title: 'Affärsutvecklare inom YH',
     desc: 'Affärsutvecklare eller verksamhetsutvecklare i en YH-organisation. Fokus på AI i marknadsanalys, innovation och strategiskt beslutsfattande.',
   },
+  {
+    id: 'ai-grundkurs',
+    icon: '🌱',
+    title: 'AI-grundkurs',
+    desc: 'Ny på AI och vill börja från grunden? Här förklaras allt steg för steg – vad AI är, hur prompts fungerar och hur du kommer igång.',
+  },
 ]
 
 export default function LandingPage() {

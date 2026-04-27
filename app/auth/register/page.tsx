@@ -40,6 +40,12 @@ const trackOptions: { id: Track; label: string; desc: string; icon: string }[] =
     desc: 'Affärsutvecklare eller verksamhetsutvecklare i en YH-organisation',
     icon: '🚀',
   },
+  {
+    id: 'ai-grundkurs',
+    label: 'AI-grundkurs',
+    desc: 'Ny på AI? Börja här – grunderna förklarade steg för steg',
+    icon: '🌱',
+  },
 ]
 
 function RegisterForm() {

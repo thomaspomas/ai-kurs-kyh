@@ -14,6 +14,7 @@ const trackLabels: Record<Track, string> = {
   'yh-larare': 'AI för YH-lärare – mellannivå',
   'yh-studerande': 'AI för YH-studerande – mellannivå',
   'yh-affarsutvecklare': 'AI för affärsutvecklare inom YH – mellannivå',
+  'ai-grundkurs': 'AI-grundkurs – kom igång från grunden',
 }
 
 export default async function DashboardPage() {
