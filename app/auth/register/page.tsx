@@ -253,7 +253,7 @@ function RegisterForm() {
                 </button>
 
                 <p className="text-xs text-content-muted text-center leading-relaxed">
-                  Du kommer få ett mail med avsändare "Supabase Auth". Klicka på länken i detta för att skapa ditt konto.
+                  Du kommer få ett mail med avsändare &quot;Supabase Auth&quot;. Klicka på länken i detta för att skapa ditt konto.
                 </p>
               </form>
 

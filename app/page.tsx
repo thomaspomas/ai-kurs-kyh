@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { ThemeToggle } from '@/components/layout/ThemeToggle'
 import { Footer } from '@/components/layout/Footer'
@@ -47,7 +48,7 @@ export default function LandingPage() {
       <header className="bg-surface-card border-b border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <Link href="/">
-            <img src="/thomas.png" alt="Thomas Carlberg" className="h-32 logo-adaptive" />
+            <Image src="/thomas.png" alt="Thomas Carlberg" width={128} height={128} className="h-32 w-auto logo-adaptive" priority />
           </Link>
           <div className="flex items-center gap-2">
             <ThemeToggle />
@@ -60,19 +61,25 @@ export default function LandingPage() {
         {/* Hero */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
           <div className="flex flex-col sm:flex-row items-center gap-10">
-          <img
+          <Image
             src="/hero_pic.png"
             alt=""
             aria-hidden="true"
-            className="w-full sm:w-80 md:w-96 shrink-0 object-contain rounded dark:hidden"
+            width={384}
+            height={384}
+            className="w-full sm:w-80 md:w-96 h-auto shrink-0 object-contain rounded dark:hidden"
             style={{ border: '2px solid rgb(192, 70, 0)' }}
+            priority
           />
-          <img
+          <Image
             src="/hero_pic_dm.png"
             alt=""
             aria-hidden="true"
-            className="w-full sm:w-80 md:w-96 shrink-0 object-contain rounded hidden dark:block"
+            width={384}
+            height={384}
+            className="w-full sm:w-80 md:w-96 h-auto shrink-0 object-contain rounded hidden dark:block"
             style={{ border: '2px solid rgb(192, 70, 0)' }}
+            priority
           />
           <div className="max-w-2xl">
             <p className="text-sm font-mono text-primary mb-4 uppercase tracking-wider">
@@ -86,7 +93,7 @@ export default function LandingPage() {
             <p className="text-lg text-content-muted mb-8 leading-relaxed">
               Detta är en tillämpad kurs, anpassad efter din roll – personal, lärare eller studerande
               på en yrkeshögskoleutbildning. Kursen är tänkt att ta dig bortom både grundläggande
-              "vad är AI?" och enkelt chattande, och vidare mot strategisk förståelse, ansvarsfull
+              &quot;vad är AI?&quot; och enkelt chattande, och vidare mot strategisk förståelse, ansvarsfull
               användning och ett mer informerat beslutsfattande i praktiken. Om du känner att AI är
               helt nytt, så finns en modul för dig med (AI-grundkurs). Välkommen och hoppas du har
               nytta av sidan!

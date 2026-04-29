@@ -1,13 +1,16 @@
 'use client'
 
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useTransition } from 'react'
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const [, startTransition] = useTransition()
 
-  useEffect(() => setMounted(true), [])
+  useEffect(() => {
+    startTransition(() => setMounted(true))
+  }, [startTransition])
 
   if (!mounted) {
     return <div className="w-10 h-6 rounded-full bg-border" />

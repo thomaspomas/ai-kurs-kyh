@@ -2,7 +2,7 @@
 
 export const dynamic = 'force-dynamic'
 
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
@@ -66,6 +66,7 @@ export default function ExaminationPage() {
   const [error, setError] = useState('')
   const [allModulesDone, setAllModulesDone] = useState(false)
   const [activePart, setActivePart] = useState(0)
+  const [, startLoadTransition] = useTransition()
 
   const loadData = useCallback(async () => {
     const supabase = createClient()
@@ -100,7 +101,11 @@ export default function ExaminationPage() {
     setLoading(false)
   }, [router])
 
-  useEffect(() => { loadData() }, [loadData])
+  useEffect(() => {
+    startLoadTransition(() => {
+      void loadData()
+    })
+  }, [loadData, startLoadTransition])
 
   async function handleSubmit() {
     setError('')
@@ -114,30 +119,19 @@ export default function ExaminationPage() {
 
     setSubmitting(true)
     const supabase = createClient()
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) return
+    const { data, error: dbError } = await supabase.rpc('submit_exam', {
+      p_part1: answers.part1,
+      p_part2: answers.part2,
+      p_part3: answers.part3,
+      p_part4: answers.part4,
+      p_user_name: userName,
+    })
 
-    const { error: dbError } = await supabase.from('exam_submissions').upsert({
-      user_id: user.id,
-      part1: answers.part1,
-      part2: answers.part2,
-      part3: answers.part3,
-      part4: answers.part4,
-      approved: true,
-    }, { onConflict: 'user_id' })
-
-    if (dbError) {
-      setError('Något gick fel. Försök igen.')
+    if (dbError || data !== true) {
+      setError('Något gick fel. Kontrollera att alla moduler är genomförda och försök igen.')
       setSubmitting(false)
       return
     }
-
-    const verificationCode = Math.random().toString(36).substring(2, 14).toUpperCase()
-    await supabase.from('diplomas').upsert({
-      user_id: user.id,
-      user_name: userName,
-      verification_code: verificationCode,
-    }, { onConflict: 'user_id' })
 
     setSubmitted(true)
     setSubmitting(false)

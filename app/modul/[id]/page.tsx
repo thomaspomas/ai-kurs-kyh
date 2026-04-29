@@ -2,7 +2,7 @@
 
 export const dynamic = 'force-dynamic'
 
-import { use, useEffect, useState, useCallback } from 'react'
+import { use, useEffect, useState, useCallback, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
@@ -30,6 +30,7 @@ export default function ModulePage({ params }: PageProps) {
   const [loading, setLoading] = useState(true)
   const [track, setTrack] = useState<Track>('utbildningsledare')
   const [quizPassed, setQuizPassed] = useState(false)
+  const [, startLoadTransition] = useTransition()
 
   const loadProgress = useCallback(async () => {
     const supabase = createClient()
@@ -63,41 +64,37 @@ export default function ModulePage({ params }: PageProps) {
     setLoading(false)
   }, [moduleId, router])
 
-  useEffect(() => { loadProgress() }, [loadProgress])
+  useEffect(() => {
+    startLoadTransition(() => {
+      void loadProgress()
+    })
+  }, [loadProgress, startLoadTransition])
 
   async function handleComplete(sectionId: string, reflectionText?: string, aiFeedback?: string) {
     const supabase = createClient()
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) return
 
-    await supabase.from('module_progress').upsert({
-      user_id: user.id,
-      module_id: moduleId,
-      section_id: sectionId,
-    }, { onConflict: 'user_id,module_id,section_id' })
+    const { error } = await supabase.rpc('complete_section', {
+      p_module_id: moduleId,
+      p_section_id: sectionId,
+      p_reflection_text: reflectionText ?? null,
+      p_ai_feedback: aiFeedback ?? null,
+    })
 
-    if (reflectionText) {
-      await supabase.from('reflections').upsert({
-        user_id: user.id,
-        module_id: moduleId,
-        section_id: sectionId,
-        reflection_text: reflectionText,
-        ai_feedback: aiFeedback ?? '',
-        updated_at: new Date().toISOString(),
-      }, { onConflict: 'user_id,module_id,section_id' })
-    }
+    if (error) return
 
-    setCompletedSections((prev) => [...prev, sectionId])
+    setCompletedSections((prev) => prev.includes(sectionId) ? prev : [...prev, sectionId])
   }
 
   const modules = getModulesForTrack(track)
-  const module = modules.find((m) => m.id === moduleId)
+  const currentModule = modules.find((m) => m.id === moduleId)
 
-  const reflectionSections = module?.sections.filter((s) => s.type === 'reflection') ?? []
+  const reflectionSections = currentModule?.sections.filter((s) => s.type === 'reflection') ?? []
   const reflectionAlreadyCompleted = reflectionSections.some((s) => completedSections.includes(s.id))
-  const canShowReflection = !module?.quiz?.length || quizPassed || reflectionAlreadyCompleted
+  const canShowReflection = !currentModule?.quiz?.length || quizPassed || reflectionAlreadyCompleted
 
-  if (!loading && !module) {
+  if (!loading && !currentModule) {
     return (
       <div className="min-h-screen bg-surface flex items-center justify-center">
         <div className="text-center">
@@ -110,8 +107,8 @@ export default function ModulePage({ params }: PageProps) {
     )
   }
 
-  const totalSections = module?.sections.length ?? 0
-  const completedCount = module?.sections.filter((s) => completedSections.includes(s.id)).length ?? 0
+  const totalSections = currentModule?.sections.length ?? 0
+  const completedCount = currentModule?.sections.filter((s) => completedSections.includes(s.id)).length ?? 0
   const isModuleComplete = totalSections > 0 && completedCount === totalSections
 
   const prevModule = modules.find((m) => m.id === moduleId - 1)
@@ -130,17 +127,17 @@ export default function ModulePage({ params }: PageProps) {
           <span className="text-content">Modul {moduleId}</span>
         </nav>
 
-        {module && (
+        {currentModule && (
           <>
             <div className="mb-6">
               <div className="flex items-center gap-3 mb-2">
-                <span className="text-3xl">{module.icon}</span>
+                <span className="text-3xl">{currentModule.icon}</span>
                 <div>
-                  <p className="text-xs font-mono text-content-muted">Modul {module.id}</p>
+                  <p className="text-xs font-mono text-content-muted">Modul {currentModule.id}</p>
                   <h1 className="text-2xl sm:text-3xl font-bold text-content leading-tight">
-                    {module.title}
+                    {currentModule.title}
                   </h1>
-                  <p className="text-content-muted">{module.subtitle}</p>
+                  <p className="text-content-muted">{currentModule.subtitle}</p>
                 </div>
               </div>
             </div>
@@ -170,9 +167,9 @@ export default function ModulePage({ params }: PageProps) {
               <div key={i} className="h-32 bg-surface-card border border-border rounded-xl animate-pulse" />
             ))}
           </div>
-        ) : module ? (
+        ) : currentModule ? (
           <div className="space-y-4">
-            {module.sections
+            {currentModule.sections
               .filter((s) => s.type !== 'reflection')
               .map((section) => (
                 <SectionContent
@@ -184,19 +181,19 @@ export default function ModulePage({ params }: PageProps) {
                   onReflectionChange={(val) =>
                     setReflections((prev) => ({ ...prev, [section.id]: val }))
                   }
-                  moduleTitle={module.title}
+                  moduleTitle={currentModule.title}
                 />
               ))}
 
-            {module.quiz && module.quiz.length > 0 && (
+            {currentModule.quiz && currentModule.quiz.length > 0 && (
               <QuizCard
-                questions={module.quiz}
+                questions={currentModule.quiz}
                 onPassed={() => setQuizPassed(true)}
                 alreadyPassed={quizPassed || reflectionAlreadyCompleted}
               />
             )}
 
-            {module.sections
+            {currentModule.sections
               .filter((s) => s.type === 'reflection')
               .map((section) =>
                 canShowReflection ? (
@@ -209,7 +206,7 @@ export default function ModulePage({ params }: PageProps) {
                     onReflectionChange={(val) =>
                       setReflections((prev) => ({ ...prev, [section.id]: val }))
                     }
-                    moduleTitle={module.title}
+                    moduleTitle={currentModule.title}
                   />
                 ) : (
                   <div
